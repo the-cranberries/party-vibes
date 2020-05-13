@@ -27,12 +27,12 @@ export default function SignIn() {
             onChange={event => setPicture(event.target.value)}
           />
         </div>
-        <Link
+        {/* <Link
           onClick={e => (!name || !picture ? e.preventDefault() : null)}
           to={`/chat?name=${name}&picture=${picture}`}
-        >
-          <button type="submit">Let's vibe</button>
-        </Link>
+        > */}
+        <button type="submit">Let's vibe</button>
+        {/* </Link> */}
       </div>
     </div>
   )
