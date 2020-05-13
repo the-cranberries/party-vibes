@@ -26,16 +26,18 @@ class MainRoom extends React.Component {
     const background = new Image()
     background.src = 'background.png'
 
-    console.log(background)
+    // console.log(background)
 
-    // let backgroundMap
+    let backgroundMap
 
-    // background.onload = () => {
-    //   backgroundMap = new Bitmap(background)
-    //   this.stage.addChild(backgroundMap)
-    //   this.stage.update()
-    //   console.log(this.stage)
-    // }
+    background.onload = () => {
+      backgroundMap = new Bitmap(background)
+
+      console.log(backgroundMap)
+      this.stage.addChild(backgroundMap)
+      this.stage.update()
+      console.log(this.stage)
+    }
   }
 
   render() {
