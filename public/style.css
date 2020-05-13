@@ -26,3 +26,44 @@ body {
   background-repeat: no-repeat;
   background-size: 100%;
 }
+
+.joinOuterContainer {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  height: 60%;
+  width: 60%;
+  align-items: center;
+  background-color: #1a1a1d;
+}
+
+.joinInnerContainer {
+  width: 50%;
+}
+
+.joinInput {
+  padding-bottom: 0.5cm;
+  border-radius: 0;
+  padding: 15px 20px;
+  width: 50%;
+  height: 0.2cm;
+}
+
+.heading {
+  color: white;
+  font-size: 2.5em;
+  padding-bottom: 10px;
+  border-bottom: 2px solid white;
+}
+
+.button {
+  color: #fff !important;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: #2979ff;
+  padding: 20px;
+  border-radius: 10px;
+  display: inline-block;
+  border: none;
+  width: 100%;
+}
