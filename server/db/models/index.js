@@ -1,4 +1,3 @@
-
 const User = require('./user')
 const Party = require('./party')
 const PartyUser = require('./partyUser')
@@ -10,8 +9,15 @@ const PartyUser = require('./partyUser')
  *    BlogPost.belongsTo(User)
  */
 
-User.belongsToMany(Party, { through: PartyUser })
-Party.belongsToMany(User, { through: PartyUser })
+// Party.belongsTo(User)
+// User.hasMany(Party)
+
+User.belongsToMany(Party, {through: PartyUser})
+Party.belongsToMany(User, {through: PartyUser})
+
+// Party.belongsToMany(User)
+// User.belongsToMany(Party)
+// Party.belongsTo(PartyUser)
 
 /**
  * We'll export all of our models here, so that any time a module needs a model,
