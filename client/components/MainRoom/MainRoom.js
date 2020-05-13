@@ -1,6 +1,5 @@
 import React from 'react'
 import {Stage, Shape, Bitmap} from '@createjs/easeljs'
-import Canvas from './Canvas'
 
 class MainRoom extends React.Component {
   constructor(props) {
@@ -17,24 +16,25 @@ class MainRoom extends React.Component {
 
     this.stage.tickOnUpdate = false
 
-    const shape = new Shape()
+    // const shape = new Shape()
 
-    shape.graphics.beginFill('red').drawRect(0, 0, 120, 120)
+    // shape.graphics.beginFill('red').drawRect(0, 0, 120, 120)
 
-    this.stage.addChild(shape)
-    this.stage.update()
+    // this.stage.addChild(shape)
+    // this.stage.update()
 
-    console.log(this.stage)
+    const background = new Image()
+    background.src = 'background.png'
 
-    // const background = new Image('./images/background.png')
+    console.log(background)
 
     // let backgroundMap
 
     // background.onload = () => {
     //   backgroundMap = new Bitmap(background)
     //   this.stage.addChild(backgroundMap)
-    //     this.stage.update()
-    //     this.canvasRef = React.createRef();
+    //   this.stage.update()
+    //   console.log(this.stage)
     // }
   }
 
