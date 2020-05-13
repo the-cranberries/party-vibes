@@ -8,10 +8,28 @@ import {auth} from '../store'
  */
 const AuthForm = props => {
   const {name, displayName, handleSubmit, error} = props
-
+  console.log('login page')
   return (
     <div>
       <form onSubmit={handleSubmit} name={name}>
+        {/* SIGN UP FORM */}
+        {name === 'signup' && (
+          <div>
+            <div>
+              <label htmlFor="name">
+                <small>Name</small>
+              </label>
+              <input name="name" type="text" />
+            </div>
+            <div>
+              <label htmlFor="profilePic">
+                <small>Choose a Profile Picture</small>
+              </label>
+              <input name="profilePic" type="file" accept="image/*" />
+            </div>
+          </div>
+        )}
+        {/* SIGN UP & LOGIN FORM */}
         <div>
           <label htmlFor="email">
             <small>Email</small>
