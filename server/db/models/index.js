@@ -17,7 +17,7 @@ Party.belongsToMany(User, {through: PartyUser})
 
 // Party.belongsToMany(User)
 // User.belongsToMany(Party)
-// PartyUser.belongsTo(Party)
+// Party.belongsTo(PartyUser)
 
 /**
  * We'll export all of our models here, so that any time a module needs a model,
