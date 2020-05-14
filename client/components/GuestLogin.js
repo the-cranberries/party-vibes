@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {Link} from 'react-router-dom'
 
-export default function SignIn() {
+const GuestLogin = () => {
   const [name, setName] = useState('')
   const [picture, setPicture] = useState('')
 
@@ -37,3 +37,5 @@ export default function SignIn() {
     </div>
   )
 }
+
+export default GuestLogin
