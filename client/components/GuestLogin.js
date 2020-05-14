@@ -20,13 +20,13 @@ export default function GuestLogin() {
         <div>
           <input placeholder="Access Code" type="text" />
         </div>
-        <div>
+        {/* <div>
           <select
             placeholder="Profile Picture"
             type="image"
             onChange={event => setPicture(event.target.value)}
           />
-        </div>
+        </div> */}
         {/* <Link
           onClick={e => (!name || !picture ? e.preventDefault() : null)}
           to={`/chat?name=${name}&picture=${picture}`}
