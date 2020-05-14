@@ -8,19 +8,29 @@ const initialState = {
   accessCode: ''
 }
 
-export default class GuestLogin extends React.Component {
+export class GuestLogin extends React.Component {
   constructor() {
     super()
     this.state = initialState
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
+
   handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value
     })
   }
+
+  handleSubmit(event) {
+    event.preventDefault()
+    if (this.props.fetchParty(this.state.accessCode)) {
+      return <h1>Party with this accessCode does not exist</h1>
+    }
+  }
+
   render() {
+    console.log('PROPS', this.props)
     return (
       <div className="joinOuterContainer">
         <div className="joinInnerContainer">
@@ -42,21 +52,31 @@ export default class GuestLogin extends React.Component {
               onChange={this.handleChange}
             />
           </div>
-          {/* <div>
-            <select
-              placeholder="Profile Picture"
-              type="image"
-              onChange={event => setPicture(event.target.value)}
-            />
-          </div> */}
           {/* <Link
             onClick={e => (!name || !picture ? e.preventDefault() : null)}
             to={`/chat?name=${name}&picture=${picture}`}
           > */}
-          <button type="submit">Let's vibe</button>
+
+          <button type="submit" onSubmit={this.handleSubmit}>
+            Let's vibe
+          </button>
           {/* </Link> */}
         </div>
       </div>
     )
   }
 }
+
+const mapState = state => {
+  return {
+    partyCode: state
+  }
+}
+
+const mapDispatch = dispatch => {
+  return {
+    fetchParty: accessCode => dispatch(fetchParty(accessCode))
+  }
+}
+
+export default connect(mapState, mapDispatch)(GuestLogin)
