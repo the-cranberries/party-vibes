@@ -24,7 +24,11 @@ class MainCanvas extends React.Component {
     background.onload = () => {
       backgroundMap = new Bitmap(background)
 
-      console.log(backgroundMap)
+      // console.log(backgroundMap)
+
+      backgroundMap.scaleX = 1.25
+      backgroundMap.scaleY = 1.25
+
       this.stage.addChild(backgroundMap)
       this.stage.update()
       console.log(this.stage)
@@ -32,7 +36,7 @@ class MainCanvas extends React.Component {
   }
 
   render() {
-    return <canvas ref={this.canvasRef} width="1000" height="800" />
+    return <canvas ref={this.canvasRef} width="1400" height="1200" />
   }
 }
 
