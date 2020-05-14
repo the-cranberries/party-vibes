@@ -1,5 +1,5 @@
 import React from 'react'
-import {Stage, Shape, Bitmap} from '@createjs/easeljs'
+import {Stage, Bitmap} from '@createjs/easeljs'
 
 class MainRoom extends React.Component {
   constructor(props) {
