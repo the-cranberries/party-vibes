@@ -25,7 +25,9 @@ export class GuestLogin extends React.Component {
   handleSubmit(event) {
     event.preventDefault()
     if (this.props.fetchParty(this.state.accessCode)) {
-      return <h1>Party with this accessCode does not exist</h1>
+      return <h1>Here's the party</h1>
+    } else {
+      return <h1>Party doesn't exist</h1>
     }
   }
 
