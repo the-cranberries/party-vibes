@@ -34,7 +34,7 @@ body {
   height: 60%;
   width: 60%;
   align-items: center;
-  background-color: #1a1a1d;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .joinInnerContainer {
