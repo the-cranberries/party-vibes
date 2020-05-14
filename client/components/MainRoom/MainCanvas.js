@@ -31,7 +31,7 @@ class MainCanvas extends React.Component {
 
       this.stage.addChild(backgroundMap)
       this.stage.update()
-      console.log(this.stage)
+      // console.log(this.stage)
     }
   }
 

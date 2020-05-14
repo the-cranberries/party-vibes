@@ -2,7 +2,7 @@
 const ADD_GUEST = 'ADD_GUEST'
 
 //action creators
-const addGuest = guest => ({
+export const addGuest = guest => ({
   type: ADD_GUEST,
   guest
 })
