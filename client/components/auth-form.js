@@ -8,7 +8,7 @@ import {auth} from '../store'
  */
 const AuthForm = props => {
   const {name, displayName, handleSubmit, error} = props
-  console.log('login page')
+
   return (
     <div>
       <form onSubmit={handleSubmit} name={name}>
@@ -16,16 +16,21 @@ const AuthForm = props => {
         {name === 'signup' && (
           <div>
             <div>
-              <label htmlFor="name">
+              <label htmlFor="hostName">
                 <small>Name</small>
               </label>
-              <input name="name" type="text" />
+              <input name="hostName" type="text" />
             </div>
             <div>
-              <label htmlFor="profilePic">
+              <label htmlFor="profilePicture">
                 <small>Choose a Profile Picture</small>
               </label>
-              <input name="profilePic" type="file" accept="image/*" />
+              <input
+                name="profilePicture"
+                type="file"
+                accept="image/*"
+                multiple="false"
+              />
             </div>
           </div>
         )}
@@ -74,7 +79,7 @@ const mapSignup = state => {
   }
 }
 
-const mapDispatch = dispatch => {
+const mapDispatchLogin = dispatch => {
   return {
     handleSubmit(evt) {
       evt.preventDefault()
