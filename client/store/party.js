@@ -1,4 +1,5 @@
 import axios from 'axios'
+import history from '../history'
 
 const GET_PARTY = 'GET PARTY'
 
@@ -8,12 +9,20 @@ const getParty = party => ({
 })
 
 export const fetchParty = accessCode => async dispatch => {
+  let res
   try {
-    const res = await axios.post(`api/parties/${accessCode}`)
-    dispatch(getParty(res.data))
+    res = await axios.post(`api/parties/${accessCode}`, accessCode)
+    // dispatch(getParty(res.data))
     // console.log('access code info', res.data)
-  } catch (err) {
-    return dispatch(getParty({error: err}))
+  } catch (errorCode) {
+    return dispatch(getParty({error: errorCode}))
+  }
+
+  try {
+    dispatch(getParty(res.data))
+    history.push('/party')
+  } catch (dispatchOrHistoryErr) {
+    console.error(dispatchOrHistoryErr)
   }
 }
 

@@ -2,16 +2,17 @@ import React, {useState} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {fetchParty} from '../store/party'
+import PropTypes from 'prop-types'
 
 const initialState = {
   name: '',
-  accessCode: '',
-  error: ''
+  accessCode: ''
+  // error: ''
 }
 
 export class GuestLogin extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = initialState
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -32,7 +33,8 @@ export class GuestLogin extends React.Component {
   }
 
   render() {
-    console.log('props', this.props)
+    const {error} = this.props
+    console.log('ERRROOOOORRRR', error)
     return (
       <div className="joinOuterContainer">
         <div className="joinInnerContainer">
@@ -54,9 +56,12 @@ export class GuestLogin extends React.Component {
               onChange={this.handleChange}
             />
           </div>
-          <button type="submit" onClick={this.handleSubmit}>
-            Let's Vibe
-          </button>
+          <div>
+            <button type="submit" onClick={this.handleSubmit}>
+              Let's Vibe
+            </button>
+          </div>
+          {error && error.response && <div> {error.response.data} </div>}
         </div>
       </div>
     )
@@ -65,7 +70,7 @@ export class GuestLogin extends React.Component {
 
 const mapState = state => {
   return {
-    error: state.party
+    error: state.party.error
   }
 }
 
@@ -76,3 +81,8 @@ const mapDispatch = dispatch => {
 }
 
 export default connect(mapState, mapDispatch)(GuestLogin)
+
+// Prop Types
+GuestLogin.propTypes = {
+  error: PropTypes.object
+}
