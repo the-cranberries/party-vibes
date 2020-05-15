@@ -28,9 +28,10 @@ router.post('/:accessCode', async (req, res, next) => {
       }
     })
     if (!party) {
-      console.log('No such code found:', req.body.accessCode)
+      console.log('No such code found:')
       res.status(401).send('Access code invalid')
     } else {
+      console.log(req.body.name)
       res.json(party)
     }
   } catch (err) {

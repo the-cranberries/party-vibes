@@ -30,12 +30,13 @@ export class GuestLogin extends React.Component {
   handleSubmit(event) {
     event.preventDefault()
     this.props.fetchParty({
-      accessCcode: this.state.accessCode,
+      accessCode: this.state.accessCode,
       name: this.state.name
     })
   }
 
   render() {
+    console.log('guest login state: ', this.state)
     const {error} = this.props
     // console.log('ERRROOOOORRRR', error)
     return (
@@ -51,7 +52,7 @@ export class GuestLogin extends React.Component {
                 // placeholder="Name"
                 // className="joinInput"
                 type="text"
-                name="Name"
+                name="name"
                 onChange={this.handleChange}
               />
             </div>
