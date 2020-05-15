@@ -1,5 +1,5 @@
 import React from 'react'
-import io from 'socket.io-client'
+import socket from '../socket'
 
 class Chat extends React.Component {
   constructor(props) {
@@ -11,9 +11,9 @@ class Chat extends React.Component {
       messages: []
     }
 
-    this.socket = io('localhost:8080')
+    // socket = io('localhost:8080')
 
-    this.socket.on('RECEIVE_MESSAGE', function(data) {
+    socket.on('RECEIVE_MESSAGE', function(data) {
       addMessage(data)
     })
 
@@ -25,7 +25,7 @@ class Chat extends React.Component {
 
     this.sendMessage = ev => {
       ev.preventDefault()
-      this.socket.emit('SEND_MESSAGE', {
+      socket.emit('SEND_MESSAGE', {
         author: this.state.username,
         message: this.state.message
       })
