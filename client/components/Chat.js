@@ -1,61 +1,58 @@
 import React from 'react'
-// import socket from './../server/socket';
+import io from 'socket.io-client'
 
 export class Chat extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      message: ''
+      // username: '',
+      message: '',
+      messages: []
     }
-    this.updateMessage = this.updateMessage.bind(this)
-    this.sendMessage = this.sendMessage.bind(this)
-  }
+    this.socket = io('localhost:8080')
 
-  updateMessage(evt) {
-    this.setState({message: evt.target.value})
-  }
+    this.socket.on('RECEIVE_MESSAGE', function(data) {
+      addMessage(data)
+    })
 
-  sendMessage() {
-    let {message} = this.state
-    if (message) {
-      socket.emit('chat message', message)
+    const addMessage = data => {
+      console.log(data)
+      this.setState({messages: [...this.state.messages, data]})
+      console.log(this.state.messages)
+    }
+
+    this.sendMessage = evt => {
+      evt.preventDefault()
+      this.socket.emit('SEND_MESSAGE', {
+        // author: this.state.username,
+        message: this.state.message
+      })
       this.setState({message: ''})
     }
   }
 
   render() {
-    const chatbox = function() {
-      socket = io()
-      'form'.submit(function(e) {
-        e.preventDefault() // prevents page reloading
-        socket.emit('chat message', '#m'.val())
-        '#m'.val('')
-        return false
-      })
-      socket.on('chat message', function(msg) {
-        '#messages'.append('<li>'.text(msg))
-      })
-    }
-
     return (
       <div>
-        <form action="">
-          <input id="m" autoComplete="off" />
-          <button>Send</button>
+        <div>
+          {this.state.messages.map(message => {
+            return <div>{message.message}</div>
+          })}
+        </div>
+        <form>
+          <input
+            type="text"
+            placeholder="Type a message..."
+            value={this.state.message}
+            onChange={evt => this.setState({message: evt.target.value})}
+          />
+          <button type="submit" onClick={this.sendMessage}>
+            Send
+          </button>
         </form>
       </div>
     )
   }
 }
 
-// const mapStateToProps = ({ messages, gameState }) => ({ messages, gameState });
-
-// const mapDispatchToProps = dispatch => ({
-//   start: () => dispatch(startChat()),
-//   stop: () => dispatch(stopChat())
-// });
-
-// export default connect(
-//   mapStateToProps,
-//   mapDispatchToProps
-// )(Chat);
+export default Chat
