@@ -29,7 +29,10 @@ export class GuestLogin extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault()
-    this.props.fetchParty(this.state.accessCode)
+    this.props.fetchParty({
+      accessCcode: this.state.accessCode,
+      name: this.state.name
+    })
   }
 
   render() {
