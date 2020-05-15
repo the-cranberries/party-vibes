@@ -8,4 +8,4 @@
 export {default as Home} from './LandingPage'
 export {Login, Signup} from './auth-form'
 export {default as GuestLogin} from './GuestLogin'
-export {Chat} from './Chat'
+export {default as Chat} from './Chat'
