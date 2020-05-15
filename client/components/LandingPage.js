@@ -9,13 +9,12 @@ const Home = () => {
         <Link className="linkBtn" to="/signup">
           Become a Host
         </Link>
-        <Link className="linkBtn" to="/guestlogin">
-          Join as a Guest
-        </Link>
         <Link className="linkBtn" to="/login">
           Login as a Host
         </Link>
-
+        <Link className="linkBtn" to="/guestlogin">
+          Join as a Guest
+        </Link>
         <Switch>
           <Route path="/signup" component={Signup} />
           {/* Add guest login component here */}
