@@ -1,5 +1,5 @@
 import React from 'react'
-// import Chat from './Chat'
+import Chat from './Chat'
 
 const Room = props => {
   const guests = [
@@ -27,7 +27,9 @@ const Room = props => {
           <h1 className="heading">Welcome to Cody's Party!</h1>
         </main>
       </div>
-      {/* <Chat /> */}
+      <div>
+        <Chat />
+      </div>
       <div className="guests">
         {guests.map(guest => {
           return (

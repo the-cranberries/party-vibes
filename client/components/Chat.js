@@ -42,9 +42,9 @@ class Chat extends React.Component {
                 <div className="card-title">Global Chat</div>
                 <hr />
                 <div className="messages">
-                  {this.state.messages.map(message => {
+                  {this.state.messages.map((message, index) => {
                     return (
-                      <div>
+                      <div key={index}>
                         {message.author}: {message.message}
                       </div>
                     )
