@@ -8,3 +8,4 @@
 export {default as Home} from './LandingPage'
 export {Login, Signup} from './auth-form'
 export {default as GuestLogin} from './GuestLogin'
+export {default as PartyRoom} from './PartyRoom'
