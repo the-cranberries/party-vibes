@@ -6,17 +6,17 @@ const Room = props => {
     {
       id: 1,
       name: 'Cody',
-      profilePicture: ''
+      profilePicture: '../../pug.jpg'
     },
     {
       id: 2,
       name: 'Budy',
-      profilePicture: ''
+      profilePicture: '../../pug.jpg'
     },
     {
       id: 3,
       name: 'Louis',
-      profilePicture: ''
+      profilePicture: '../../pug.jpg'
     }
   ]
 
