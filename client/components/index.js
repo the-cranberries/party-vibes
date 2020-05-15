@@ -7,3 +7,5 @@
 // export {default as UserHome} from './user-home'
 export {default as Home} from './LandingPage'
 export {Login, Signup} from './auth-form'
+export {default as GuestLogin} from './GuestLogin'
+export {default as Chat} from './Chat'
