@@ -9,10 +9,11 @@ const getParty = party => ({
 
 export const fetchParty = accessCode => async dispatch => {
   try {
-    const res = await axios.get(`/parties/${accessCode}`)
+    const res = await axios.post(`api/parties/${accessCode}`)
     dispatch(getParty(res.data))
+    // console.log('access code info', res.data)
   } catch (err) {
-    console.error(err)
+    return dispatch(getParty({error: err}))
   }
 }
 

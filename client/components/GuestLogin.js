@@ -5,7 +5,8 @@ import {fetchParty} from '../store/party'
 
 const initialState = {
   name: '',
-  accessCode: ''
+  accessCode: '',
+  error: ''
 }
 
 export class GuestLogin extends React.Component {
@@ -15,6 +16,9 @@ export class GuestLogin extends React.Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
+  // componentDidMount() {
+  //   this.props.fetchParty()
+  // }
 
   handleChange(event) {
     this.setState({
@@ -24,15 +28,11 @@ export class GuestLogin extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault()
-    if (this.props.fetchParty(this.state.accessCode)) {
-      return <h1>Here's the party</h1>
-    } else {
-      return <h1>Party doesn't exist</h1>
-    }
+    this.props.fetchParty(this.state.accessCode)
   }
 
   render() {
-    console.log('PROPS', this.props)
+    console.log('props', this.props)
     return (
       <div className="joinOuterContainer">
         <div className="joinInnerContainer">
@@ -54,15 +54,9 @@ export class GuestLogin extends React.Component {
               onChange={this.handleChange}
             />
           </div>
-          {/* <Link
-            onClick={e => (!name || !picture ? e.preventDefault() : null)}
-            to={`/chat?name=${name}&picture=${picture}`}
-          > */}
-
-          <button type="submit" onSubmit={this.handleSubmit}>
-            Let's vibe
+          <button type="submit" onClick={this.handleSubmit}>
+            Let's Vibe
           </button>
-          {/* </Link> */}
         </div>
       </div>
     )
@@ -71,7 +65,7 @@ export class GuestLogin extends React.Component {
 
 const mapState = state => {
   return {
-    partyCode: state
+    error: state.party
   }
 }
 
