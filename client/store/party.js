@@ -20,7 +20,7 @@ export const fetchParty = accessCode => async dispatch => {
 
   try {
     dispatch(getParty(res.data))
-    history.push('/party')
+    history.push(`/parties/${accessCode}`)
   } catch (dispatchOrHistoryErr) {
     console.error(dispatchOrHistoryErr)
   }
