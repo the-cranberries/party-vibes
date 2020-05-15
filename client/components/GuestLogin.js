@@ -4,6 +4,11 @@ import {Link} from 'react-router-dom'
 import {fetchParty} from '../store/party'
 import PropTypes from 'prop-types'
 
+//when I enters the room, socket sends a message to the server to get the guests already in here
+//and also create myself
+
+//OR we have store guests and me in Redux
+
 const initialState = {
   name: '',
   accessCode: ''
