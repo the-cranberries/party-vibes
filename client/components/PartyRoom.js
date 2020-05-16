@@ -2,24 +2,6 @@ import React from 'react'
 import Chat from './Chat'
 
 const Room = props => {
-  const guests = [
-    {
-      id: 1,
-      name: 'Cody',
-      profilePicture: '../../pug.jpg'
-    },
-    {
-      id: 2,
-      name: 'Budy',
-      profilePicture: '../../pug.jpg'
-    },
-    {
-      id: 3,
-      name: 'Louis',
-      profilePicture: '../../pug.jpg'
-    }
-  ]
-
   return (
     <div>
       <div>
@@ -31,14 +13,10 @@ const Room = props => {
         <Chat />
       </div>
       <div className="guests">
-        {guests.map(guest => {
-          return (
-            <div key={guest.id}>
-              <h4>{guest.name}</h4>
-              <img src={guest.profilePicture} />
-            </div>
-          )
-        })}
+        <div key="guest">
+          <h4>{sessionStorage.name}</h4>
+          <img src="../../pug.jpg" />
+        </div>
       </div>
     </div>
   )

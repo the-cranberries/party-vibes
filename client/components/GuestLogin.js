@@ -42,9 +42,7 @@ export class GuestLogin extends React.Component {
   }
 
   render() {
-    // console.log('guest login state: ', this.state)
     const {error} = this.props
-    // console.log('ERRROOOOORRRR', error)
     return (
       <div className="joinOuterContainer">
         <div className="form">

@@ -6,7 +6,6 @@ class Chat extends React.Component {
     super(props)
 
     this.state = {
-      username: '',
       message: '',
       messages: []
     }
@@ -52,14 +51,6 @@ class Chat extends React.Component {
                 </div>
               </div>
               <div className="card-footer">
-                <input
-                  type="text"
-                  placeholder="Username"
-                  value={this.state.username}
-                  onChange={ev => this.setState({username: ev.target.value})}
-                  className="form-control"
-                />
-                <br />
                 <input
                   type="text"
                   placeholder="Message"
