@@ -26,7 +26,7 @@ class Chat extends React.Component {
     this.sendMessage = ev => {
       ev.preventDefault()
       socket.emit('SEND_MESSAGE', {
-        author: this.state.username,
+        author: sessionStorage.name,
         message: this.state.message
       })
       this.setState({message: ''})

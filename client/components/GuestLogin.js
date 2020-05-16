@@ -38,6 +38,7 @@ export class GuestLogin extends React.Component {
       accessCode: this.state.accessCode,
       name: this.state.name
     })
+    sessionStorage.setItem('name', this.state.name)
   }
 
   render() {
