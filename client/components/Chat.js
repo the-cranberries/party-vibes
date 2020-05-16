@@ -55,14 +55,23 @@ class Chat extends React.Component {
                   type="text"
                   placeholder="Message"
                   className="form-control"
+                  required="required"
                   value={this.state.message}
                   onChange={ev => this.setState({message: ev.target.value})}
                   onKeyPress={evt => {
-                    if (evt.key === 'Enter') this.sendMessage()
+                    if (this.state.message) {
+                      if (evt.key === 'Enter') {
+                        this.sendMessage()
+                      }
+                    }
                   }}
                 />
                 <br />
-                <button onClick={this.sendMessage} className="sendButton">
+                <button
+                  onClick={this.sendMessage}
+                  className="sendButton"
+                  disabled={!this.state.message}
+                >
                   Send
                 </button>
               </div>
