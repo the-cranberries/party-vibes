@@ -23,7 +23,7 @@ class Chat extends React.Component {
     }
 
     this.sendMessage = ev => {
-      ev.preventDefault()
+      // ev.preventDefault()
       socket.emit('SEND_MESSAGE', {
         author: sessionStorage.name,
         message: this.state.message
@@ -50,19 +50,19 @@ class Chat extends React.Component {
                   })}
                 </div>
               </div>
-              <div className="card-footer">
+              <div className="input">
                 <input
                   type="text"
                   placeholder="Message"
                   className="form-control"
                   value={this.state.message}
                   onChange={ev => this.setState({message: ev.target.value})}
+                  onKeyPress={evt => {
+                    if (evt.key === 'Enter') this.sendMessage()
+                  }}
                 />
                 <br />
-                <button
-                  onClick={this.sendMessage}
-                  className="btn btn-primary form-control"
-                >
+                <button onClick={this.sendMessage} className="sendButton">
                   Send
                 </button>
               </div>
