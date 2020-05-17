@@ -1,3 +1,5 @@
+const {addUser, removeUser, getUser, getUsersInParty} = require('./users')
+
 module.exports = io => {
   io.on('connection', socket => {
     console.log('user has connected', socket.id)
@@ -6,7 +8,27 @@ module.exports = io => {
       io.emit('RECEIVE_MESSAGE', data)
     })
 
+    socket.on('join', ({name, room}, callback) => {
+      const {error, user} = addUser({id: socket.id, name, room})
+
+      if (error) return callback(error)
+
+      socket.join(user.room)
+
+      // socket.emit('message', { user: 'admin', text: `${user.name}, welcome to room ${user.room}.`});
+      socket.broadcast
+        .to(user.room)
+        .emit('message', {user: 'admin', text: `${user.name} has joined!`})
+
+      io
+        .to(user.room)
+        .emit('roomData', {room: user.room, users: getUsersInParty(user.room)})
+
+      callback()
+    })
+
     socket.on('disconnect', () => {
+      const user = removeUser(socket.id)
       console.log(`Connection ${socket.id} has left the building`)
     })
   })
