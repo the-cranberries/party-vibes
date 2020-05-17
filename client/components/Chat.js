@@ -38,13 +38,13 @@ class Chat extends React.Component {
           <div className="col-4">
             <div className="card">
               <div className="card-body">
-                <div className="card-title">Global Chat</div>
+                <div className="card-title">Chat Room</div>
                 <hr />
                 <ScrollToBottom className="messages">
                   {this.state.messages.map((message, index) => {
                     return (
                       <div key={index}>
-                        {message.author}: {message.message}
+                        <b>{message.author}</b>: {message.message}
                       </div>
                     )
                   })}
@@ -53,7 +53,7 @@ class Chat extends React.Component {
               <div className="input">
                 <input
                   type="text"
-                  placeholder="Message"
+                  placeholder="Type a Message..."
                   className="form-control"
                   required="required"
                   value={this.state.message}
@@ -68,6 +68,7 @@ class Chat extends React.Component {
                 />
                 <br />
                 <button
+                  type="submit"
                   onClick={this.sendMessage}
                   className="sendButton"
                   disabled={!this.state.message}
