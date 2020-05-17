@@ -15,11 +15,6 @@ const Home = () => {
         <Link className="linkBtn" to="/guestlogin">
           Join as a Guest
         </Link>
-        <Switch>
-          <Route path="/signup" component={Signup} />
-          {/* Add guest login component here */}
-          <Route path="/login" component={Login} />
-        </Switch>
       </main>
     </div>
   )
