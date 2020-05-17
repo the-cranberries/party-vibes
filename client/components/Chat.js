@@ -1,5 +1,6 @@
 import React from 'react'
 import socket from '../socket'
+import ScrollToBottom from 'react-scroll-to-bottom'
 
 class Chat extends React.Component {
   constructor(props) {
@@ -31,6 +32,7 @@ class Chat extends React.Component {
       this.setState({message: ''})
     }
   }
+
   render() {
     return (
       <div className="container">
@@ -40,7 +42,7 @@ class Chat extends React.Component {
               <div className="card-body">
                 <div className="card-title">Global Chat</div>
                 <hr />
-                <div className="messages">
+                <ScrollToBottom className="messages">
                   {this.state.messages.map((message, index) => {
                     return (
                       <div key={index}>
@@ -48,7 +50,7 @@ class Chat extends React.Component {
                       </div>
                     )
                   })}
-                </div>
+                </ScrollToBottom>
               </div>
               <div className="input">
                 <input
