@@ -211,7 +211,7 @@ function (_React$Component) {
         className: "card-body"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card-title"
-      }, "Global Chat"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_scroll_to_bottom__WEBPACK_IMPORTED_MODULE_2___default.a, {
+      }, "Chat"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_scroll_to_bottom__WEBPACK_IMPORTED_MODULE_2___default.a, {
         className: "messages"
       }, this.state.messages.map(function (message, index) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -342,6 +342,9 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var error = this.props.error;
+      var obj = JSON.parse(sessionStorage.getItem('isGuestLoggedIn'));
+      var guestLogin;
+      console.log(obj);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "joinOuterContainer"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

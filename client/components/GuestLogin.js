@@ -44,6 +44,9 @@ export class GuestLogin extends React.Component {
 
   render() {
     const {error} = this.props
+    var obj = JSON.parse(sessionStorage.getItem('isGuestLoggedIn'))
+    let guestLogin
+    console.log(obj)
     return (
       <div className="joinOuterContainer">
         <div className="form">
