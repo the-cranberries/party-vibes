@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react'
 import socket from '../socket'
 import Chat from './Chat'
 import UserList from './UserList'
+import session from 'express-session'
+import {Link} from 'react-router-dom'
 
 const Room = props => {
   const [users, setUsers] = useState('')
@@ -9,6 +11,7 @@ const Room = props => {
   const name = sessionStorage.name
   const key = props.match.params
   const room = Object.values(key)[0]
+  sessionStorage.setItem('party', room)
 
   socket.emit('join', {name, room}, error => {
     if (error) {
@@ -20,21 +23,38 @@ const Room = props => {
     setUsers(users)
   })
 
-  return (
-    <div>
+  if (sessionStorage.length <= 1) {
+    return (
       <div>
-        <main>
-          <h1 className="heading">Welcome to Cody's Party!</h1>
-        </main>
+        <div className="joinOuterContainer">
+          <main>
+            <h1 className="heading">Need to login before entering party</h1>
+          </main>
+        </div>
+        <div>
+          <Link to="/guestLogin">
+            <button type="button">Guest Login</button>
+          </Link>
+        </div>
       </div>
+    )
+  } else {
+    return (
       <div>
-        <Chat />
+        <div>
+          <main>
+            <h1 className="heading">Welcome to Cody's Party!</h1>
+          </main>
+        </div>
+        <div>
+          <Chat />
+        </div>
+        <div className="guests">
+          <UserList users={users} />
+        </div>
       </div>
-      <div className="guests">
-        <UserList users={users} />
-      </div>
-    </div>
-  )
+    )
+  }
 }
 
 export default Room

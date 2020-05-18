@@ -39,6 +39,7 @@ export class GuestLogin extends React.Component {
       name: this.state.name
     })
     sessionStorage.setItem('name', this.state.name)
+    sessionStorage.setItem('isGuestLoggedIn', true)
   }
 
   render() {
@@ -50,19 +51,20 @@ export class GuestLogin extends React.Component {
             <div>
               <h1 className="heading">Join a Party</h1>
               <label htmlFor="name">
-                <medium>Name</medium>
+                <h4>Name</h4>
               </label>
               <input
                 // placeholder="Name"
                 // className="joinInput"
                 type="text"
                 name="name"
+                required={true}
                 onChange={this.handleChange}
               />
             </div>
             <div>
               <label htmlFor="access code">
-                <medium>Access Code</medium>
+                <h4>Access Code</h4>
               </label>
               <input
                 name="accessCode"
@@ -72,7 +74,11 @@ export class GuestLogin extends React.Component {
               />
             </div>
             <div>
-              <button type="submit" onClick={this.handleSubmit}>
+              <button
+                type="submit"
+                disabled={!this.state.name}
+                onClick={this.handleSubmit}
+              >
                 Let's Vibe
               </button>
             </div>

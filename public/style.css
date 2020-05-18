@@ -59,6 +59,7 @@ body {
   font-size: 2.5em;
   padding-bottom: 10px;
   border-bottom: 2px solid white;
+  /* text-shadow: 2px 2px white; */
 }
 
 .button {
