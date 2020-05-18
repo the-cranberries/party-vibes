@@ -54,7 +54,7 @@ class Chat extends React.Component {
                 <input
                   type="text"
                   placeholder="Type a Message..."
-                  className="form-control"
+                  className="form-control w-100"
                   required="required"
                   value={this.state.message}
                   onChange={ev => this.setState({message: ev.target.value})}

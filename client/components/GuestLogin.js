@@ -45,42 +45,52 @@ export class GuestLogin extends React.Component {
     const {error} = this.props
     return (
       <div className="joinOuterContainer">
-        <div className="form">
-          <div>
-            <div>
-              <h1 className="heading">Join a Party</h1>
-              <label htmlFor="email">
+        <div className="text-center">
+          <form>
+            <h1 className="heading">Join a Party</h1>
+            <div className="row form-width mx-auto">
+              <label className="col-sm-4" htmlFor="email">
                 <medium>Name</medium>
               </label>
               <input
                 // placeholder="Name"
                 // className="joinInput"
+                className="form-control col-sm-8"
                 type="text"
                 name="name"
                 onChange={this.handleChange}
               />
             </div>
-            <div>
-              <label htmlFor="email">
+            <br />
+            <div className="row form-width mx-auto">
+              <label className="col-sm-4" htmlFor="email">
                 <medium>Access Code</medium>
               </label>
               <input
+                className="form-control col-sm-8"
                 name="accessCode"
                 // placeholder="Access Code"
                 type="text"
                 onChange={this.handleChange}
               />
             </div>
+            <br />
             <div>
-              <button type="submit" onClick={this.handleSubmit}>
+              <button
+                className="btn purple-btn"
+                type="submit"
+                onClick={this.handleSubmit}
+              >
                 Let's Vibe
               </button>
             </div>
             {error &&
               error.response && (
-                <div id="errorMessage"> {error.response.data} </div>
+                <div id="errorMessage">
+                  <br /> {error.response.data}{' '}
+                </div>
               )}
-          </div>
+          </form>
         </div>
       </div>
     )

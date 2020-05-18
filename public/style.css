@@ -15,10 +15,10 @@ nav a {
   margin: 1em;
 }
 
-form div {
+/* form div {
   margin: 1em;
   display: inline-block;
-}
+} */
 
 body {
   font-family: sans-serif;
@@ -28,14 +28,18 @@ body {
 }
 
 .joinOuterContainer {
-  display: flex;
+  /* display: flex;
   justify-content: center;
   text-align: center;
   height: 60%;
+  align-items: center; */
+  max-width: 600px;
   width: 60%;
-  align-items: center;
   background-color: rgba(197, 189, 189, 0.4);
   margin: 0 auto;
+  padding: 1em;
+  border-radius: 2px;
+  position: relative;
 }
 
 /* .joinInnerContainer {
@@ -50,10 +54,10 @@ body {
   height: 0.2cm;
 } */
 
-.form div {
+/* .form div {
   margin: 1em;
   display: inline-block;
-}
+} */
 
 .heading {
   color: black;
@@ -147,24 +151,35 @@ body {
   margin-top: 1em;
 }
 
-.input {
+/* .input {
   border: none;
   border-radius: 0;
   padding: 5%;
   width: 80%;
   font-size: 1.2em;
-}
+} */
 
 input:focus,
 textarea:focus,
 select:focus {
   outline: none;
 }
-
+/*
 .form-control {
   background: #f3f3f3;
   border-radius: 20px;
   padding: 5px 20px;
   display: inline-block;
   max-width: 80%;
+} */
+
+/* .landing-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 100%;
+} */
+
+.purple-btn {
+  background-color: #38fbdb;
 }
