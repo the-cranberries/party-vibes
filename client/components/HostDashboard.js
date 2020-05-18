@@ -1,5 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {fetchUserParty} from '../store/user'
 
 class HostDashboard extends React.Component {
   componentDidMount() {
