@@ -1,15 +1,13 @@
 import React from 'react'
+import {connect} from 'react-redux'
 
 class HostDashboard extends React.Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      user: {}
-    }
-  }
-
   render() {
+    const {party, user} = this.props
+
+    console.log('party: ', party)
+    console.log('user', user)
+
     return (
       <div>
         <div>
@@ -23,4 +21,9 @@ class HostDashboard extends React.Component {
   }
 }
 
-export default HostDashboard
+const mapStateToProps = state => ({
+  party: state.party,
+  user: state.user
+})
+
+export default connect(mapStateToProps)(HostDashboard)
