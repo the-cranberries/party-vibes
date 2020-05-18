@@ -5,6 +5,7 @@ import {fetchUserParty} from '../store/user'
 class HostDashboard extends React.Component {
   componentDidMount() {
     //fetch party from DB via a redux thunk
+    this.props.dispatchFetchUserParty()
   }
 
   render() {
@@ -39,4 +40,8 @@ const mapStateToProps = state => ({
   user: state.user
 })
 
-export default connect(mapStateToProps)(HostDashboard)
+const mapDispatchToProps = dispatch => ({
+  dispatchFetchUserParty: userId => dispatch(fetchUserParty(userId))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(HostDashboard)
