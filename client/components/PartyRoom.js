@@ -8,6 +8,12 @@ import {Link} from 'react-router-dom'
 const Room = props => {
   const [users, setUsers] = useState('')
 
+  window.addEventListener('beforeunload', function(e) {
+    e.preventDefault()
+    e.returnValue =
+      'Leaving or resfreshing page will result in chat messages to dissaper: Are you sure you want to continue?'
+  })
+
   const name = sessionStorage.name
   const key = props.match.params
   const room = Object.values(key)[0]
@@ -44,6 +50,11 @@ const Room = props => {
         <div>
           <main>
             <h1 className="heading">Welcome to Cody's Party!</h1>
+            {/* <Link to="/">
+            <button type="submit" onSubmit={sessionStorage.clear()}>
+              Sign Out
+            </button>
+          </Link> */}
           </main>
         </div>
         <div>

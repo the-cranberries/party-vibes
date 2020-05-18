@@ -103,7 +103,7 @@ export class GuestLogin extends React.Component {
               <div>
                 <button
                   type="submit"
-                  disabled={!this.state.name}
+                  disabled={!this.state.name || !this.state.accessCode}
                   onClick={this.handleSubmit}
                 >
                   Let's Vibe

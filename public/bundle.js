@@ -393,7 +393,7 @@ function (_React$Component) {
           onChange: this.handleChange
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           type: "submit",
-          disabled: !this.state.name,
+          disabled: !this.state.name || !this.state.accessCode,
           onClick: this.handleSubmit
         }, "Let's Vibe")), error && error.response && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           id: "errorMessage"
@@ -501,6 +501,10 @@ var Room = function Room(props) {
       users = _useState2[0],
       setUsers = _useState2[1];
 
+  window.addEventListener('beforeunload', function (e) {
+    e.preventDefault();
+    e.returnValue = 'Leaving or resfreshing page will result in chat messages to dissaper: Are you sure you want to continue?';
+  });
   var name = sessionStorage.name;
   var key = props.match.params;
   var room = Object.values(key)[0];
