@@ -1,7 +1,13 @@
 import React from 'react'
 
-class Dashboard extends React.Component {
-  componentDidMount() {}
+class HostDashboard extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      user: {}
+    }
+  }
 
   render() {
     return (
@@ -17,4 +23,4 @@ class Dashboard extends React.Component {
   }
 }
 
-export default Dashboard
+export default HostDashboard
