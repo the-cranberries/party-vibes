@@ -342,7 +342,7 @@ function (_React$Component) {
   }, {
     key: "handleSignOut",
     value: function handleSignOut(event) {
-      event.preventDefault();
+      // event.preventDefault()
       sessionStorage.clear();
     }
   }, {
@@ -363,7 +363,7 @@ function (_React$Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           type: "button"
         }, " Return To Party ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-          to: "/home"
+          to: "/"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           type: "button",
           onClick: this.handleSignOut
@@ -913,6 +913,10 @@ function (_Component) {
         exact: true,
         path: "/parties/:accessCode",
         component: _components__WEBPACK_IMPORTED_MODULE_4__["PartyRoom"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+        exact: true,
+        path: "/",
+        component: _components__WEBPACK_IMPORTED_MODULE_4__["Home"]
       }), isLoggedIn && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         path: "/home",
         component: _components__WEBPACK_IMPORTED_MODULE_4__["Home"]

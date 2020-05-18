@@ -44,7 +44,7 @@ export class GuestLogin extends React.Component {
   }
 
   handleSignOut(event) {
-    event.preventDefault()
+    // event.preventDefault()
     sessionStorage.clear()
   }
 
@@ -63,7 +63,7 @@ export class GuestLogin extends React.Component {
           <Link to={`/parties/${currentParty}`}>
             <button type="button"> Return To Party </button>
           </Link>
-          <Link to="/home">
+          <Link to="/">
             <button type="button" onClick={this.handleSignOut}>
               Sign Out
             </button>
