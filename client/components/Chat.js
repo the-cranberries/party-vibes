@@ -1,12 +1,12 @@
 import React from 'react'
 import socket from '../socket'
+import ScrollToBottom from 'react-scroll-to-bottom'
 
 class Chat extends React.Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      username: '',
       message: '',
       messages: []
     }
@@ -18,20 +18,19 @@ class Chat extends React.Component {
     })
 
     const addMessage = data => {
-      console.log(data)
       this.setState({messages: [...this.state.messages, data]})
-      console.log(this.state.messages)
     }
 
     this.sendMessage = ev => {
-      ev.preventDefault()
+      // ev.preventDefault()
       socket.emit('SEND_MESSAGE', {
-        author: this.state.username,
+        author: sessionStorage.name,
         message: this.state.message
       })
       this.setState({message: ''})
     }
   }
+
   render() {
     return (
       <div className="container">
@@ -41,36 +40,37 @@ class Chat extends React.Component {
               <div className="card-body">
                 <div className="card-title">Global Chat</div>
                 <hr />
-                <div className="messages">
-                  {this.state.messages.map(message => {
+                <ScrollToBottom className="messages">
+                  {this.state.messages.map((message, index) => {
                     return (
-                      <div>
+                      <div key={index}>
                         {message.author}: {message.message}
                       </div>
                     )
                   })}
-                </div>
+                </ScrollToBottom>
               </div>
-              <div className="card-footer">
-                <input
-                  type="text"
-                  placeholder="Username"
-                  value={this.state.username}
-                  onChange={ev => this.setState({username: ev.target.value})}
-                  className="form-control"
-                />
-                <br />
+              <div className="input">
                 <input
                   type="text"
                   placeholder="Message"
                   className="form-control"
+                  required="required"
                   value={this.state.message}
                   onChange={ev => this.setState({message: ev.target.value})}
+                  onKeyPress={evt => {
+                    if (this.state.message) {
+                      if (evt.key === 'Enter') {
+                        this.sendMessage()
+                      }
+                    }
+                  }}
                 />
                 <br />
                 <button
                   onClick={this.sendMessage}
-                  className="btn btn-primary form-control"
+                  className="sendButton"
+                  disabled={!this.state.message}
                 >
                   Send
                 </button>

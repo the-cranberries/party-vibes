@@ -10,20 +10,21 @@ const AuthForm = props => {
   const {name, displayName, handleSubmit, error} = props
 
   return (
-    <div>
+    <div className="joinOuterContainer">
       <form onSubmit={handleSubmit} name={name}>
         {/* SIGN UP FORM */}
         {name === 'signup' && (
           <div>
             <div>
+              <h1 className="heading">Become a Host</h1>
               <label htmlFor="hostName">
-                <small>Name</small>
+                <medium>Name</medium>
               </label>
               <input name="hostName" type="text" />
             </div>
             <div>
               <label htmlFor="profilePicture">
-                <small>Choose a Profile Picture</small>
+                <medium>Choose a Profile Picture</medium>
               </label>
               <input
                 name="profilePicture"
@@ -36,21 +37,25 @@ const AuthForm = props => {
         )}
         {/* SIGN UP & LOGIN FORM */}
         <div>
+          <h1 className="heading">Join as Host</h1>
           <label htmlFor="email">
-            <small>Email</small>
+            <medium>Email</medium>
           </label>
           <input name="email" type="text" />
         </div>
         <div>
           <label htmlFor="password">
-            <small>Password</small>
+            <medium>Password</medium>
           </label>
           <input name="password" type="password" />
         </div>
         <div>
           <button type="submit">{displayName}</button>
         </div>
-        {error && error.response && <div> {error.response.data} </div>}
+        {error &&
+          error.response && (
+            <div id="errorMessage"> {error.response.data} </div>
+          )}
       </form>
     </div>
   )

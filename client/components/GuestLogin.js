@@ -2,19 +2,29 @@ import React, {useState} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {fetchParty} from '../store/party'
+import PropTypes from 'prop-types'
+
+//when I enters the room, socket sends a message to the server to get the guests already in here
+//and also create myself
+
+//OR we have store guests and me in Redux
 
 const initialState = {
   name: '',
   accessCode: ''
+  // error: ''
 }
 
 export class GuestLogin extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = initialState
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
+  // componentDidMount() {
+  //   this.props.fetchParty()
+  // }
 
   handleChange(event) {
     this.setState({
@@ -24,45 +34,53 @@ export class GuestLogin extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault()
-    if (this.props.fetchParty(this.state.accessCode)) {
-      return <h1>Here's the party</h1>
-    } else {
-      return <h1>Party doesn't exist</h1>
-    }
+    this.props.fetchParty({
+      accessCode: this.state.accessCode,
+      name: this.state.name
+    })
+    sessionStorage.setItem('name', this.state.name)
   }
 
   render() {
-    console.log('PROPS', this.props)
+    const {error} = this.props
     return (
       <div className="joinOuterContainer">
-        <div className="joinInnerContainer">
-          <h1 className="heading">Join a Party</h1>
+        <div className="form">
           <div>
-            <input
-              placeholder="Name"
-              className="joinInput"
-              type="text"
-              name="Name"
-              onChange={this.handleChange}
-            />
+            <div>
+              <h1 className="heading">Join a Party</h1>
+              <label htmlFor="name">
+                <medium>Name</medium>
+              </label>
+              <input
+                // placeholder="Name"
+                // className="joinInput"
+                type="text"
+                name="name"
+                onChange={this.handleChange}
+              />
+            </div>
+            <div>
+              <label htmlFor="access code">
+                <medium>Access Code</medium>
+              </label>
+              <input
+                name="accessCode"
+                // placeholder="Access Code"
+                type="text"
+                onChange={this.handleChange}
+              />
+            </div>
+            <div>
+              <button type="submit" onClick={this.handleSubmit}>
+                Let's Vibe
+              </button>
+            </div>
+            {error &&
+              error.response && (
+                <div id="errorMessage"> {error.response.data} </div>
+              )}
           </div>
-          <div>
-            <input
-              name="accessCode"
-              placeholder="Access Code"
-              type="text"
-              onChange={this.handleChange}
-            />
-          </div>
-          {/* <Link
-            onClick={e => (!name || !picture ? e.preventDefault() : null)}
-            to={`/chat?name=${name}&picture=${picture}`}
-          > */}
-
-          <button type="submit" onSubmit={this.handleSubmit}>
-            Let's vibe
-          </button>
-          {/* </Link> */}
         </div>
       </div>
     )
@@ -71,7 +89,7 @@ export class GuestLogin extends React.Component {
 
 const mapState = state => {
   return {
-    partyCode: state
+    error: state.party.error
   }
 }
 
@@ -82,3 +100,8 @@ const mapDispatch = dispatch => {
 }
 
 export default connect(mapState, mapDispatch)(GuestLogin)
+
+// Prop Types
+GuestLogin.propTypes = {
+  error: PropTypes.object
+}
