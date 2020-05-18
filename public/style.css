@@ -137,7 +137,7 @@ body {
   right: 0;
   margin-right: 10px;
   margin-bottom: 10px;
-  width: 300px;
+  width: 400px;
   height: 70vh;
   background-color: #dcdcdc;
   padding: 1em;
@@ -148,7 +148,7 @@ body {
   /* padding: 5% 0;
   padding-left: 2% 0;
   overflow: scroll; */
-  padding-left: 1em;
+  padding-left: 0.5em;
   /* flex: auto; */
   height: 335px;
   background-color: white;
@@ -173,6 +173,7 @@ body {
   /* display: inline-block; */
   border: none;
   border-radius: 2px;
+  width: 100%;
   font-size: 11px;
   margin-top: 5px;
 }
