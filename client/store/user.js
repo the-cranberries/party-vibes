@@ -5,6 +5,7 @@ import history from '../history'
  * ACTION TYPES
  */
 const GET_USER = 'GET_USER'
+const GET_USER_PARTY = 'GET_USER_PARTY'
 const REMOVE_USER = 'REMOVE_USER'
 
 /**
@@ -16,11 +17,21 @@ const defaultUser = {}
  * ACTION CREATORS
  */
 const getUser = user => ({type: GET_USER, user})
+const getUserParty = party => ({type: GET_USER_PARTY, party})
 const removeUser = () => ({type: REMOVE_USER})
 
 /**
  * THUNK CREATORS
  */
+export const fetchUserParty = userId => async dispatch => {
+  try {
+    const res = await axios.get(`/api/users/${userId}/parties`)
+    dispatch(getUserParty(res.data))
+  } catch (err) {
+    console.error(err)
+  }
+}
+
 export const me = () => async dispatch => {
   try {
     const res = await axios.get('/auth/me')
@@ -74,6 +85,8 @@ export default function(state = defaultUser, action) {
   switch (action.type) {
     case GET_USER:
       return action.user
+    case GET_USER_PARTY:
+      return {...state, userParty: action.party}
     case REMOVE_USER:
       return defaultUser
     default:

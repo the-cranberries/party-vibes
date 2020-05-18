@@ -2,22 +2,34 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 class HostDashboard extends React.Component {
+  componentDidMount() {
+    //fetch party from DB via a redux thunk
+  }
+
   render() {
     const {party, user} = this.props
 
     console.log('party: ', party)
     console.log('user', user)
 
-    return (
-      <div>
+    if (!party) {
+      return (
         <div>
-          <h1>Welcome (host name)</h1>
+          <div>
+            <h1>Welcome (host name)</h1>
+          </div>
+          <div>
+            <button type="button">New Party</button>
+          </div>
         </div>
+      )
+    } else {
+      return (
         <div>
-          <button type="button">New Party</button>
+          <p>View Coming Soon!</p>
         </div>
-      </div>
-    )
+      )
+    }
   }
 }
 
