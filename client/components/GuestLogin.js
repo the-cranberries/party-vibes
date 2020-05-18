@@ -44,7 +44,7 @@ export class GuestLogin extends React.Component {
   render() {
     const {error} = this.props
     return (
-      <div className="joinOuterContainer">
+      <div className="joinOuterContainer ">
         <div className="text-center">
           <form>
             <h1 className="heading">Join a Party</h1>

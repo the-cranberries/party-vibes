@@ -261,3 +261,8 @@ select:focus {
     background-position: 0% 82%;
   }
 }
+
+html,
+body {
+  height: 100%;
+}
