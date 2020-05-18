@@ -75,9 +75,9 @@ export class GuestLogin extends React.Component {
               />
             </div>
             <br />
-            <div>
+            <div className="guestVibe">
               <button
-                className="btn purple-btn"
+                className="btn aqua-btn"
                 type="submit"
                 onClick={this.handleSubmit}
               >

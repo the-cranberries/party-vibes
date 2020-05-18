@@ -64,7 +64,7 @@ const AuthForm = props => {
           <br />
           <div className="row">
             <div className="col">
-              <button className="btn purple-btn" type="submit">
+              <button className="btn aqua-btn" type="submit">
                 {displayName}
               </button>
             </div>
