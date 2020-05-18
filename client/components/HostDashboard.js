@@ -5,7 +5,7 @@ import {fetchUserParty} from '../store/user'
 class HostDashboard extends React.Component {
   componentDidMount() {
     //fetch party from DB via a redux thunk
-    this.props.dispatchFetchUserParty()
+    this.props.dispatchFetchUserParty(this.props.user.id)
   }
 
   render() {
@@ -14,11 +14,11 @@ class HostDashboard extends React.Component {
     console.log('party: ', party)
     console.log('user', user)
 
-    if (!party) {
+    if (!user.userParty) {
       return (
         <div>
           <div>
-            <h1>Welcome (host name)</h1>
+            <h1>Welcome {user.name}</h1>
           </div>
           <div>
             <button type="button">New Party</button>
