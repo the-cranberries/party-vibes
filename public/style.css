@@ -102,14 +102,6 @@ body {
   padding: 1rem;
 }
 
-.messages {
-  /* padding: 5% 0; */
-  padding-left: 2% 0;
-  overflow: scroll;
-  flex: auto;
-  height: 8em;
-}
-
 /* .container {
   display: flex;
   flex-direction: column;
@@ -139,25 +131,51 @@ body {
   }
 }
 
+.chat-box {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  width: 300px;
+  height: 70vh;
+  background-color: #dcdcdc;
+  padding: 1em;
+  border-radius: 5px;
+}
+
+.messages {
+  /* padding: 5% 0;
+  padding-left: 2% 0;
+  overflow: scroll; */
+  padding-left: 1em;
+  /* flex: auto; */
+  height: 335px;
+  background-color: white;
+  border-radius: 2px;
+}
+
+.chat-input {
+  /* border: none;
+  border-radius: 0;
+  padding: 5%;
+  width: 100%;
+  font-size: 1.2em; */
+  margin-top: 5px;
+}
+
 .sendButton {
   color: #fff !important;
   text-transform: uppercase;
   text-decoration: none;
   background: #2979ff;
-  padding: 1em 3em;
-  display: inline-block;
+  padding: 0.8em 3em;
+  /* display: inline-block; */
   border: none;
   border-radius: 2px;
-  margin-top: 1em;
+  font-size: 11px;
+  margin-top: 5px;
 }
-
-/* .input {
-  border: none;
-  border-radius: 0;
-  padding: 5%;
-  width: 80%;
-  font-size: 1.2em;
-} */
 
 input:focus,
 textarea:focus,
@@ -171,13 +189,6 @@ select:focus {
   padding: 5px 20px;
   display: inline-block;
   max-width: 80%;
-} */
-
-/* .landing-container {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  height: 100%;
 } */
 
 .purple-btn {

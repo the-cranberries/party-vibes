@@ -24,7 +24,7 @@ const Room = props => {
     <div>
       <div>
         <main>
-          <h1 className="heading">Welcome to Cody's Party!</h1>
+          <h1 className="heading text-center">Welcome to Cody's Party!</h1>
         </main>
       </div>
       <div>
