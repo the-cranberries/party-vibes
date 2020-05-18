@@ -316,6 +316,7 @@ function (_React$Component) {
     _this.state = initialState;
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.handleSignOut = _this.handleSignOut.bind(_assertThisInitialized(_this));
     return _this;
   } // componentDidMount() {
   //   this.props.fetchParty()
@@ -339,41 +340,67 @@ function (_React$Component) {
       sessionStorage.setItem('isGuestLoggedIn', true);
     }
   }, {
+    key: "handleSignOut",
+    value: function handleSignOut(event) {
+      event.preventDefault();
+      sessionStorage.clear();
+    }
+  }, {
     key: "render",
     value: function render() {
       var error = this.props.error;
-      var obj = JSON.parse(sessionStorage.getItem('isGuestLoggedIn'));
+      var isGuestLoggedIn = JSON.parse(sessionStorage.getItem('isGuestLoggedIn'));
+      var currentParty = sessionStorage.getItem('party');
       var guestLogin;
-      console.log(obj);
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "joinOuterContainer"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "form"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-        className: "heading"
-      }, "Join a Party"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        htmlFor: "name"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Name")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        // placeholder="Name"
-        // className="joinInput"
-        type: "text",
-        name: "name",
-        required: true,
-        onChange: this.handleChange
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        htmlFor: "access code"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Access Code")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        name: "accessCode" // placeholder="Access Code"
-        ,
-        type: "text",
-        onChange: this.handleChange
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "submit",
-        disabled: !this.state.name,
-        onClick: this.handleSubmit
-      }, "Let's Vibe")), error && error.response && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "errorMessage"
-      }, " ", error.response.data, " "))));
+
+      if (isGuestLoggedIn) {
+        guestLogin = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "joinOuterContainer"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+          className: "heading"
+        }, "You are currently logged in a party"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+          to: "/parties/".concat(currentParty)
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          type: "button"
+        }, " Return To Party ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+          to: "/home"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          type: "button",
+          onClick: this.handleSignOut
+        }, "Sign Out")));
+      } else {
+        guestLogin = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "joinOuterContainer"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "form"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+          className: "heading"
+        }, "Join a Party"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+          htmlFor: "name"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Name")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          // placeholder="Name"
+          // className="joinInput"
+          type: "text",
+          name: "name",
+          required: true,
+          onChange: this.handleChange
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+          htmlFor: "access code"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Access Code")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          name: "accessCode" // placeholder="Access Code"
+          ,
+          type: "text",
+          onChange: this.handleChange
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          type: "submit",
+          disabled: !this.state.name,
+          onClick: this.handleSubmit
+        }, "Let's Vibe")), error && error.response && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          id: "errorMessage"
+        }, " ", error.response.data, " "))));
+      }
+
+      return guestLogin;
     }
   }]);
 
