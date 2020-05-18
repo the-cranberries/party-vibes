@@ -11,7 +11,7 @@ class HostDashboard extends React.Component {
   }
 
   render() {
-    //check for user authenticatioin and redirect here
+    //check for user authentication and redirect here
     return <Dashboard />
   }
 }
