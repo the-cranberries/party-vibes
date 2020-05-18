@@ -49,7 +49,7 @@ export class GuestLogin extends React.Component {
           <form>
             <h1 className="heading">Join a Party</h1>
             <div className="row form-width mx-auto">
-              <label className="col-sm-4" htmlFor="email">
+              <label className="col-sm-4" htmlFor="name">
                 <medium>Name</medium>
               </label>
               <input
@@ -63,7 +63,7 @@ export class GuestLogin extends React.Component {
             </div>
             <br />
             <div className="row form-width mx-auto">
-              <label className="col-sm-4" htmlFor="email">
+              <label className="col-sm-4" htmlFor="access code">
                 <medium>Access Code</medium>
               </label>
               <input
