@@ -190,15 +190,7 @@ function (_React$Component) {
         _this.setState({
           messages: messages
         });
-      } // const messages = [...this.state.messages, data]
-      // sessionStorage.setItem('chat', JSON.stringify(messages))
-      // this.setState({messages})
-      // if(chat.length === 3){
-      //   sessionStorage.setItem('chat', [])
-      // }else {
-      //   sessionStorage.setItem('chat', JSON.stringify(messages))
-      // }
-
+      }
     };
 
     _this.sendMessage = function (ev) {
