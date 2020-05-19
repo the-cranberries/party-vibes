@@ -16,13 +16,13 @@ export const Login = props => {
         <div>
           <h1 className="heading">Join as Host</h1>
           <label htmlFor="email">
-            <medium>Email</medium>
+            <h4>Email</h4>
           </label>
           <input name="email" type="text" />
         </div>
         <div>
           <label htmlFor="password">
-            <medium>Password</medium>
+            <h4>Password</h4>
           </label>
           <input name="password" type="password" />
         </div>
