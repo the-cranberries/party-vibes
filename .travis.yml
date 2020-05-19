@@ -17,11 +17,14 @@ before_script:
 script:
   - npm test # test the code
   - npm run build-client # make the bundle
-before_deploy:
-  - rm -rf node_modules # omit from the tarball, since we skip cleanup
-deploy:
-  skip_cleanup: true # prevents travis from deleting the build
+before_deploy: # omit node_modules, since we set skip_cleanup below
+  - rm -rf node_modules
+deploy: # see README for details on these keys
+  # prevents travis from deleting the build
+  skip_cleanup: true
   provider: heroku
-  app: demo-party-vibes # see README
+  # app should be your heroku app name; see README
+  app: demo-party-vibes
+  # the secure key indicates an encrypted value; see README
   api_key:
-    secure: # see README
+    secure: vjRKr0r05Xk/qVqtUKHvQxI3Sn8/HUsWXbpVjpd/wzpbKsQVqPJb3h1QvhlrmQEl91MBTwmxtBRy1QDPB/aiFN3o8VnK9z9VmDmBSeC5W6btqFWCiI3zH1h5ZkFrymjq6kuR42Mu8f3/tryjFOcAmDSgZ8uETD8C3277EPBvL3hMXq8qG+s3ScTdwpmqvs/K77YKutTQ7Hf3q0KYyDmOQwRssTqowmyGCBWRJkwgxsujkIQVz6/13hHtV13rKg3/K/7jeT95oKI61x06NpslZLYNWXbcMXodxyMJskRQ3ll+H4DyE1K41It/UfTOG+bpXLowZ/3Xk7S5vlWuEfLb6ALDFXUkb69Z4mpnajqQzOHh1gDT4cJIdStaKFIj+U0wc3gNZtFNEV2hj155Q6ocTf5J8cX21yzwWOhfTZtBNZ9xaZ0ihJtmNqn8eXHHjyE93Xv11pwyXrt9Cyyoswv/UrcX4lftJ0DSVgnonDitvxbX0b40d09lIYnZ4QjmZVThHr0i/gxHYn9MWiz/72OtXSEtEUJBoI9FS3hnCoOHI21ZBflZlqkadQy8Iqn4ICoZ9evz3dMSmzf/raxiWfCoYtIMXfM4emKzdxP8MfHWUk9qeaEZXZpfnf/k2Wev4w0GuqnOX7K1lerolaxU41+Q2hZl4Q4b60qbhY+bygxWnXw=
