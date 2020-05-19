@@ -46,9 +46,9 @@ router.post('/:userId/parties', async (req, res, next) => {
         partyId: party.id,
         userId: user.id
       })
-      console.log('userParty: ', userParty)
+      // console.log('userParty: ', userParty)
 
-      res.status(200)
+      res.status(200).json(userParty)
     } else {
       res.status(401).send('user not found')
     }

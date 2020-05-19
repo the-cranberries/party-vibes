@@ -96,6 +96,8 @@ export default function(state = defaultUser, action) {
   switch (action.type) {
     case GET_USER:
       return action.user
+    case MAKE_USER_PARTY:
+      return {...state, userParty: action.party}
     case GET_USER_PARTY:
       return {...state, userParty: action.party}
     case REMOVE_USER:
