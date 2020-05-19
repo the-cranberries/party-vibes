@@ -21,11 +21,11 @@ class Chat extends React.Component {
 
     const addMessage = data => {
       let messages = [...this.state.messages, data]
-      if (messages.length < 100) {
+      if (messages.length > 100) {
+        messages = messages.slice(50)
         sessionStorage.setItem('chat', JSON.stringify(messages))
         this.setState({messages})
       } else {
-        messages = messages.slice(50)
         sessionStorage.setItem('chat', JSON.stringify(messages))
         this.setState({messages})
       }

@@ -177,14 +177,14 @@ function (_React$Component) {
     var addMessage = function addMessage(data) {
       var messages = [].concat(_toConsumableArray(_this.state.messages), [data]);
 
-      if (messages.length < 100) {
+      if (messages.length > 100) {
+        messages = messages.slice(50);
         sessionStorage.setItem('chat', JSON.stringify(messages));
 
         _this.setState({
           messages: messages
         });
       } else {
-        messages = messages.slice(50);
         sessionStorage.setItem('chat', JSON.stringify(messages));
 
         _this.setState({
