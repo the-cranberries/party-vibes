@@ -22,13 +22,3 @@ const Party = db.define('party', {
 })
 
 module.exports = Party
-
-Party.generateSalt = function() {
-  return crypto.randomBytes(4).toString('base64')
-}
-
-const setSalt = function() {
-  Party.generateSalt()
-}
-
-Party.beforeCreate(setSalt)

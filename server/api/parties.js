@@ -40,29 +40,3 @@ router.post('/:accessCode', async (req, res, next) => {
     next(err)
   }
 })
-
-router.post('/', async (req, res, next) => {
-  try {
-    // generate access code here?
-
-    const party = await Party.create({
-      userId: req.body.userId
-    })
-    res.json(party)
-  } catch (err) {
-    next(err)
-  }
-})
-
-router.delete('/:id', async (req, res, next) => {
-  try {
-    await Party.destroy({
-      where: {
-        id: req.params.id
-      }
-    })
-    res.status(204).end()
-  } catch (err) {
-    next(err)
-  }
-})
