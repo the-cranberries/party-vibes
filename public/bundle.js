@@ -332,6 +332,7 @@ function (_React$Component) {
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.handleSelect = _this.handleSelect.bind(_assertThisInitialized(_this));
+    _this.handleReturnParty = _this.handleReturnParty.bind(_assertThisInitialized(_this));
     return _this;
   } // componentDidMount() {
   //   this.props.fetchParty()
@@ -363,9 +364,20 @@ function (_React$Component) {
       sessionStorage.setItem('picture', this.state.guestPicture);
     }
   }, {
+    key: "handleReturnParty",
+    value: function handleReturnParty() {
+      var party = this.props.fetchParty({
+        accessCode: sessionStorage.getItem('party'),
+        name: sessionStorage.getItem('name')
+      });
+      window.location.reload(); // console.log('PARTY', party)
+      // history.push(`/parties/${accessCode}`)
+    }
+  }, {
     key: "render",
     value: function render() {
-      console.log(this.state);
+      console.log('STATE', this.state);
+      console.log('PROPS', this.props);
       var error = this.props.error;
       var isGuestLoggedIn = JSON.parse(sessionStorage.getItem('isGuestLoggedIn'));
       var currentParty = sessionStorage.getItem('party');
@@ -526,15 +538,13 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var Room = function Room(props) {
+  console.log('Room PROPS', props);
+
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
       _useState2 = _slicedToArray(_useState, 2),
       users = _useState2[0],
       setUsers = _useState2[1];
 
-  window.addEventListener('beforeunload', function (e) {
-    e.preventDefault();
-    e.returnValue = 'Leaving or resfreshing page will result in chat messages to dissaper: Are you sure you want to continue?';
-  });
   var pic = sessionStorage.getItem('picture');
   var name = sessionStorage.name;
   var key = props.match.params;
@@ -1192,24 +1202,26 @@ var fetchParty = function fetchParty(data) {
                 accessCode = data.accessCode, name = data.name;
                 _context.prev = 1;
                 _context.next = 4;
-                return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("api/parties/".concat(accessCode), {
+                return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/parties/".concat(accessCode), {
                   name: name,
                   accessCode: accessCode
                 });
 
               case 4:
                 res = _context.sent;
-                _context.next = 10;
+                // dispatch(getParty(res.data))
+                console.log('access code info', res.data);
+                _context.next = 11;
                 break;
 
-              case 7:
-                _context.prev = 7;
+              case 8:
+                _context.prev = 8;
                 _context.t0 = _context["catch"](1);
                 return _context.abrupt("return", dispatch(getParty({
                   error: _context.t0
                 })));
 
-              case 10:
+              case 11:
                 try {
                   dispatch(getParty(res.data));
                   _history__WEBPACK_IMPORTED_MODULE_1__["default"].push("/parties/".concat(accessCode));
@@ -1217,12 +1229,12 @@ var fetchParty = function fetchParty(data) {
                   console.error(dispatchOrHistoryErr);
                 }
 
-              case 11:
+              case 12:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[1, 7]]);
+        }, _callee, null, [[1, 8]]);
       }));
 
       return function (_x) {
@@ -1234,6 +1246,7 @@ var fetchParty = function fetchParty(data) {
 function partyReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
+  console.log('ACTION', action);
 
   switch (action.type) {
     case GET_PARTY:

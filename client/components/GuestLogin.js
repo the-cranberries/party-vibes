@@ -23,6 +23,7 @@ export class GuestLogin extends React.Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleSelect = this.handleSelect.bind(this)
+    this.handleReturnParty = this.handleReturnParty.bind(this)
   }
   // componentDidMount() {
   //   this.props.fetchParty()
@@ -51,8 +52,20 @@ export class GuestLogin extends React.Component {
     sessionStorage.setItem('picture', this.state.guestPicture)
   }
 
+  handleReturnParty() {
+    let party = this.props.fetchParty({
+      accessCode: sessionStorage.getItem('party'),
+      name: sessionStorage.getItem('name')
+    })
+
+    window.location.reload()
+    // console.log('PARTY', party)
+    // history.push(`/parties/${accessCode}`)
+  }
+
   render() {
-    console.log(this.state)
+    console.log('STATE', this.state)
+    console.log('PROPS', this.props)
     const {error} = this.props
     const isGuestLoggedIn = JSON.parse(
       sessionStorage.getItem('isGuestLoggedIn')

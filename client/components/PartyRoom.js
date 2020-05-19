@@ -6,13 +6,9 @@ import session from 'express-session'
 import {Link} from 'react-router-dom'
 
 const Room = props => {
-  const [users, setUsers] = useState('')
+  console.log('Room PROPS', props)
 
-  window.addEventListener('beforeunload', function(e) {
-    e.preventDefault()
-    e.returnValue =
-      'Leaving or resfreshing page will result in chat messages to dissaper: Are you sure you want to continue?'
-  })
+  const [users, setUsers] = useState('')
 
   const pic = sessionStorage.getItem('picture')
   const name = sessionStorage.name
