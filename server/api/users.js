@@ -58,13 +58,22 @@ router.post('/:userId/parties', async (req, res, next) => {
 
 router.delete('/:userId/parties', async (req, res, next) => {
   try {
-    const user = await User.findByPk(req.params.userId)
-    const party = await Party.findOne()
+    // const user = await User.findByPk(req.params.userId)
+    // const party = await Party.findOne()
 
-    if (user) {
-      await party.destroy()
+    const userParty = await PartyUser.findOne({
+      where: {userId: req.params.userId}
+    })
+
+    if (userParty) {
+      const partyId = userParty.partyId
+
+      await Party.destroy({where: {id: partyId}})
+
+      res.status(204).json()
+    } else {
+      res.status(401).send('party not found')
     }
-    res.status(200).json()
   } catch (err) {
     next(err)
   }

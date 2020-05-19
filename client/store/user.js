@@ -22,7 +22,7 @@ const getUser = user => ({type: GET_USER, user})
 const makeUserParty = party => ({type: MAKE_USER_PARTY, party})
 const getUserParty = party => ({type: GET_USER_PARTY, party})
 const removeUser = () => ({type: REMOVE_USER})
-const deleteParty = party => ({type: DELETE_USER_PARTY, party})
+const deleteParty = () => ({type: DELETE_USER_PARTY})
 
 /**
  * THUNK CREATORS
@@ -47,8 +47,13 @@ export const fetchUserParty = userId => async dispatch => {
 
 export const endUserParty = userId => async dispatch => {
   try {
-    const {data} = await axios.delete(`api/users/${userId}/parties`)
-    dispatch(deleteParty(data))
+    const res = await axios.delete(`api/users/${userId}/parties`)
+
+    if (res.status === 204) {
+      dispatch(deleteParty())
+    } else {
+      console.log('delete unsuccessful')
+    }
   } catch (err) {
     console.error(err)
   }
@@ -112,7 +117,7 @@ export default function(state = defaultUser, action) {
     case GET_USER_PARTY:
       return {...state, userParty: action.party}
     case DELETE_USER_PARTY:
-      return {...state, userParty: action.party}
+      return {...state, userParty: []}
     case REMOVE_USER:
       return defaultUser
     default:
