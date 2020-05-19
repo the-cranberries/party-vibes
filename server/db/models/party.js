@@ -23,7 +23,18 @@ const Party = db.define('party', {
 
 Party.beforeCreate((partyInstance, optionsObject) => {
   if (!partyInstance.accessCode) {
-    partyInstance.accessCode = crypto.randomBytes(8).toString('base64')
+    const generateCode = () => {
+      let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
+      let accessCode = ''
+      for (let i = 0; i < 8; i++) {
+        let j =
+          Math.floor(Math.random() * (Math.floor(35) - Math.ceil(0) + 1)) + 0
+        accessCode += characters[j]
+      }
+      return accessCode
+    }
+
+    partyInstance.accessCode = generateCode()
   }
 })
 

@@ -29,6 +29,7 @@ class HostDashboard extends React.Component {
     sessionStorage.setItem('accessCode', party.accessCode)
 
     //go to party room
+    this.props.history.push(`/parties/${party.accessCode}`)
   }
 
   endParty(userId) {

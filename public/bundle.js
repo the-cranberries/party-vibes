@@ -546,6 +546,8 @@ function (_React$Component) {
       sessionStorage.setItem('name', user.name);
       sessionStorage.setItem('picture', user.profilePicture);
       sessionStorage.setItem('accessCode', party.accessCode); //go to party room
+
+      this.props.history.push("/parties/".concat(party.accessCode));
     }
   }, {
     key: "endParty",
@@ -1213,7 +1215,8 @@ function (_Component) {
         path: "/",
         component: _components__WEBPACK_IMPORTED_MODULE_4__["Home"]
       }), isLoggedIn && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
-        path: "/",
+        exact: true,
+        path: "/home",
         component: _components__WEBPACK_IMPORTED_MODULE_4__["HostDashboard"]
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         component: _components__WEBPACK_IMPORTED_MODULE_4__["Home"]
