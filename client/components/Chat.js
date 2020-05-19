@@ -23,7 +23,6 @@ class Chat extends React.Component {
       const messages = [...this.state.messages, data]
       sessionStorage.setItem('chat', JSON.stringify(messages))
       this.setState({messages})
-
       // if(chat.length === 3){
       //   sessionStorage.setItem('chat', [])
       // }else {
