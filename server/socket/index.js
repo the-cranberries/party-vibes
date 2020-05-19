@@ -39,6 +39,18 @@ module.exports = io => {
         })
       }
     })
+
+    socket.on('guestSignOut', () => {
+      const user = removeUser(socket.id)
+      console.log(`${socket.id} has left room`)
+
+      if (user) {
+        io.to(user.room).emit('roomData', {
+          room: user.room,
+          users: getUsersInParty(user.room)
+        })
+      }
+    })
   })
 }
 

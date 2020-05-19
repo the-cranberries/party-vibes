@@ -34,6 +34,11 @@ const Room = props => {
   }, [])
 
   const handleSubmit = () => {
+    socket.emit('guestSignOut', {name, room, picture}, error => {
+      if (error) {
+        console.log(error)
+      }
+    })
     sessionStorage.clear()
   }
 

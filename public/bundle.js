@@ -180,7 +180,12 @@ function (_React$Component) {
 
       _this.setState({
         messages: messages
-      });
+      }); // if(chat.length === 3){
+      //   sessionStorage.setItem('chat', [])
+      // }else {
+      //   sessionStorage.setItem('chat', JSON.stringify(messages))
+      // }
+
     };
 
     _this.sendMessage = function (ev) {
@@ -377,12 +382,7 @@ function (_React$Component) {
           to: "/parties/".concat(currentParty)
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           type: "button"
-        }, " Return To Party ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-          to: "/"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          type: "button",
-          onClick: this.handleSignOut
-        }, "Sign Out")));
+        }, " Return To Party ")));
       } else {
         guestLogin = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "joinOuterContainer"
@@ -560,6 +560,15 @@ var Room = function Room(props) {
   }, []);
 
   var handleSubmit = function handleSubmit() {
+    _socket__WEBPACK_IMPORTED_MODULE_1__["default"].emit('guestSignOut', {
+      name: name,
+      room: room,
+      picture: picture
+    }, function (error) {
+      if (error) {
+        console.log(error);
+      }
+    });
     sessionStorage.clear();
   };
 

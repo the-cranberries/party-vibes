@@ -73,11 +73,6 @@ export class GuestLogin extends React.Component {
           <Link to={`/parties/${currentParty}`}>
             <button type="button"> Return To Party </button>
           </Link>
-          <Link to="/">
-            <button type="button" onClick={this.handleSignOut}>
-              Sign Out
-            </button>
-          </Link>
         </div>
       )
     } else {
