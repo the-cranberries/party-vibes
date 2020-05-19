@@ -76,13 +76,13 @@ const mapLogin = state => {
   }
 }
 
-const mapSignup = state => {
-  return {
-    name: 'signup',
-    displayName: 'Sign Up',
-    error: state.user.error
-  }
-}
+// const mapSignup = state => {
+//   return {
+//     name: 'signup',
+//     displayName: 'Sign Up',
+//     error: state.user.error
+//   }
+// }
 
 const mapDispatchLogin = dispatch => {
   return {
@@ -96,22 +96,22 @@ const mapDispatchLogin = dispatch => {
   }
 }
 
-const mapDispatchSignup = dispatch => {
-  return {
-    handleSubmit(evt) {
-      evt.preventDefault()
-      const formName = evt.target.name
-      const email = evt.target.email.value
-      const password = evt.target.password.value
-      const hostName = evt.target.hostName.value
-      const profilePicture = evt.target.profilePicture.value
-      dispatch(auth(email, password, formName, hostName, profilePicture))
-    }
-  }
-}
+// const mapDispatchSignup = dispatch => {
+//   return {
+//     handleSubmit(evt) {
+//       evt.preventDefault()
+//       const formName = evt.target.name
+//       const email = evt.target.email.value
+//       const password = evt.target.password.value
+//       const hostName = evt.target.hostName.value
+//       const profilePicture = evt.target.profilePicture.value
+//       dispatch(auth(email, password, formName, hostName, profilePicture))
+//     }
+//   }
+// }
 
 export const Login = connect(mapLogin, mapDispatchLogin)(AuthForm)
-export const Signup = connect(mapSignup, mapDispatchSignup)(AuthForm)
+// export const Signup = connect(mapSignup, mapDispatchSignup)(AuthForm)
 
 /**
  * PROP TYPES

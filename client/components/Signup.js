@@ -16,31 +16,26 @@ const SignupForm = props => {
           <div>
             <h1 className="heading">Become a Host</h1>
             <label htmlFor="hostName">
-              <medium>Name</medium>
+              <h4>Name</h4>
             </label>
             <input name="hostName" type="text" />
           </div>
           <div>
             <label htmlFor="profilePicture">
-              <medium>Choose a Profile Picture</medium>
+              <h4>Choose a Profile Picture</h4>
             </label>
-            <input
-              name="profilePicture"
-              type="file"
-              accept="image/*"
-              multiple="false"
-            />
+            <input name="profilePicture" type="file" accept="image/*" />
           </div>
         </div>
         <div>
           <label htmlFor="email">
-            <medium>Email</medium>
+            <h4>Email</h4>
           </label>
           <input name="email" type="text" />
         </div>
         <div>
           <label htmlFor="password">
-            <medium>Password</medium>
+            <h4>Password</h4>
           </label>
           <input name="password" type="password" />
         </div>
@@ -55,14 +50,6 @@ const SignupForm = props => {
     </div>
   )
 }
-
-/**
- * CONTAINER
- *   Note that we have two different sets of 'mapStateToProps' functions -
- *   one for Login, and one for Signup. However, they share the same 'mapDispatchToProps'
- *   function, and share the same Component. This is a good example of how we
- *   can stay DRY with interfaces that are very similar to each other!
- */
 
 const mapSignup = state => {
   return {
@@ -86,7 +73,7 @@ const mapDispatchSignup = dispatch => {
   }
 }
 
-export const Signup = connect(mapSignup, mapDispatchSignup)(SignupForm)
+export default connect(mapSignup, mapDispatchSignup)(SignupForm)
 
 /**
  * PROP TYPES

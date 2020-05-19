@@ -867,12 +867,11 @@ var Room = function Room(props) {
 /*!*************************************!*\
   !*** ./client/components/Signup.js ***!
   \*************************************/
-/*! exports provided: Signup */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Signup", function() { return Signup; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
@@ -901,24 +900,23 @@ var SignupForm = function SignupForm(props) {
     className: "heading"
   }, "Become a Host"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: "hostName"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("medium", null, "Name")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Name")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     name: "hostName",
     type: "text"
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: "profilePicture"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("medium", null, "Choose a Profile Picture")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Choose a Profile Picture")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     name: "profilePicture",
     type: "file",
-    accept: "image/*",
-    multiple: "false"
+    accept: "image/*"
   }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: "email"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("medium", null, "Email")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Email")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     name: "email",
     type: "text"
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: "password"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("medium", null, "Password")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Password")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     name: "password",
     type: "password"
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -927,14 +925,6 @@ var SignupForm = function SignupForm(props) {
     id: "errorMessage"
   }, " ", error.response.data, " ")));
 };
-/**
- * CONTAINER
- *   Note that we have two different sets of 'mapStateToProps' functions -
- *   one for Login, and one for Signup. However, they share the same 'mapDispatchToProps'
- *   function, and share the same Component. This is a good example of how we
- *   can stay DRY with interfaces that are very similar to each other!
- */
-
 
 var mapSignup = function mapSignup(state) {
   return {
@@ -958,7 +948,7 @@ var mapDispatchSignup = function mapDispatchSignup(dispatch) {
   };
 };
 
-var Signup = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapSignup, mapDispatchSignup)(SignupForm);
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapSignup, mapDispatchSignup)(SignupForm));
 /**
  * PROP TYPES
  */
@@ -1009,13 +999,12 @@ var UserList = function UserList(_ref) {
 /*!****************************************!*\
   !*** ./client/components/auth-form.js ***!
   \****************************************/
-/*! exports provided: Login, Signup */
+/*! exports provided: Login */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Login", function() { return Login; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Signup", function() { return Signup; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
@@ -1087,15 +1076,14 @@ var mapLogin = function mapLogin(state) {
     displayName: 'Login',
     error: state.user.error
   };
-};
+}; // const mapSignup = state => {
+//   return {
+//     name: 'signup',
+//     displayName: 'Sign Up',
+//     error: state.user.error
+//   }
+// }
 
-var mapSignup = function mapSignup(state) {
-  return {
-    name: 'signup',
-    displayName: 'Sign Up',
-    error: state.user.error
-  };
-};
 
 var mapDispatchLogin = function mapDispatchLogin(dispatch) {
   return {
@@ -1107,24 +1095,23 @@ var mapDispatchLogin = function mapDispatchLogin(dispatch) {
       dispatch(Object(_store__WEBPACK_IMPORTED_MODULE_3__["auth"])(email, password, formName));
     }
   };
-};
+}; // const mapDispatchSignup = dispatch => {
+//   return {
+//     handleSubmit(evt) {
+//       evt.preventDefault()
+//       const formName = evt.target.name
+//       const email = evt.target.email.value
+//       const password = evt.target.password.value
+//       const hostName = evt.target.hostName.value
+//       const profilePicture = evt.target.profilePicture.value
+//       dispatch(auth(email, password, formName, hostName, profilePicture))
+//     }
+//   }
+// }
 
-var mapDispatchSignup = function mapDispatchSignup(dispatch) {
-  return {
-    handleSubmit: function handleSubmit(evt) {
-      evt.preventDefault();
-      var formName = evt.target.name;
-      var email = evt.target.email.value;
-      var password = evt.target.password.value;
-      var hostName = evt.target.hostName.value;
-      var profilePicture = evt.target.profilePicture.value;
-      dispatch(Object(_store__WEBPACK_IMPORTED_MODULE_3__["auth"])(email, password, formName, hostName, profilePicture));
-    }
-  };
-};
 
-var Login = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapLogin, mapDispatchLogin)(AuthForm);
-var Signup = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapSignup, mapDispatchSignup)(AuthForm);
+var Login = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapLogin, mapDispatchLogin)(AuthForm); // export const Signup = connect(mapSignup, mapDispatchSignup)(AuthForm)
+
 /**
  * PROP TYPES
  */
