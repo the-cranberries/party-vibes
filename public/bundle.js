@@ -176,11 +176,24 @@ function (_React$Component) {
 
     var addMessage = function addMessage(data) {
       var messages = [].concat(_toConsumableArray(_this.state.messages), [data]);
-      sessionStorage.setItem('chat', JSON.stringify(messages));
 
-      _this.setState({
-        messages: messages
-      }); // if(chat.length === 3){
+      if (messages.length < 100) {
+        sessionStorage.setItem('chat', JSON.stringify(messages));
+
+        _this.setState({
+          messages: messages
+        });
+      } else {
+        messages = messages.slice(50);
+        sessionStorage.setItem('chat', JSON.stringify(messages));
+
+        _this.setState({
+          messages: messages
+        });
+      } // const messages = [...this.state.messages, data]
+      // sessionStorage.setItem('chat', JSON.stringify(messages))
+      // this.setState({messages})
+      // if(chat.length === 3){
       //   sessionStorage.setItem('chat', [])
       // }else {
       //   sessionStorage.setItem('chat', JSON.stringify(messages))
@@ -326,7 +339,6 @@ function (_React$Component) {
     _this.state = initialState;
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
-    _this.handleSignOut = _this.handleSignOut.bind(_assertThisInitialized(_this));
     _this.handleSelect = _this.handleSelect.bind(_assertThisInitialized(_this));
     return _this;
   } // componentDidMount() {
@@ -357,12 +369,6 @@ function (_React$Component) {
       sessionStorage.setItem('name', this.state.name);
       sessionStorage.setItem('isGuestLoggedIn', true);
       sessionStorage.setItem('picture', this.state.guestPicture);
-    }
-  }, {
-    key: "handleSignOut",
-    value: function handleSignOut(event) {
-      // event.preventDefault()
-      sessionStorage.clear();
     }
   }, {
     key: "render",

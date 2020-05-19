@@ -20,9 +20,19 @@ class Chat extends React.Component {
     })
 
     const addMessage = data => {
-      const messages = [...this.state.messages, data]
-      sessionStorage.setItem('chat', JSON.stringify(messages))
-      this.setState({messages})
+      let messages = [...this.state.messages, data]
+      if (messages.length < 100) {
+        sessionStorage.setItem('chat', JSON.stringify(messages))
+        this.setState({messages})
+      } else {
+        messages = messages.slice(50)
+        sessionStorage.setItem('chat', JSON.stringify(messages))
+        this.setState({messages})
+      }
+      // const messages = [...this.state.messages, data]
+      // sessionStorage.setItem('chat', JSON.stringify(messages))
+      // this.setState({messages})
+
       // if(chat.length === 3){
       //   sessionStorage.setItem('chat', [])
       // }else {

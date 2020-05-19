@@ -22,7 +22,6 @@ export class GuestLogin extends React.Component {
     this.state = initialState
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleSignOut = this.handleSignOut.bind(this)
     this.handleSelect = this.handleSelect.bind(this)
   }
   // componentDidMount() {
@@ -50,11 +49,6 @@ export class GuestLogin extends React.Component {
     sessionStorage.setItem('name', this.state.name)
     sessionStorage.setItem('isGuestLoggedIn', true)
     sessionStorage.setItem('picture', this.state.guestPicture)
-  }
-
-  handleSignOut(event) {
-    // event.preventDefault()
-    sessionStorage.clear()
   }
 
   render() {
