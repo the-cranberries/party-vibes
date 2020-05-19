@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import socket from '../socket'
 import Chat from './Chat'
 import UserList from './UserList'
-import session from 'express-session'
+// import session from 'express-session'
 import {Link} from 'react-router-dom'
 
 const Room = props => {

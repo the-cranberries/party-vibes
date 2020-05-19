@@ -19,9 +19,16 @@ class HostDashboard extends React.Component {
     this.props.createNewParty(this.props.user.id)
   }
 
-  joinParty(accessCode, name) {
-    this.props.fetchParty({accessCode, name})
-    sessionStorage.setItem('name', name) // temp for now
+  joinParty() {
+    const {user} = this.props
+    const party = user.userParty
+    //store user name, img, and accessCode into session storage
+
+    sessionStorage.setItem('name', user.name)
+    sessionStorage.setItem('picture', user.profilePicture)
+    sessionStorage.setItem('accessCode', party.accessCode)
+
+    //go to party room
   }
 
   endParty(userId) {
@@ -76,11 +83,7 @@ class HostDashboard extends React.Component {
               Show Access Code
             </button>
           )}
-          <button
-            type="button"
-            //fix merging with chat branch
-            // onClick={() => this.joinParty(user.userParty.accessCode, user.name)}
-          >
+          <button type="button" onClick={() => this.joinParty()}>
             Join Party
           </button>
           <button type="button" onClick={() => this.endParty(user.id)}>
