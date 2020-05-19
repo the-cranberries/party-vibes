@@ -4,6 +4,13 @@ import {fetchUserParty, postUserParty, endUserParty} from '../store/user'
 import {fetchParty} from '../store/party'
 
 class HostDashboard extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      showAccess: false
+    }
+  }
+
   componentDidMount() {
     this.props.getUserPartyFromStore(this.props.user.id)
   }
@@ -44,7 +51,31 @@ class HostDashboard extends React.Component {
       return (
         <div className="host_dashboard">
           <h1>Welcome {user.name}</h1>
-          <p>Access Code: {user.userParty.accessCode}</p>
+          {/* <p>Access Code: {user.userParty.accessCode}</p> */}
+          {this.state.showAccess ? (
+            <div>
+              <p>
+                {user.userParty[0].accessCode}
+                <button
+                  type="button"
+                  onClick={() => {
+                    this.setState({showAccess: false})
+                  }}
+                >
+                  hide
+                </button>
+              </p>
+            </div>
+          ) : (
+            <button
+              type="button"
+              onClick={() => {
+                this.setState({showAccess: true})
+              }}
+            >
+              Show Access Code
+            </button>
+          )}
           <button
             type="button"
             onClick={() => this.joinParty(user.userParty.accessCode, user.name)}
