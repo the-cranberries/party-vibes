@@ -1301,7 +1301,7 @@ socket.on('connect', function () {
 /*!*******************************!*\
   !*** ./client/store/index.js ***!
   \*******************************/
-/*! exports provided: default, postUserParty, fetchUserParty, endUserParty, me, auth, logout, fetchParty */
+/*! exports provided: default, fetchParty, postUserParty, fetchUserParty, endUserParty, me, auth, logout */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1485,9 +1485,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
  */
 
 var GET_USER = 'GET_USER';
+var UPDATE_USER = 'UPDATE_USER';
+var REMOVE_USER = 'REMOVE_USER';
 var MAKE_USER_PARTY = 'MAKE_USER_PARTY';
 var GET_USER_PARTY = 'GET_USER_PARTY';
-var REMOVE_USER = 'REMOVE_USER';
 var DELETE_USER_PARTY = 'DELETE_USER_PARTY';
 /**
  * INITIAL STATE
@@ -1506,6 +1507,13 @@ var getUser = function getUser(user) {
     type: GET_USER,
     user: user
   };
+}; // const updateUser = user => ()
+
+
+var removeUser = function removeUser() {
+  return {
+    type: REMOVE_USER
+  };
 };
 
 var makeUserParty = function makeUserParty(party) {
@@ -1519,12 +1527,6 @@ var getUserParty = function getUserParty(party) {
   return {
     type: GET_USER_PARTY,
     party: party
-  };
-};
-
-var removeUser = function removeUser() {
-  return {
-    type: REMOVE_USER
   };
 };
 
@@ -48422,7 +48424,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

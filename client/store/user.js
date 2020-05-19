@@ -5,9 +5,11 @@ import history from '../history'
  * ACTION TYPES
  */
 const GET_USER = 'GET_USER'
+const UPDATE_USER = 'UPDATE_USER'
+const REMOVE_USER = 'REMOVE_USER'
+
 const MAKE_USER_PARTY = 'MAKE_USER_PARTY'
 const GET_USER_PARTY = 'GET_USER_PARTY'
-const REMOVE_USER = 'REMOVE_USER'
 const DELETE_USER_PARTY = 'DELETE_USER_PARTY'
 
 /**
@@ -19,9 +21,11 @@ const defaultUser = {userParty: null}
  * ACTION CREATORS
  */
 const getUser = user => ({type: GET_USER, user})
+// const updateUser = user => ()
+const removeUser = () => ({type: REMOVE_USER})
+
 const makeUserParty = party => ({type: MAKE_USER_PARTY, party})
 const getUserParty = party => ({type: GET_USER_PARTY, party})
-const removeUser = () => ({type: REMOVE_USER})
 const deleteParty = () => ({type: DELETE_USER_PARTY})
 
 /**

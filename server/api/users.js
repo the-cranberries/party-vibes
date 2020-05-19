@@ -14,12 +14,11 @@ router.get('/:userId', async (req, res, next) => {
 
 router.put('/:userId', async (req, res, next) => {
   const {profilePicture} = req.body
+  const {userId} = req.params
 
   try {
-    const [numUpdates, updatedUser] = await User.update(
-      {profilePicture},
-      {where: {id: req.params.userId}}
-    )
+    const user = await User.findByPk(userId)
+    const updatedUser = await user.update({profilePicture})
 
     res.status(200).send(updatedUser)
   } catch (err) {
