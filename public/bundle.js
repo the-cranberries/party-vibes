@@ -353,7 +353,7 @@ function (_React$Component) {
       var currentParty = sessionStorage.getItem('party');
       var guestLogin;
 
-      if (isGuestLoggedIn) {
+      if (isGuestLoggedIn && currentParty) {
         guestLogin = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "joinOuterContainer"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
@@ -501,6 +501,7 @@ var Room = function Room(props) {
       users = _useState2[0],
       setUsers = _useState2[1];
 
+  console.log('PROPS', props);
   window.addEventListener('beforeunload', function (e) {
     e.preventDefault();
     e.returnValue = 'Leaving or resfreshing page will result in chat messages to dissaper: Are you sure you want to continue?';

@@ -56,7 +56,7 @@ export class GuestLogin extends React.Component {
     const currentParty = sessionStorage.getItem('party')
     let guestLogin
 
-    if (isGuestLoggedIn) {
+    if (isGuestLoggedIn && currentParty) {
       guestLogin = (
         <div className="joinOuterContainer">
           <h1 className="heading">You are currently logged in a party</h1>

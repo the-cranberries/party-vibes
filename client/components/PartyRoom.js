@@ -7,6 +7,7 @@ import {Link} from 'react-router-dom'
 
 const Room = props => {
   const [users, setUsers] = useState('')
+  console.log('PROPS', props)
 
   window.addEventListener('beforeunload', function(e) {
     e.preventDefault()
@@ -51,10 +52,10 @@ const Room = props => {
           <main>
             <h1 className="heading">Welcome to Cody's Party!</h1>
             {/* <Link to="/">
-            <button type="submit" onSubmit={sessionStorage.clear()}>
-              Sign Out
-            </button>
-          </Link> */}
+              <button type="submit" onClick={sessionStorage.clear()}>
+                Sign Out
+              </button>
+            </Link> */}
           </main>
         </div>
         <div>
