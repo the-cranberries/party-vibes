@@ -78,7 +78,8 @@ class HostDashboard extends React.Component {
           )}
           <button
             type="button"
-            onClick={() => this.joinParty(user.userParty.accessCode, user.name)}
+            //fix merging with chat branch
+            // onClick={() => this.joinParty(user.userParty.accessCode, user.name)}
           >
             Join Party
           </button>
