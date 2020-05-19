@@ -13,7 +13,7 @@ const DELETE_USER_PARTY = 'DELETE_USER_PARTY'
 /**
  * INITIAL STATE
  */
-const defaultUser = {}
+const defaultUser = {userParty: null}
 
 /**
  * ACTION CREATORS
@@ -38,8 +38,8 @@ export const postUserParty = userId => async dispatch => {
 
 export const fetchUserParty = userId => async dispatch => {
   try {
-    const res = await axios.get(`/api/users/${userId}/parties`)
-    dispatch(getUserParty(res.data))
+    const {data} = await axios.get(`/api/users/${userId}/parties`)
+    dispatch(getUserParty(data[0]))
   } catch (err) {
     console.error(err)
   }
@@ -117,7 +117,7 @@ export default function(state = defaultUser, action) {
     case GET_USER_PARTY:
       return {...state, userParty: action.party}
     case DELETE_USER_PARTY:
-      return {...state, userParty: []}
+      return {...state, userParty: null}
     case REMOVE_USER:
       return defaultUser
     default:

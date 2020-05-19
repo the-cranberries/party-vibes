@@ -23,7 +23,7 @@ const Party = db.define('party', {
 
 Party.beforeCreate((partyInstance, optionsObject) => {
   if (!partyInstance.accessCode) {
-    partyInstance.accessCode = crypto.randomBytes(16).toString('base64')
+    partyInstance.accessCode = crypto.randomBytes(8).toString('base64')
   }
 })
 

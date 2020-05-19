@@ -34,7 +34,7 @@ class HostDashboard extends React.Component {
     console.log('party: ', party)
     console.log('user', user)
 
-    if (!user.userParty || user.userParty.length === 0) {
+    if (!user.userParty) {
       return (
         <div className="host_dashboard">
           <div>
@@ -55,7 +55,7 @@ class HostDashboard extends React.Component {
           {this.state.showAccess ? (
             <div>
               <p>
-                {user.userParty[0].accessCode}
+                {user.userParty.accessCode}
                 <button
                   type="button"
                   onClick={() => {
