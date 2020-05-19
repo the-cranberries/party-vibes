@@ -422,8 +422,8 @@ function (_React$Component) {
           value: this.state.guestPicture,
           onChange: this.handleSelect
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-          value: ""
-        }, "--Please choose an option--"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+          value: "pug"
+        }, "--Please Choose A Profile Icon--"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
           value: "bear"
         }, "Bear"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
           value: "beaver"
