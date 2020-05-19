@@ -10,6 +10,7 @@ class HostDashboard extends React.Component {
 
   joinParty(accessCode, name) {
     this.props.fetchParty({accessCode, name})
+    sessionStorage.setItem('name', name) // temp for now
   }
 
   endParty(userId) {
