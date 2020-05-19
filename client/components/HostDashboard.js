@@ -22,8 +22,8 @@ class HostDashboard extends React.Component {
   joinParty() {
     const {user} = this.props
     const party = user.userParty
-    //store user name, img, and accessCode into session storage
 
+    //store user name, img, and accessCode into session storage
     sessionStorage.setItem('name', user.name)
     sessionStorage.setItem('picture', user.profilePicture)
     sessionStorage.setItem('accessCode', party.accessCode)
@@ -59,7 +59,6 @@ class HostDashboard extends React.Component {
       return (
         <div className="host_dashboard">
           <h1>Welcome {user.name}</h1>
-          {/* <p>Access Code: {user.userParty.accessCode}</p> */}
           {this.state.showAccess ? (
             <div>
               <p>
