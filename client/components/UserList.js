@@ -7,10 +7,10 @@ const UserList = ({users}) => (
         <h1>People currently in room</h1>
         <div className="activeContainer">
           <h2>
-            {users.map(({name}) => (
-              <div key={name} className="activeItem">
-                {name}
-                <img src="/images/pug.png" />
+            {users.map(user => (
+              <div key={user.name} className="activeItem">
+                {user.name}
+                <img src={`/images/${user.picture}`} />
               </div>
             ))}
           </h2>

@@ -30,6 +30,7 @@ class Routes extends Component {
         <Route path="/signup" component={Signup} />
         <Route path="/guestlogin" component={GuestLogin} />
         <Route exact path="/parties/:accessCode" component={PartyRoom} />
+        <Route exact path="/" component={Home} />
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
