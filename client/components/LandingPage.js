@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-// import {Login} from './auth-form'
+// import {Login} from './HostLogin'
 // import {Signup} from './Signup'
 
 const Home = () => {

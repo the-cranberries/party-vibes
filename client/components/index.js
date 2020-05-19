@@ -6,7 +6,7 @@
 // export {default as Navbar} from './navbar'
 // export {default as UserHome} from './user-home'
 export {default as Home} from './LandingPage'
-export {Login} from './auth-form'
+export {default as Login} from './HostLogin'
 export {default as GuestLogin} from './GuestLogin'
 export {default as PartyRoom} from './PartyRoom'
 export {default as Chat} from './Chat'
