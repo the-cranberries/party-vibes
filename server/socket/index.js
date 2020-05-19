@@ -8,8 +8,8 @@ module.exports = io => {
       io.emit('RECEIVE_MESSAGE', data)
     })
 
-    socket.on('join', ({name, room}, callback) => {
-      const {error, user} = addUser({id: socket.id, name, room})
+    socket.on('join', ({name, room, picture}, callback) => {
+      const {error, user} = addUser({id: socket.id, name, room, picture})
 
       if (error) return callback(error)
 
@@ -30,6 +30,26 @@ module.exports = io => {
     socket.on('disconnect', () => {
       const user = removeUser(socket.id)
       console.log(`Connection ${socket.id} has left the building`)
+
+      if (user) {
+        // io.to(user.room).emit('message', { user: 'Admin', text: `${user.name} has left.` });
+        io.to(user.room).emit('roomData', {
+          room: user.room,
+          users: getUsersInParty(user.room)
+        })
+      }
+    })
+
+    socket.on('guestSignOut', () => {
+      const user = removeUser(socket.id)
+      console.log(`${socket.id} has left room`)
+
+      if (user) {
+        io.to(user.room).emit('roomData', {
+          room: user.room,
+          users: getUsersInParty(user.room)
+        })
+      }
     })
   })
 }

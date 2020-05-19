@@ -20,7 +20,7 @@ module.exports = router
 //   }
 // })
 
-router.post('/:accessCode', async (req, res, next) => {
+router.get('/:accessCode', async (req, res, next) => {
   try {
     const party = await Party.findOne({
       where: {
@@ -32,6 +32,8 @@ router.post('/:accessCode', async (req, res, next) => {
       res.status(401).send('Access code invalid')
     } else {
       req.session.userName = req.body.name
+      req.session.party = req.body.accessCode
+      req.session.isGuestLogged = true
       console.log(req.session)
 
       res.json(party)
