@@ -11,7 +11,8 @@ import PropTypes from 'prop-types'
 
 const initialState = {
   name: '',
-  accessCode: ''
+  accessCode: '',
+  guestPicture: ''
   // error: ''
 }
 
@@ -22,6 +23,7 @@ export class GuestLogin extends React.Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleSignOut = this.handleSignOut.bind(this)
+    this.handleSelect = this.handleSelect.bind(this)
   }
   // componentDidMount() {
   //   this.props.fetchParty()
@@ -33,6 +35,12 @@ export class GuestLogin extends React.Component {
     })
   }
 
+  handleSelect(event) {
+    this.setState({
+      guestPicture: event.target.value
+    })
+  }
+
   handleSubmit(event) {
     event.preventDefault()
     this.props.fetchParty({
@@ -41,6 +49,7 @@ export class GuestLogin extends React.Component {
     })
     sessionStorage.setItem('name', this.state.name)
     sessionStorage.setItem('isGuestLoggedIn', true)
+    sessionStorage.setItem('picture', this.state.guestPicture)
   }
 
   handleSignOut(event) {
@@ -49,6 +58,7 @@ export class GuestLogin extends React.Component {
   }
 
   render() {
+    console.log(this.state)
     const {error} = this.props
     const isGuestLoggedIn = JSON.parse(
       sessionStorage.getItem('isGuestLoggedIn')
@@ -100,7 +110,12 @@ export class GuestLogin extends React.Component {
                   onChange={this.handleChange}
                 />
               </div>
-              <select name="pets" id="pet-select">
+              <select
+                name="guestPicture"
+                id="guestPicture"
+                value={this.state.guestPicture}
+                onChange={this.handleSelect}
+              >
                 <option value="">--Please choose an option--</option>
                 <option value="bear">Bear</option>
                 <option value="beaver">Beaver</option>

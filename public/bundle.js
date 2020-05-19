@@ -166,16 +166,20 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Chat).call(this, props));
     _this.state = {
       message: '',
-      messages: [] // socket = io('localhost:8080')
-
+      messages: []
     };
+    _this.state.messages = JSON.parse(sessionStorage.getItem('chat') || '[]'); // socket = io('localhost:8080')
+
     _socket__WEBPACK_IMPORTED_MODULE_1__["default"].on('RECEIVE_MESSAGE', function (data) {
       addMessage(data);
     });
 
     var addMessage = function addMessage(data) {
+      var messages = [].concat(_toConsumableArray(_this.state.messages), [data]);
+      sessionStorage.setItem('chat', JSON.stringify(messages));
+
       _this.setState({
-        messages: [].concat(_toConsumableArray(_this.state.messages), [data])
+        messages: messages
       });
     };
 
@@ -299,7 +303,8 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 var initialState = {
   name: '',
-  accessCode: '' // error: ''
+  accessCode: '',
+  guestPicture: '' // error: ''
 
 };
 var GuestLogin =
@@ -317,6 +322,7 @@ function (_React$Component) {
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.handleSignOut = _this.handleSignOut.bind(_assertThisInitialized(_this));
+    _this.handleSelect = _this.handleSelect.bind(_assertThisInitialized(_this));
     return _this;
   } // componentDidMount() {
   //   this.props.fetchParty()
@@ -329,6 +335,13 @@ function (_React$Component) {
       this.setState(_defineProperty({}, event.target.name, event.target.value));
     }
   }, {
+    key: "handleSelect",
+    value: function handleSelect(event) {
+      this.setState({
+        guestPicture: event.target.value
+      });
+    }
+  }, {
     key: "handleSubmit",
     value: function handleSubmit(event) {
       event.preventDefault();
@@ -338,6 +351,7 @@ function (_React$Component) {
       });
       sessionStorage.setItem('name', this.state.name);
       sessionStorage.setItem('isGuestLoggedIn', true);
+      sessionStorage.setItem('picture', this.state.guestPicture);
     }
   }, {
     key: "handleSignOut",
@@ -348,6 +362,7 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      console.log(this.state);
       var error = this.props.error;
       var isGuestLoggedIn = JSON.parse(sessionStorage.getItem('isGuestLoggedIn'));
       var currentParty = sessionStorage.getItem('party');
@@ -392,8 +407,10 @@ function (_React$Component) {
           type: "text",
           onChange: this.handleChange
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
-          name: "pets",
-          id: "pet-select"
+          name: "guestPicture",
+          id: "guestPicture",
+          value: this.state.guestPicture,
+          onChange: this.handleSelect
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
           value: ""
         }, "--Please choose an option--"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
@@ -520,13 +537,16 @@ var Room = function Room(props) {
     e.preventDefault();
     e.returnValue = 'Leaving or resfreshing page will result in chat messages to dissaper: Are you sure you want to continue?';
   });
+  var pic = sessionStorage.getItem('picture');
   var name = sessionStorage.name;
   var key = props.match.params;
   var room = Object.values(key)[0];
+  var picture = "".concat(pic, ".png");
   sessionStorage.setItem('party', room);
   _socket__WEBPACK_IMPORTED_MODULE_1__["default"].emit('join', {
     name: name,
-    room: room
+    room: room,
+    picture: picture
   }, function (error) {
     if (error) {
       console.log(error);
@@ -684,13 +704,12 @@ var UserList = function UserList(_ref) {
     className: "textContainer"
   }, users ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "People currently in room"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "activeContainer"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, users.map(function (_ref2) {
-    var name = _ref2.name;
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, users.map(function (user) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      key: name,
+      key: user.name,
       className: "activeItem"
-    }, name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-      src: "/images/pug.png"
+    }, user.name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      src: "/images/".concat(user.picture)
     }));
   })))) : null);
 };

@@ -8,8 +8,8 @@ module.exports = io => {
       io.emit('RECEIVE_MESSAGE', data)
     })
 
-    socket.on('join', ({name, room}, callback) => {
-      const {error, user} = addUser({id: socket.id, name, room})
+    socket.on('join', ({name, room, picture}, callback) => {
+      const {error, user} = addUser({id: socket.id, name, room, picture})
 
       if (error) return callback(error)
 
@@ -33,12 +33,10 @@ module.exports = io => {
 
       if (user) {
         // io.to(user.room).emit('message', { user: 'Admin', text: `${user.name} has left.` });
-        io
-          .to(user.room)
-          .emit('roomData', {
-            room: user.room,
-            users: getUsersInParty(user.room)
-          })
+        io.to(user.room).emit('roomData', {
+          room: user.room,
+          users: getUsersInParty(user.room)
+        })
       }
     })
   })

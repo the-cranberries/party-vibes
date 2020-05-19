@@ -14,12 +14,14 @@ const Room = props => {
       'Leaving or resfreshing page will result in chat messages to dissaper: Are you sure you want to continue?'
   })
 
+  const pic = sessionStorage.getItem('picture')
   const name = sessionStorage.name
   const key = props.match.params
   const room = Object.values(key)[0]
+  const picture = `${pic}.png`
   sessionStorage.setItem('party', room)
 
-  socket.emit('join', {name, room}, error => {
+  socket.emit('join', {name, room, picture}, error => {
     if (error) {
       console.log(error)
     }

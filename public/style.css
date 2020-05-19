@@ -166,3 +166,8 @@ select:focus {
   display: inline-block;
   max-width: 80%;
 }
+
+.activeContainer img {
+  height: 50px;
+  width: 50px;
+}

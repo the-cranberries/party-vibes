@@ -11,6 +11,8 @@ class Chat extends React.Component {
       messages: []
     }
 
+    this.state.messages = JSON.parse(sessionStorage.getItem('chat') || '[]')
+
     // socket = io('localhost:8080')
 
     socket.on('RECEIVE_MESSAGE', function(data) {
@@ -18,7 +20,9 @@ class Chat extends React.Component {
     })
 
     const addMessage = data => {
-      this.setState({messages: [...this.state.messages, data]})
+      const messages = [...this.state.messages, data]
+      sessionStorage.setItem('chat', JSON.stringify(messages))
+      this.setState({messages})
     }
 
     this.sendMessage = ev => {
