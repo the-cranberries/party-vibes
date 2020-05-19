@@ -100,6 +100,14 @@ export class GuestLogin extends React.Component {
                   onChange={this.handleChange}
                 />
               </div>
+              <select name="pets" id="pet-select">
+                <option value="">--Please choose an option--</option>
+                <option value="bear">Bear</option>
+                <option value="beaver">Beaver</option>
+                <option value="fox">Fox</option>
+                <option value="pig">Pig</option>
+                <option value="whale">Whale</option>
+              </select>
               <div>
                 <button
                   type="submit"

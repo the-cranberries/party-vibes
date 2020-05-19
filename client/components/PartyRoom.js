@@ -7,7 +7,6 @@ import {Link} from 'react-router-dom'
 
 const Room = props => {
   const [users, setUsers] = useState('')
-  console.log('PROPS', props)
 
   window.addEventListener('beforeunload', function(e) {
     e.preventDefault()
@@ -26,9 +25,15 @@ const Room = props => {
     }
   })
 
-  socket.on('roomData', ({users}) => {
-    setUsers(users)
-  })
+  useEffect(() => {
+    socket.on('roomData', ({users}) => {
+      setUsers(users)
+    })
+  }, [])
+
+  const handleSubmit = () => {
+    sessionStorage.clear()
+  }
 
   if (sessionStorage.length <= 1) {
     return (
@@ -51,11 +56,11 @@ const Room = props => {
         <div>
           <main>
             <h1 className="heading">Welcome to Cody's Party!</h1>
-            {/* <Link to="/">
-              <button type="submit" onClick={sessionStorage.clear()}>
+            <Link to="/">
+              <button type="submit" onClick={handleSubmit}>
                 Sign Out
               </button>
-            </Link> */}
+            </Link>
           </main>
         </div>
         <div>
@@ -70,6 +75,77 @@ const Room = props => {
 }
 
 export default Room
+
+// const Room = props => {
+//   const [users, setUsers] = useState('')
+//   console.log('PROPS', props)
+
+//   window.addEventListener('beforeunload', function(e) {
+//     e.preventDefault()
+//     e.returnValue =
+//       'Leaving or resfreshing page will result in chat messages to dissaper: Are you sure you want to continue?'
+//   })
+
+//   const name = sessionStorage.name
+//   const key = props.match.params
+//   const room = Object.values(key)[0]
+//   sessionStorage.setItem('party', room)
+
+//   socket.emit('join', {name, room}, error => {
+//     if (error) {
+//       console.log(error)
+//     }
+//   })
+
+//   socket.on('roomData', ({users}) => {
+//     setUsers(users)
+//   })
+
+//   const handleSignOut = (event) => {
+//     // event.preventDefault()
+//     sessionStorage.clear()
+//   }
+
+//   if (sessionStorage.length <= 1) {
+//     return (
+//       <div>
+//         <div className="joinOuterContainer">
+//           <main>
+//             <h1 className="heading">Need to login before entering party</h1>
+//           </main>
+//         </div>
+//         <div>
+//           <Link to="/guestLogin">
+//             <button type="button">Guest Login</button>
+//           </Link>
+//         </div>
+//       </div>
+//     )
+//   } else {
+//     return (
+//       <div>
+//         <div>
+//           <main>
+//             <h1 className="heading">Welcome to Cody's Party!</h1>
+//             {/* <Link to="/">
+//               <button type="submit" onSubmit={handleSignOut()}>
+//                 Sign Out
+//               </button>
+//             </Link> */}
+//           </main>
+//         </div>
+//         <div>
+//           <Chat />
+//         </div>
+//         <div className="guests">
+//           <UserList users={users} />
+//         </div>
+//       </div>
+//     )
+//   }
+// }
+
+// export default Room
 
 // import React from 'react'
 // import Chat from './Chat'

@@ -391,7 +391,22 @@ function (_React$Component) {
           ,
           type: "text",
           onChange: this.handleChange
-        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+          name: "pets",
+          id: "pet-select"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+          value: ""
+        }, "--Please choose an option--"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+          value: "bear"
+        }, "Bear"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+          value: "beaver"
+        }, "Beaver"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+          value: "fox"
+        }, "Fox"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+          value: "pig"
+        }, "Pig"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+          value: "whale"
+        }, "Whale")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           type: "submit",
           disabled: !this.state.name || !this.state.accessCode,
           onClick: this.handleSubmit
@@ -501,7 +516,6 @@ var Room = function Room(props) {
       users = _useState2[0],
       setUsers = _useState2[1];
 
-  console.log('PROPS', props);
   window.addEventListener('beforeunload', function (e) {
     e.preventDefault();
     e.returnValue = 'Leaving or resfreshing page will result in chat messages to dissaper: Are you sure you want to continue?';
@@ -518,10 +532,16 @@ var Room = function Room(props) {
       console.log(error);
     }
   });
-  _socket__WEBPACK_IMPORTED_MODULE_1__["default"].on('roomData', function (_ref) {
-    var users = _ref.users;
-    setUsers(users);
-  });
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    _socket__WEBPACK_IMPORTED_MODULE_1__["default"].on('roomData', function (_ref) {
+      var users = _ref.users;
+      setUsers(users);
+    });
+  }, []);
+
+  var handleSubmit = function handleSubmit() {
+    sessionStorage.clear();
+  };
 
   if (sessionStorage.length <= 1) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -536,7 +556,12 @@ var Room = function Room(props) {
   } else {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
       className: "heading"
-    }, "Welcome to Cody's Party!"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Chat__WEBPACK_IMPORTED_MODULE_2__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    }, "Welcome to Cody's Party!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["Link"], {
+      to: "/"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      type: "submit",
+      onClick: handleSubmit
+    }, "Sign Out")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Chat__WEBPACK_IMPORTED_MODULE_2__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "guests"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_UserList__WEBPACK_IMPORTED_MODULE_3__["default"], {
       users: users
@@ -544,7 +569,70 @@ var Room = function Room(props) {
   }
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Room); // import React from 'react'
+/* harmony default export */ __webpack_exports__["default"] = (Room); // const Room = props => {
+//   const [users, setUsers] = useState('')
+//   console.log('PROPS', props)
+//   window.addEventListener('beforeunload', function(e) {
+//     e.preventDefault()
+//     e.returnValue =
+//       'Leaving or resfreshing page will result in chat messages to dissaper: Are you sure you want to continue?'
+//   })
+//   const name = sessionStorage.name
+//   const key = props.match.params
+//   const room = Object.values(key)[0]
+//   sessionStorage.setItem('party', room)
+//   socket.emit('join', {name, room}, error => {
+//     if (error) {
+//       console.log(error)
+//     }
+//   })
+//   socket.on('roomData', ({users}) => {
+//     setUsers(users)
+//   })
+//   const handleSignOut = (event) => {
+//     // event.preventDefault()
+//     sessionStorage.clear()
+//   }
+//   if (sessionStorage.length <= 1) {
+//     return (
+//       <div>
+//         <div className="joinOuterContainer">
+//           <main>
+//             <h1 className="heading">Need to login before entering party</h1>
+//           </main>
+//         </div>
+//         <div>
+//           <Link to="/guestLogin">
+//             <button type="button">Guest Login</button>
+//           </Link>
+//         </div>
+//       </div>
+//     )
+//   } else {
+//     return (
+//       <div>
+//         <div>
+//           <main>
+//             <h1 className="heading">Welcome to Cody's Party!</h1>
+//             {/* <Link to="/">
+//               <button type="submit" onSubmit={handleSignOut()}>
+//                 Sign Out
+//               </button>
+//             </Link> */}
+//           </main>
+//         </div>
+//         <div>
+//           <Chat />
+//         </div>
+//         <div className="guests">
+//           <UserList users={users} />
+//         </div>
+//       </div>
+//     )
+//   }
+// }
+// export default Room
+// import React from 'react'
 // import Chat from './Chat'
 // const Room = props => {
 //   return (

@@ -30,6 +30,16 @@ module.exports = io => {
     socket.on('disconnect', () => {
       const user = removeUser(socket.id)
       console.log(`Connection ${socket.id} has left the building`)
+
+      if (user) {
+        // io.to(user.room).emit('message', { user: 'Admin', text: `${user.name} has left.` });
+        io
+          .to(user.room)
+          .emit('roomData', {
+            room: user.room,
+            users: getUsersInParty(user.room)
+          })
+      }
     })
   })
 }
