@@ -485,6 +485,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _store_user__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../store/user */ "./client/store/user.js");
 /* harmony import */ var _store_party__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store/party */ "./client/store/party.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../store */ "./client/store/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_5__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -510,6 +513,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
+
 var HostDashboard =
 /*#__PURE__*/
 function (_React$Component) {
@@ -522,7 +527,7 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(HostDashboard).call(this, props));
 
-    _defineProperty(_assertThisInitialized(_this), "handleClick", function () {
+    _defineProperty(_assertThisInitialized(_this), "createParty", function () {
       _this.props.createNewParty(_this.props.user.id);
     });
 
@@ -558,7 +563,8 @@ function (_React$Component) {
 
       var _this$props = this.props,
           party = _this$props.party,
-          user = _this$props.user;
+          user = _this$props.user,
+          handleClick = _this$props.handleClick;
       console.log('party: ', party);
       console.log('user', user);
 
@@ -568,9 +574,12 @@ function (_React$Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Welcome ", user.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           type: "button",
           onClick: function onClick() {
-            return _this2.handleClick();
+            return _this2.createParty();
           }
-        }, "New Party")));
+        }, "New Party")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+          href: "#",
+          onClick: handleClick
+        }, "Logout")));
       } else {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "host_dashboard"
@@ -597,7 +606,10 @@ function (_React$Component) {
           onClick: function onClick() {
             return _this2.endParty(user.id);
           }
-        }, "End Party"));
+        }, "End Party"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+          href: "#",
+          onClick: handleClick
+        }, "Logout"));
       }
     }
   }]);
@@ -625,11 +637,17 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     fetchParty: function fetchParty(accessCode) {
       dispatch(Object(_store_party__WEBPACK_IMPORTED_MODULE_3__["fetchParty"])(accessCode));
+    },
+    handleClick: function handleClick() {
+      dispatch(Object(_store__WEBPACK_IMPORTED_MODULE_4__["logout"])());
     }
   };
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, mapDispatchToProps)(HostDashboard));
+HostDashboard.propTypes = {
+  handleClick: prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.func.isRequired
+};
 
 /***/ }),
 
