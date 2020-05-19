@@ -128,7 +128,7 @@ export default function(state = defaultUser, action) {
     case GET_USER:
       return action.user
     case UPDATE_USER:
-      return action.user
+      return {...state, ...action.user}
     case REMOVE_USER:
       return defaultUser
     case MAKE_USER_PARTY:

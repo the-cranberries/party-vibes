@@ -526,7 +526,14 @@ function (_React$Component) {
       _this.props.createNewParty(_this.props.user.id);
     });
 
+    _defineProperty(_assertThisInitialized(_this), "handleSelect", function (event) {
+      _this.setState({
+        selectedPicture: event.target.value
+      });
+    });
+
     _this.state = {
+      selectedPicture: '',
       showAccess: false
     };
     return _this;
@@ -584,20 +591,20 @@ function (_React$Component) {
               showAccess: false
             });
           }
-        }, "hide"))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        }, "hide"))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           type: "button",
           onClick: function onClick() {
             _this2.setState({
               showAccess: true
             });
           }
-        }, "Show Access Code"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        }, "Show Access Code")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
           name: "hostPicture",
           id: "hostPicture",
           onChange: this.handleSelect
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
           value: "/images/pug.png"
-        }, "--Please Choose A Profile Icon--"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        }, "--Change Profile Icon--"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
           value: "/images/bear.png"
         }, "Bear"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
           value: "/images/beaver.png"
@@ -610,6 +617,13 @@ function (_React$Component) {
         }, "Whale")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           type: "button",
           onClick: function onClick() {
+            _this2.props.updateUserPic(user.id, {
+              profilePicture: _this2.state.selectedPicture
+            });
+          }
+        }, "set icon")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          type: "button",
+          onClick: function onClick() {
             return _this2.joinParty();
           }
         }, "Join Party"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -617,7 +631,7 @@ function (_React$Component) {
           onClick: function onClick() {
             return _this2.endParty(user.id);
           }
-        }, "End Party"));
+        }, "End Party")));
       }
     }
   }]);
@@ -634,6 +648,9 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
+    updateUserPic: function updateUserPic(userId, updates) {
+      dispatch(Object(_store_user__WEBPACK_IMPORTED_MODULE_2__["putUser"])(userId, updates));
+    },
     getUserPartyFromStore: function getUserPartyFromStore(userId) {
       dispatch(Object(_store_user__WEBPACK_IMPORTED_MODULE_2__["fetchUserParty"])(userId));
     },
@@ -1231,8 +1248,7 @@ function (_Component) {
         path: "/",
         component: _components__WEBPACK_IMPORTED_MODULE_4__["Home"]
       }), isLoggedIn && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
-        exact: true,
-        path: "/home",
+        path: "/",
         component: _components__WEBPACK_IMPORTED_MODULE_4__["HostDashboard"]
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         component: _components__WEBPACK_IMPORTED_MODULE_4__["Home"]
@@ -1301,7 +1317,7 @@ socket.on('connect', function () {
 /*!*******************************!*\
   !*** ./client/store/index.js ***!
   \*******************************/
-/*! exports provided: default, putUser, postUserParty, fetchUserParty, endUserParty, me, auth, logout, fetchParty */
+/*! exports provided: default, fetchParty, putUser, postUserParty, fetchUserParty, endUserParty, me, auth, logout */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1344,9 +1360,6 @@ var middleware = Object(redux_devtools_extension__WEBPACK_IMPORTED_MODULE_3__["c
   collapsed: true
 })));
 var store = Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(reducer, middleware);
-store.dispatch(Object(_user__WEBPACK_IMPORTED_MODULE_4__["putUser"])(1, {
-  profilePicture: 'reduxTest.jpg'
-}));
 /* harmony default export */ __webpack_exports__["default"] = (store);
 
 
@@ -1876,7 +1889,7 @@ var logout = function logout() {
       return action.user;
 
     case UPDATE_USER:
-      return action.user;
+      return _objectSpread({}, state, {}, action.user);
 
     case REMOVE_USER:
       return defaultUser;
@@ -48483,7 +48496,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

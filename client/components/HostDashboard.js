@@ -1,12 +1,18 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {fetchUserParty, postUserParty, endUserParty} from '../store/user'
+import {
+  putUser,
+  fetchUserParty,
+  postUserParty,
+  endUserParty
+} from '../store/user'
 import {fetchParty} from '../store/party'
 
 class HostDashboard extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      selectedPicture: '',
       showAccess: false
     }
   }
@@ -17,6 +23,10 @@ class HostDashboard extends React.Component {
 
   handleClick = () => {
     this.props.createNewParty(this.props.user.id)
+  }
+
+  handleSelect = event => {
+    this.setState({selectedPicture: event.target.value})
   }
 
   joinParty() {
@@ -74,36 +84,49 @@ class HostDashboard extends React.Component {
               </p>
             </div>
           ) : (
+            <p>
+              <button
+                type="button"
+                onClick={() => {
+                  this.setState({showAccess: true})
+                }}
+              >
+                Show Access Code
+              </button>
+            </p>
+          )}
+          <p>
+            <select
+              name="hostPicture"
+              id="hostPicture"
+              onChange={this.handleSelect}
+            >
+              <option value="/images/pug.png">--Change Profile Icon--</option>
+              <option value="/images/bear.png">Bear</option>
+              <option value="/images/beaver.png">Beaver</option>
+              <option value="/images/fox.png">Fox</option>
+              <option value="/images/pig.png">Pig</option>
+              <option value="/images/whale.png">Whale</option>
+            </select>
             <button
               type="button"
               onClick={() => {
-                this.setState({showAccess: true})
+                this.props.updateUserPic(user.id, {
+                  profilePicture: this.state.selectedPicture
+                })
               }}
             >
-              Show Access Code
+              set icon
             </button>
-          )}
-
-          <select
-            name="hostPicture"
-            id="hostPicture"
-            onChange={this.handleSelect}
-          >
-            <option value="/images/pug.png">
-              --Please Choose A Profile Icon--
-            </option>
-            <option value="/images/bear.png">Bear</option>
-            <option value="/images/beaver.png">Beaver</option>
-            <option value="/images/fox.png">Fox</option>
-            <option value="/images/pig.png">Pig</option>
-            <option value="/images/whale.png">Whale</option>
-          </select>
-          <button type="button" onClick={() => this.joinParty()}>
-            Join Party
-          </button>
-          <button type="button" onClick={() => this.endParty(user.id)}>
-            End Party
-          </button>
+          </p>
+          <p>
+            <button type="button" onClick={() => this.joinParty()}>
+              Join Party
+            </button>
+            <button type="button" onClick={() => this.endParty(user.id)}>
+              End Party
+            </button>
+          </p>
         </div>
       )
     }
@@ -116,6 +139,9 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
+  updateUserPic: (userId, updates) => {
+    dispatch(putUser(userId, updates))
+  },
   getUserPartyFromStore: userId => {
     dispatch(fetchUserParty(userId))
   },
