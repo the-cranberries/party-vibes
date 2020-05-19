@@ -1,10 +1,14 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {fetchUserParty} from '../store/user'
+import {fetchUserParty, postUserParty} from '../store/user'
 
 class HostDashboard extends React.Component {
   componentDidMount() {
     this.props.getUserPartyFromStore(this.props.user.id)
+  }
+
+  handleClick = () => {
+    this.props.createNewParty(this.props.user.id)
   }
 
   render() {
@@ -20,7 +24,9 @@ class HostDashboard extends React.Component {
             <h1>Welcome {user.name}</h1>
           </div>
           <div>
-            <button type="button">New Party</button>
+            <button type="button" onClick={() => this.handleClick()}>
+              New Party
+            </button>
           </div>
         </div>
       )
@@ -43,6 +49,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   getUserPartyFromStore: userId => {
     dispatch(fetchUserParty(userId))
+  },
+  createNewParty: userId => {
+    dispatch(postUserParty(userId))
   }
 })
 

@@ -2,7 +2,7 @@ import {createStore, combineReducers, applyMiddleware} from 'redux'
 import {createLogger} from 'redux-logger'
 import thunkMiddleware from 'redux-thunk'
 import {composeWithDevTools} from 'redux-devtools-extension'
-import user, {postUserParty} from './user'
+import user from './user'
 import party from './party'
 
 const reducer = combineReducers({user, party})
@@ -10,8 +10,6 @@ const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
 )
 const store = createStore(reducer, middleware)
-
-store.dispatch(postUserParty(2))
 
 export default store
 export * from './user'
