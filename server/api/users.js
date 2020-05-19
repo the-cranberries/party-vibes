@@ -41,14 +41,16 @@ router.post('/:userId/parties', async (req, res, next) => {
     const user = await User.findByPk(userId)
 
     if (user) {
-      const party = await Party.create({accessCode: 'testCode'})
-      const userParty = await PartyUser.create({
-        partyId: party.id,
-        userId: user.id
-      })
+      const party = await Party.create()
+      // const userParty = await PartyUser.create({
+      //   partyId: party.id,
+      //   userId: user.id
+      // })
       // console.log('userParty: ', userParty)
+      console.log('party: ', party)
 
-      res.status(200).json(userParty)
+      // res.status(200).json(userParty)
+      res.status(200)
     } else {
       res.status(401).send('user not found')
     }
