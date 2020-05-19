@@ -165,3 +165,7 @@ select:focus {
   display: inline-block;
   max-width: 80%;
 }
+
+.host_dashboard {
+  color: white;
+}

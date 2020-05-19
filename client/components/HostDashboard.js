@@ -4,8 +4,7 @@ import {fetchUserParty} from '../store/user'
 
 class HostDashboard extends React.Component {
   componentDidMount() {
-    //fetch party from DB via a redux thunk
-    this.props.dispatchFetchUserParty(this.props.user.id)
+    this.props.getUserPartyFromStore(this.props.user.id)
   }
 
   render() {
@@ -14,9 +13,9 @@ class HostDashboard extends React.Component {
     console.log('party: ', party)
     console.log('user', user)
 
-    if (!user.userParty) {
+    if (!user.userParty || user.userParty.length === 0) {
       return (
-        <div>
+        <div className="host_dashboard">
           <div>
             <h1>Welcome {user.name}</h1>
           </div>
@@ -27,8 +26,12 @@ class HostDashboard extends React.Component {
       )
     } else {
       return (
-        <div>
+        <div className="host_dashboard">
+          <h1>Welcome {user.name}</h1>
           <p>View Coming Soon!</p>
+          <div>
+            <button type="button">End Party</button>
+          </div>
         </div>
       )
     }
@@ -41,7 +44,9 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  dispatchFetchUserParty: userId => dispatch(fetchUserParty(userId))
+  getUserPartyFromStore: userId => {
+    dispatch(fetchUserParty(userId))
+  }
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(HostDashboard)

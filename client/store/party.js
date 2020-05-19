@@ -2,10 +2,16 @@ import axios from 'axios'
 import history from '../history'
 
 const GET_PARTY = 'GET PARTY'
+const END_PARTY = 'END PARTY'
 
 const getParty = party => ({
   type: GET_PARTY,
   party
+})
+
+const endParty = partyId => ({
+  type: END_PARTY,
+  partyId
 })
 
 export const fetchParty = data => async dispatch => {
@@ -25,6 +31,15 @@ export const fetchParty = data => async dispatch => {
     history.push(`/parties/${accessCode}`)
   } catch (dispatchOrHistoryErr) {
     console.error(dispatchOrHistoryErr)
+  }
+}
+
+export const deleteParty = userId => async dispatch => {
+  try {
+    const {data} = await axios.post(`api/users/${userId}/parties`)
+    dispatch(endParty(data))
+  } catch (err) {
+    console.error(err)
   }
 }
 
