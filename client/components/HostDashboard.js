@@ -44,12 +44,10 @@ class HostDashboard extends React.Component {
       return (
         <div className="host_dashboard">
           <h1>Welcome {user.name}</h1>
-          <p>Access Code: {user.userParty[0].accessCode}</p>
+          <p>Access Code: {user.userParty.accessCode}</p>
           <button
             type="button"
-            onClick={() =>
-              this.joinParty(user.userParty[0].accessCode, user.name)
-            }
+            onClick={() => this.joinParty(user.userParty.accessCode, user.name)}
           >
             Join Party
           </button>
