@@ -594,20 +594,19 @@ function (_React$Component) {
         }, "Show Access Code"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
           name: "hostPicture",
           id: "hostPicture",
-          value: this.state.guestPicture,
           onChange: this.handleSelect
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-          value: "pug"
+          value: "/images/pug.png"
         }, "--Please Choose A Profile Icon--"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-          value: "bear"
+          value: "/images/bear.png"
         }, "Bear"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-          value: "beaver"
+          value: "/images/beaver.png"
         }, "Beaver"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-          value: "fox"
+          value: "/images/fox.png"
         }, "Fox"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-          value: "pig"
+          value: "/images/pig.png"
         }, "Pig"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-          value: "whale"
+          value: "/images/whale.png"
         }, "Whale")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           type: "button",
           onClick: function onClick() {
@@ -48226,7 +48225,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
