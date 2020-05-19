@@ -1301,7 +1301,7 @@ socket.on('connect', function () {
 /*!*******************************!*\
   !*** ./client/store/index.js ***!
   \*******************************/
-/*! exports provided: default, fetchParty, postUserParty, fetchUserParty, endUserParty, me, auth, logout */
+/*! exports provided: default, putUser, postUserParty, fetchUserParty, endUserParty, me, auth, logout, fetchParty */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1314,6 +1314,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux_devtools_extension__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(redux_devtools_extension__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _user__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./user */ "./client/store/user.js");
 /* harmony import */ var _party__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./party */ "./client/store/party.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "putUser", function() { return _user__WEBPACK_IMPORTED_MODULE_4__["putUser"]; });
+
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "postUserParty", function() { return _user__WEBPACK_IMPORTED_MODULE_4__["postUserParty"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "fetchUserParty", function() { return _user__WEBPACK_IMPORTED_MODULE_4__["fetchUserParty"]; });
@@ -1342,6 +1344,9 @@ var middleware = Object(redux_devtools_extension__WEBPACK_IMPORTED_MODULE_3__["c
   collapsed: true
 })));
 var store = Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(reducer, middleware);
+store.dispatch(Object(_user__WEBPACK_IMPORTED_MODULE_4__["putUser"])(1, {
+  profilePicture: 'reduxTest.jpg'
+}));
 /* harmony default export */ __webpack_exports__["default"] = (store);
 
 
@@ -1454,11 +1459,12 @@ function partyReducer() {
 /*!******************************!*\
   !*** ./client/store/user.js ***!
   \******************************/
-/*! exports provided: postUserParty, fetchUserParty, endUserParty, me, auth, logout, default */
+/*! exports provided: putUser, postUserParty, fetchUserParty, endUserParty, me, auth, logout, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "putUser", function() { return putUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "postUserParty", function() { return postUserParty; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchUserParty", function() { return fetchUserParty; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "endUserParty", function() { return endUserParty; });
@@ -1507,8 +1513,14 @@ var getUser = function getUser(user) {
     type: GET_USER,
     user: user
   };
-}; // const updateUser = user => ()
+};
 
+var updateUser = function updateUser(user) {
+  return {
+    type: UPDATE_USER,
+    user: user
+  };
+};
 
 var removeUser = function removeUser() {
   return {
@@ -1540,39 +1552,42 @@ var deleteParty = function deleteParty() {
  */
 
 
-var postUserParty = function postUserParty(userId) {
+var putUser = function putUser(userId, updates) {
   return (
     /*#__PURE__*/
     function () {
       var _ref = _asyncToGenerator(
       /*#__PURE__*/
       regeneratorRuntime.mark(function _callee(dispatch) {
-        var res;
+        var profilePicture, res;
         return regeneratorRuntime.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _context.prev = 0;
-                _context.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/users/".concat(userId, "/parties"));
+                profilePicture = updates.profilePicture;
+                _context.prev = 1;
+                _context.next = 4;
+                return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/users/".concat(userId), {
+                  profilePicture: profilePicture
+                });
 
-              case 3:
+              case 4:
                 res = _context.sent;
-                dispatch(makeUserParty(res.data));
-                _context.next = 10;
+                dispatch(updateUser(res.data));
+                _context.next = 11;
                 break;
 
-              case 7:
-                _context.prev = 7;
-                _context.t0 = _context["catch"](0);
+              case 8:
+                _context.prev = 8;
+                _context.t0 = _context["catch"](1);
                 console.error(_context.t0.message);
 
-              case 10:
+              case 11:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 7]]);
+        }, _callee, null, [[1, 8]]);
       }));
 
       return function (_x) {
@@ -1581,41 +1596,39 @@ var postUserParty = function postUserParty(userId) {
     }()
   );
 };
-var fetchUserParty = function fetchUserParty(userId) {
+var postUserParty = function postUserParty(userId) {
   return (
     /*#__PURE__*/
     function () {
       var _ref2 = _asyncToGenerator(
       /*#__PURE__*/
       regeneratorRuntime.mark(function _callee2(dispatch) {
-        var _ref3, data;
-
+        var res;
         return regeneratorRuntime.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/users/".concat(userId, "/parties"));
+                return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/users/".concat(userId, "/parties"));
 
               case 3:
-                _ref3 = _context2.sent;
-                data = _ref3.data;
-                dispatch(getUserParty(data[0]));
-                _context2.next = 11;
+                res = _context2.sent;
+                dispatch(makeUserParty(res.data));
+                _context2.next = 10;
                 break;
 
-              case 8:
-                _context2.prev = 8;
+              case 7:
+                _context2.prev = 7;
                 _context2.t0 = _context2["catch"](0);
-                console.error(_context2.t0);
+                console.error(_context2.t0.message);
 
-              case 11:
+              case 10:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[0, 8]]);
+        }, _callee2, null, [[0, 7]]);
       }));
 
       return function (_x2) {
@@ -1624,54 +1637,50 @@ var fetchUserParty = function fetchUserParty(userId) {
     }()
   );
 };
-var endUserParty = function endUserParty(userId) {
+var fetchUserParty = function fetchUserParty(userId) {
   return (
     /*#__PURE__*/
     function () {
-      var _ref4 = _asyncToGenerator(
+      var _ref3 = _asyncToGenerator(
       /*#__PURE__*/
       regeneratorRuntime.mark(function _callee3(dispatch) {
-        var res;
+        var _ref4, data;
+
         return regeneratorRuntime.wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("api/users/".concat(userId, "/parties"));
+                return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/users/".concat(userId, "/parties"));
 
               case 3:
-                res = _context3.sent;
-
-                if (res.status === 204) {
-                  dispatch(deleteParty());
-                } else {
-                  console.log('delete unsuccessful');
-                }
-
-                _context3.next = 10;
+                _ref4 = _context3.sent;
+                data = _ref4.data;
+                dispatch(getUserParty(data[0]));
+                _context3.next = 11;
                 break;
 
-              case 7:
-                _context3.prev = 7;
+              case 8:
+                _context3.prev = 8;
                 _context3.t0 = _context3["catch"](0);
                 console.error(_context3.t0);
 
-              case 10:
+              case 11:
               case "end":
                 return _context3.stop();
             }
           }
-        }, _callee3, null, [[0, 7]]);
+        }, _callee3, null, [[0, 8]]);
       }));
 
       return function (_x3) {
-        return _ref4.apply(this, arguments);
+        return _ref3.apply(this, arguments);
       };
     }()
   );
 };
-var me = function me() {
+var endUserParty = function endUserParty(userId) {
   return (
     /*#__PURE__*/
     function () {
@@ -1685,11 +1694,17 @@ var me = function me() {
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/auth/me');
+                return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("api/users/".concat(userId, "/parties"));
 
               case 3:
                 res = _context4.sent;
-                dispatch(getUser(res.data || defaultUser));
+
+                if (res.status === 204) {
+                  dispatch(deleteParty());
+                } else {
+                  console.log('delete unsuccessful');
+                }
+
                 _context4.next = 10;
                 break;
 
@@ -1712,7 +1727,7 @@ var me = function me() {
     }()
   );
 };
-var auth = function auth(email, password, method, name, profilePicture) {
+var me = function me() {
   return (
     /*#__PURE__*/
     function () {
@@ -1726,6 +1741,47 @@ var auth = function auth(email, password, method, name, profilePicture) {
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/auth/me');
+
+              case 3:
+                res = _context5.sent;
+                dispatch(getUser(res.data || defaultUser));
+                _context5.next = 10;
+                break;
+
+              case 7:
+                _context5.prev = 7;
+                _context5.t0 = _context5["catch"](0);
+                console.error(_context5.t0);
+
+              case 10:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5, null, [[0, 7]]);
+      }));
+
+      return function (_x5) {
+        return _ref6.apply(this, arguments);
+      };
+    }()
+  );
+};
+var auth = function auth(email, password, method, name, profilePicture) {
+  return (
+    /*#__PURE__*/
+    function () {
+      var _ref7 = _asyncToGenerator(
+      /*#__PURE__*/
+      regeneratorRuntime.mark(function _callee6(dispatch) {
+        var res;
+        return regeneratorRuntime.wrap(function _callee6$(_context6) {
+          while (1) {
+            switch (_context6.prev = _context6.next) {
+              case 0:
+                _context6.prev = 0;
+                _context6.next = 3;
                 return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/auth/".concat(method), {
                   email: email,
                   password: password,
@@ -1734,15 +1790,15 @@ var auth = function auth(email, password, method, name, profilePicture) {
                 });
 
               case 3:
-                res = _context5.sent;
-                _context5.next = 9;
+                res = _context6.sent;
+                _context6.next = 9;
                 break;
 
               case 6:
-                _context5.prev = 6;
-                _context5.t0 = _context5["catch"](0);
-                return _context5.abrupt("return", dispatch(getUser({
-                  error: _context5.t0
+                _context6.prev = 6;
+                _context6.t0 = _context6["catch"](0);
+                return _context6.abrupt("return", dispatch(getUser({
+                  error: _context6.t0
                 })));
 
               case 9:
@@ -1755,14 +1811,14 @@ var auth = function auth(email, password, method, name, profilePicture) {
 
               case 10:
               case "end":
-                return _context5.stop();
+                return _context6.stop();
             }
           }
-        }, _callee5, null, [[0, 6]]);
+        }, _callee6, null, [[0, 6]]);
       }));
 
-      return function (_x5) {
-        return _ref6.apply(this, arguments);
+      return function (_x6) {
+        return _ref7.apply(this, arguments);
       };
     }()
   );
@@ -1771,38 +1827,38 @@ var logout = function logout() {
   return (
     /*#__PURE__*/
     function () {
-      var _ref7 = _asyncToGenerator(
+      var _ref8 = _asyncToGenerator(
       /*#__PURE__*/
-      regeneratorRuntime.mark(function _callee6(dispatch) {
-        return regeneratorRuntime.wrap(function _callee6$(_context6) {
+      regeneratorRuntime.mark(function _callee7(dispatch) {
+        return regeneratorRuntime.wrap(function _callee7$(_context7) {
           while (1) {
-            switch (_context6.prev = _context6.next) {
+            switch (_context7.prev = _context7.next) {
               case 0:
-                _context6.prev = 0;
-                _context6.next = 3;
+                _context7.prev = 0;
+                _context7.next = 3;
                 return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/auth/logout');
 
               case 3:
                 dispatch(removeUser());
                 _history__WEBPACK_IMPORTED_MODULE_1__["default"].push('/login');
-                _context6.next = 10;
+                _context7.next = 10;
                 break;
 
               case 7:
-                _context6.prev = 7;
-                _context6.t0 = _context6["catch"](0);
-                console.error(_context6.t0);
+                _context7.prev = 7;
+                _context7.t0 = _context7["catch"](0);
+                console.error(_context7.t0);
 
               case 10:
               case "end":
-                return _context6.stop();
+                return _context7.stop();
             }
           }
-        }, _callee6, null, [[0, 7]]);
+        }, _callee7, null, [[0, 7]]);
       }));
 
-      return function (_x6) {
-        return _ref7.apply(this, arguments);
+      return function (_x7) {
+        return _ref8.apply(this, arguments);
       };
     }()
   );
@@ -1819,6 +1875,12 @@ var logout = function logout() {
     case GET_USER:
       return action.user;
 
+    case UPDATE_USER:
+      return action.user;
+
+    case REMOVE_USER:
+      return defaultUser;
+
     case MAKE_USER_PARTY:
       return _objectSpread({}, state, {
         userParty: action.party
@@ -1833,9 +1895,6 @@ var logout = function logout() {
       return _objectSpread({}, state, {
         userParty: null
       });
-
-    case REMOVE_USER:
-      return defaultUser;
 
     default:
       return state;
@@ -48424,7 +48483,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

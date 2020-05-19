@@ -21,7 +21,7 @@ const defaultUser = {userParty: null}
  * ACTION CREATORS
  */
 const getUser = user => ({type: GET_USER, user})
-// const updateUser = user => ()
+const updateUser = user => ({type: UPDATE_USER, user})
 const removeUser = () => ({type: REMOVE_USER})
 
 const makeUserParty = party => ({type: MAKE_USER_PARTY, party})
@@ -31,6 +31,17 @@ const deleteParty = () => ({type: DELETE_USER_PARTY})
 /**
  * THUNK CREATORS
  */
+export const putUser = (userId, updates) => async dispatch => {
+  const {profilePicture} = updates
+
+  try {
+    const res = await axios.put(`/api/users/${userId}`, {profilePicture})
+    dispatch(updateUser(res.data))
+  } catch (err) {
+    console.error(err.message)
+  }
+}
+
 export const postUserParty = userId => async dispatch => {
   try {
     const res = await axios.post(`/api/users/${userId}/parties`)
@@ -116,14 +127,16 @@ export default function(state = defaultUser, action) {
   switch (action.type) {
     case GET_USER:
       return action.user
+    case UPDATE_USER:
+      return action.user
+    case REMOVE_USER:
+      return defaultUser
     case MAKE_USER_PARTY:
       return {...state, userParty: action.party}
     case GET_USER_PARTY:
       return {...state, userParty: action.party}
     case DELETE_USER_PARTY:
       return {...state, userParty: null}
-    case REMOVE_USER:
-      return defaultUser
     default:
       return state
   }
