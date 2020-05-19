@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {Party} = require('../db/models')
+const {User, Party} = require('../db/models')
 module.exports = router
 
 //GET / api / parties /: accessCode

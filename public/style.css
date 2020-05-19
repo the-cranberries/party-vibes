@@ -167,6 +167,10 @@ select:focus {
   max-width: 80%;
 }
 
+.host_dashboard {
+  color: white;
+}
+
 .activeContainer img {
   height: 50px;
   width: 50px;
