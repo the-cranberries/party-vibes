@@ -8,6 +8,7 @@ const GET_USER = 'GET_USER'
 const MAKE_USER_PARTY = 'MAKE_USER_PARTY'
 const GET_USER_PARTY = 'GET_USER_PARTY'
 const REMOVE_USER = 'REMOVE_USER'
+const DELETE_USER_PARTY = 'DELETE_USER_PARTY'
 
 /**
  * INITIAL STATE
@@ -21,6 +22,7 @@ const getUser = user => ({type: GET_USER, user})
 const makeUserParty = party => ({type: MAKE_USER_PARTY, party})
 const getUserParty = party => ({type: GET_USER_PARTY, party})
 const removeUser = () => ({type: REMOVE_USER})
+const deleteParty = party => ({type: DELETE_USER_PARTY, party})
 
 /**
  * THUNK CREATORS
@@ -38,6 +40,15 @@ export const fetchUserParty = userId => async dispatch => {
   try {
     const res = await axios.get(`/api/users/${userId}/parties`)
     dispatch(getUserParty(res.data))
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+export const endUserParty = userId => async dispatch => {
+  try {
+    const {data} = await axios.delete(`api/users/${userId}/parties`)
+    dispatch(deleteParty(data))
   } catch (err) {
     console.error(err)
   }
@@ -99,6 +110,8 @@ export default function(state = defaultUser, action) {
     case MAKE_USER_PARTY:
       return {...state, userParty: action.party}
     case GET_USER_PARTY:
+      return {...state, userParty: action.party}
+    case DELETE_USER_PARTY:
       return {...state, userParty: action.party}
     case REMOVE_USER:
       return defaultUser

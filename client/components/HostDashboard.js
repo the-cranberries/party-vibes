@@ -1,10 +1,19 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {fetchUserParty} from '../store/user'
+import {fetchUserParty, endUserParty} from '../store/user'
+import {fetchParty} from '../store/party'
 
 class HostDashboard extends React.Component {
   componentDidMount() {
     this.props.getUserPartyFromStore(this.props.user.id)
+  }
+
+  joinParty(accessCode, name) {
+    this.props.fetchParty({accessCode, name})
+  }
+
+  endParty(userId) {
+    this.props.clearPartyFromStore(userId)
   }
 
   render() {
@@ -28,10 +37,18 @@ class HostDashboard extends React.Component {
       return (
         <div className="host_dashboard">
           <h1>Welcome {user.name}</h1>
-          <p>View Coming Soon!</p>
-          <div>
-            <button type="button">End Party</button>
-          </div>
+          <p>Access Code: {user.userParty[0].accessCode}</p>
+          <button
+            type="button"
+            onClick={() =>
+              this.joinParty(user.userParty[0].accessCode, user.name)
+            }
+          >
+            Join Party
+          </button>
+          <button type="button" onClick={() => this.endParty(user.id)}>
+            End Party
+          </button>
         </div>
       )
     }
@@ -46,6 +63,12 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   getUserPartyFromStore: userId => {
     dispatch(fetchUserParty(userId))
+  },
+  clearPartyFromStore: userId => {
+    dispatch(endUserParty(userId))
+  },
+  fetchParty: accessCode => {
+    dispatch(fetchParty(accessCode))
   }
 })
 
