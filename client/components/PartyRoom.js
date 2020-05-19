@@ -14,7 +14,7 @@ const Room = props => {
   const name = sessionStorage.name
   const key = props.match.params
   const room = Object.values(key)[0]
-  const picture = `${pic}.png`
+  const picture = `${pic}`
   sessionStorage.setItem('party', room)
 
   socket.emit('join', {name, room, picture}, error => {
