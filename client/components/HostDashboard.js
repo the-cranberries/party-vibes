@@ -69,6 +69,34 @@ class HostDashboard extends React.Component {
       return (
         <div className="host_dashboard">
           <h1>Welcome {user.name}</h1>
+          <img src={user.profilePicture} width="100" height="100" />
+          <p>
+            <select
+              name="hostPicture"
+              id="hostPicture"
+              onChange={this.handleSelect}
+            >
+              <option value={user.profilePicture}>
+                --Change Profile Icon--
+              </option>
+              <option value="/images/pug.png">Pug</option>
+              <option value="/images/bear.png">Bear</option>
+              <option value="/images/beaver.png">Beaver</option>
+              <option value="/images/fox.png">Fox</option>
+              <option value="/images/pig.png">Pig</option>
+              <option value="/images/whale.png">Whale</option>
+            </select>
+            <button
+              type="button"
+              onClick={() => {
+                this.props.updateUserPic(user.id, {
+                  profilePicture: this.state.selectedPicture
+                })
+              }}
+            >
+              save changes
+            </button>
+          </p>
           {this.state.showAccess ? (
             <div>
               <p>
@@ -95,30 +123,6 @@ class HostDashboard extends React.Component {
               </button>
             </p>
           )}
-          <p>
-            <select
-              name="hostPicture"
-              id="hostPicture"
-              onChange={this.handleSelect}
-            >
-              <option value="/images/pug.png">--Change Profile Icon--</option>
-              <option value="/images/bear.png">Bear</option>
-              <option value="/images/beaver.png">Beaver</option>
-              <option value="/images/fox.png">Fox</option>
-              <option value="/images/pig.png">Pig</option>
-              <option value="/images/whale.png">Whale</option>
-            </select>
-            <button
-              type="button"
-              onClick={() => {
-                this.props.updateUserPic(user.id, {
-                  profilePicture: this.state.selectedPicture
-                })
-              }}
-            >
-              set icon
-            </button>
-          </p>
           <p>
             <button type="button" onClick={() => this.joinParty()}>
               Join Party

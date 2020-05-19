@@ -584,27 +584,19 @@ function (_React$Component) {
       } else {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "host_dashboard"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Welcome ", user.name), this.state.showAccess ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, user.userParty.accessCode, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          type: "button",
-          onClick: function onClick() {
-            _this2.setState({
-              showAccess: false
-            });
-          }
-        }, "hide"))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          type: "button",
-          onClick: function onClick() {
-            _this2.setState({
-              showAccess: true
-            });
-          }
-        }, "Show Access Code")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Welcome ", user.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: user.profilePicture,
+          width: "100",
+          height: "100"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
           name: "hostPicture",
           id: "hostPicture",
           onChange: this.handleSelect
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-          value: "/images/pug.png"
+          value: user.profilePicture
         }, "--Change Profile Icon--"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+          value: "/images/pug.png"
+        }, "Pug"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
           value: "/images/bear.png"
         }, "Bear"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
           value: "/images/beaver.png"
@@ -621,7 +613,21 @@ function (_React$Component) {
               profilePicture: _this2.state.selectedPicture
             });
           }
-        }, "set icon")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        }, "save changes")), this.state.showAccess ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, user.userParty.accessCode, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          type: "button",
+          onClick: function onClick() {
+            _this2.setState({
+              showAccess: false
+            });
+          }
+        }, "hide"))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          type: "button",
+          onClick: function onClick() {
+            _this2.setState({
+              showAccess: true
+            });
+          }
+        }, "Show Access Code")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           type: "button",
           onClick: function onClick() {
             return _this2.joinParty();
@@ -1317,7 +1323,7 @@ socket.on('connect', function () {
 /*!*******************************!*\
   !*** ./client/store/index.js ***!
   \*******************************/
-/*! exports provided: default, fetchParty, putUser, postUserParty, fetchUserParty, endUserParty, me, auth, logout */
+/*! exports provided: default, putUser, postUserParty, fetchUserParty, endUserParty, me, auth, logout, fetchParty */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
