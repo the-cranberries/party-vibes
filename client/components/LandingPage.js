@@ -8,13 +8,13 @@ const Home = () => {
     <div>
       <main>
         <Link className="linkBtn" to="/signup">
-          Become a Host
+          Sign Up
         </Link>
         <Link className="linkBtn" to="/login">
-          Login as a Host
+          Login
         </Link>
         <Link className="linkBtn" to="/guestlogin">
-          Join as a Guest
+          Join Party
         </Link>
       </main>
     </div>
