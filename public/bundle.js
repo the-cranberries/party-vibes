@@ -701,7 +701,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _socket__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../socket */ "./client/socket.js");
 /* harmony import */ var _Chat__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Chat */ "./client/components/Chat.js");
 /* harmony import */ var _UserList__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./UserList */ "./client/components/UserList.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _store_user__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../store/user */ "./client/store/user.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
@@ -713,17 +715,20 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
- // import session from 'express-session'
+
+
 
 
 
 var Room = function Room(props) {
   console.log('Room PROPS', props);
+  console.log('User name', props.user.name); //USER INFO
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
       _useState2 = _slicedToArray(_useState, 2),
       users = _useState2[0],
-      setUsers = _useState2[1];
+      setUsers = _useState2[1]; //GUEST INFO
+
 
   var pic = sessionStorage.getItem('picture');
   var name = sessionStorage.name;
@@ -765,7 +770,7 @@ var Room = function Room(props) {
       className: "joinOuterContainer"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
       className: "heading"
-    }, "Need to login before entering party"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Link"], {
+    }, "Need to login before entering party"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["Link"], {
       to: "/guestLogin"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       type: "button"
@@ -773,7 +778,7 @@ var Room = function Room(props) {
   } else {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
       className: "heading"
-    }, "Welcome to Cody's Party!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Link"], {
+    }, "Welcome to ", props.user.name, "'s Party!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["Link"], {
       to: "/"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       type: "submit",
@@ -784,9 +789,17 @@ var Room = function Room(props) {
       users: users
     })));
   }
+}; // export default Room
+
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    party: state.party,
+    user: state.user
+  };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Room); // const Room = props => {
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_5__["connect"])(mapStateToProps, null)(Room)); // const Room = props => {
 //   const [users, setUsers] = useState('')
 //   console.log('PROPS', props)
 //   window.addEventListener('beforeunload', function(e) {

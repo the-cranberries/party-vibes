@@ -2,14 +2,18 @@ import React, {useState, useEffect} from 'react'
 import socket from '../socket'
 import Chat from './Chat'
 import UserList from './UserList'
-// import session from 'express-session'
+import {fetchUserParty, postUserParty, endUserParty} from '../store/user'
+import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 
 const Room = props => {
   console.log('Room PROPS', props)
+  console.log('User name', props.user.name)
+
+  //USER INFO
 
   const [users, setUsers] = useState('')
-
+  //GUEST INFO
   const pic = sessionStorage.getItem('picture')
   const name = sessionStorage.name
   const key = props.match.params
@@ -58,7 +62,7 @@ const Room = props => {
       <div>
         <div>
           <main>
-            <h1 className="heading">Welcome to Cody's Party!</h1>
+            <h1 className="heading">Welcome to {props.user.name}'s Party!</h1>
             <Link to="/">
               <button type="submit" onClick={handleSubmit}>
                 Sign Out
@@ -77,7 +81,14 @@ const Room = props => {
   }
 }
 
-export default Room
+// export default Room
+
+const mapStateToProps = state => ({
+  party: state.party,
+  user: state.user
+})
+
+export default connect(mapStateToProps, null)(Room)
 
 // const Room = props => {
 //   const [users, setUsers] = useState('')
