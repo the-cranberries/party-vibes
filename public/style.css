@@ -39,6 +39,8 @@ body {
   padding: 1em;
   border-radius: 2px;
   position: relative;
+  width: 40vw;
+  min-width: 300px;
 }
 
 /* .joinInnerContainer {
@@ -317,7 +319,7 @@ body {
 }
 
 .vertical-center {
-  min-height: 70%;
+  min-height: 100%;
   min-height: 100vh;
   display: flex;
   align-items: center;
