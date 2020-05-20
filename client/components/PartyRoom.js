@@ -10,6 +10,7 @@ const Room = props => {
   console.log('Room PROPS', props.user)
 
   const [users, setUsers] = useState('')
+  const [isPartyGoing, setParty] = useState('')
 
   const pic = sessionStorage.getItem('picture')
   const name = sessionStorage.name
@@ -43,6 +44,21 @@ const Room = props => {
 
   const handleReload = () => {
     window.location.reload()
+  }
+
+  const endParty = () => {
+    // eslint-disable-next-line no-alert
+    if (confirm('Are you sure you want to end party for all?')) {
+      console.log('hi')
+
+      socket.emit('END_THIS_PARTY', {room})
+      //Guest Exp
+      //broadcast to everyone "host has ended the party button: return to home or sign out"
+
+      //Host Exp
+      //Delete and clean party from database
+      //The host back to dashboard
+    }
   }
 
   if (sessionStorage.length <= 1) {
@@ -80,10 +96,7 @@ const Room = props => {
                 </h1>
               </div>
               {isHost ? (
-                <button
-                  type="button"
-                  onClick={() => this.endParty(props.user.id)}
-                >
+                <button type="button" onClick={endParty}>
                   End Party
                 </button>
               ) : (

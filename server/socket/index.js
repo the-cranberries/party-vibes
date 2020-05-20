@@ -8,6 +8,10 @@ module.exports = io => {
       io.emit('RECEIVE_MESSAGE', data)
     })
 
+    socket.on('END_PARTY', function(data) {
+      io.emit('END_THIS_PARTY', data)
+    })
+
     socket.on('join', ({name, room, picture}, callback) => {
       const {error, user} = addUser({id: socket.id, name, room, picture})
 
