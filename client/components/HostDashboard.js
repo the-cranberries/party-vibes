@@ -83,10 +83,11 @@ class HostDashboard extends React.Component {
     } else {
       return (
         <div className="host_dashboard">
-          <h1>Welcome {user.name}</h1>
+          <h1 className="text-center">Welcome {user.name}</h1>
           <img src={user.profilePicture} width="100" height="100" />
           <p>
             <select
+              className="form-control"
               name="hostPicture"
               id="hostPicture"
               onChange={this.handleSelect}
@@ -102,6 +103,7 @@ class HostDashboard extends React.Component {
               <option value="/images/whale.png">Whale</option>
             </select>
             <button
+              className="btn aqua-btn"
               type="button"
               onClick={() => {
                 this.props.updateUserPic(user.id, {

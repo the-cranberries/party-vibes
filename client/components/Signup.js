@@ -22,6 +22,7 @@ const SignupForm = props => {
               className="form-control col-sm-9"
               name="hostName"
               type="text"
+              required
             />
           </div>
           <br />
@@ -29,7 +30,12 @@ const SignupForm = props => {
             <label className="col-sm-3" htmlFor="email">
               <span>Email</span>
             </label>
-            <input className="form-control col-sm-9" name="email" type="text" />
+            <input
+              className="form-control col-sm-9"
+              name="email"
+              type="text"
+              required
+            />
           </div>
           <br />
           <div className="row form-width mx-auto">
@@ -40,6 +46,7 @@ const SignupForm = props => {
               className="form-control col-sm-9"
               name="password"
               type="password"
+              required
             />
           </div>
           <br />

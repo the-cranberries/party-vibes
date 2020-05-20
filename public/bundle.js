@@ -611,11 +611,14 @@ function (_React$Component) {
       } else {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "host_dashboard"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Welcome ", user.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+          className: "text-center"
+        }, "Welcome ", user.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           src: user.profilePicture,
           width: "100",
           height: "100"
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+          className: "form-control",
           name: "hostPicture",
           id: "hostPicture",
           onChange: this.handleSelect
@@ -634,6 +637,7 @@ function (_React$Component) {
         }, "Pig"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
           value: "/images/whale.png"
         }, "Whale")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "btn aqua-btn",
           type: "button",
           onClick: function onClick() {
             _this2.props.updateUserPic(user.id, {
@@ -1115,7 +1119,8 @@ var SignupForm = function SignupForm(props) {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Name")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     className: "form-control col-sm-9",
     name: "hostName",
-    type: "text"
+    type: "text",
+    required: true
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row form-width mx-auto"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
@@ -1124,7 +1129,8 @@ var SignupForm = function SignupForm(props) {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Email")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     className: "form-control col-sm-9",
     name: "email",
-    type: "text"
+    type: "text",
+    required: true
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row form-width mx-auto"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
@@ -1133,7 +1139,8 @@ var SignupForm = function SignupForm(props) {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Password")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     className: "form-control col-sm-9",
     name: "password",
-    type: "password"
+    type: "password",
+    required: true
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -48646,7 +48653,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
