@@ -56,112 +56,137 @@ class HostDashboard extends React.Component {
 
     if (!user.userParty) {
       return (
-        <div className="host_dashboard">
+        <div className="host_dashboard joinOuterContainer">
           <div className="">
             <h1 className="text-center">Welcome {user.name}</h1>
           </div>
-          <div>
-            <button
-              className="btn aqua-btn"
-              type="button"
-              onClick={() => this.createParty()}
-            >
-              New Party
-            </button>
-          </div>
-          <div>
-            <button
-              className="btn aqua-btn"
-              type="button"
-              onClick={handleClick}
-            >
-              Log Out
-            </button>
+          <div className="row text-center margin-space">
+            <div className="col">
+              <button
+                className="btn aqua-btn"
+                type="button"
+                onClick={() => this.createParty()}
+              >
+                New Party
+              </button>
+            </div>
+            <div className="col">
+              <button
+                className="btn aqua-btn"
+                type="button"
+                onClick={handleClick}
+              >
+                Log Out
+              </button>
+            </div>
           </div>
         </div>
       )
     } else {
       return (
-        <div className="host_dashboard">
+        <div className="host_dashboard joinOuterContainer">
           <h1 className="text-center">Welcome {user.name}</h1>
-          <img src={user.profilePicture} width="100" height="100" />
-          <p>
-            <select
-              className="form-control"
-              name="hostPicture"
-              id="hostPicture"
-              onChange={this.handleSelect}
-            >
-              <option value={user.profilePicture}>
-                --Change Profile Icon--
-              </option>
-              <option value="/images/pug.png">Pug</option>
-              <option value="/images/bear.png">Bear</option>
-              <option value="/images/beaver.png">Beaver</option>
-              <option value="/images/fox.png">Fox</option>
-              <option value="/images/pig.png">Pig</option>
-              <option value="/images/whale.png">Whale</option>
-            </select>
-            <button
-              className="btn aqua-btn"
-              type="button"
-              onClick={() => {
-                this.props.updateUserPic(user.id, {
-                  profilePicture: this.state.selectedPicture
-                })
-              }}
-            >
-              save changes
-            </button>
-          </p>
-          {this.state.showAccess ? (
-            <div>
-              <p>
-                {user.userParty.accessCode}
+          <div className="row margintop">
+            <div className="col-sm-5 text-center">
+              <img src={user.profilePicture} width="100" height="100" />
+            </div>
+            <div className="col-sm-7">
+              <div>
+                <select
+                  className="form-control"
+                  name="hostPicture"
+                  id="hostPicture"
+                  onChange={this.handleSelect}
+                >
+                  <option value={user.profilePicture}>
+                    --Change Profile Icon--
+                  </option>
+                  <option value="/images/pug.png">Pug</option>
+                  <option value="/images/bear.png">Bear</option>
+                  <option value="/images/beaver.png">Beaver</option>
+                  <option value="/images/fox.png">Fox</option>
+                  <option value="/images/pig.png">Pig</option>
+                  <option value="/images/whale.png">Whale</option>
+                </select>
+              </div>
+              <div>
+                <button
+                  className="btn aqua-btn margintop"
+                  type="button"
+                  onClick={() => {
+                    this.props.updateUserPic(user.id, {
+                      profilePicture: this.state.selectedPicture
+                    })
+                  }}
+                >
+                  Save Changes
+                </button>
+              </div>
+            </div>
+          </div>
+          {/* <br/> */}
+          <div className="">
+            {this.state.showAccess ? (
+              <div>
+                <div className="text-center margin-space">
+                  <span className="code-box">{user.userParty.accessCode}</span>
+                  <button
+                    className="btn aqua-btn"
+                    type="button"
+                    onClick={() => {
+                      this.setState({showAccess: false})
+                    }}
+                  >
+                    Hide
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <div className="text-center margin-space">
                 <button
                   className="btn aqua-btn"
                   type="button"
                   onClick={() => {
-                    this.setState({showAccess: false})
+                    this.setState({showAccess: true})
                   }}
                 >
-                  hide
+                  Show Access Code
                 </button>
-              </p>
-            </div>
-          ) : (
-            <p>
+              </div>
+            )}
+          </div>
+          {/* <br/> */}
+          <div className="row text-center margin-space2">
+            <div className="col">
               <button
                 className="btn aqua-btn"
                 type="button"
-                onClick={() => {
-                  this.setState({showAccess: true})
-                }}
+                onClick={() => this.joinParty()}
               >
-                Show Access Code
+                Join Party
               </button>
-            </p>
-          )}
-          <p>
-            <button
-              className="btn aqua-btn"
-              type="button"
-              onClick={() => this.joinParty()}
-            >
-              Join Party
-            </button>
-            <button
-              className="btn aqua-btn"
-              type="button"
-              onClick={() => this.endParty(user.id)}
-            >
-              End Party
-            </button>
-          </p>
-          <div>
-            <button type="button" onClick={handleClick}>
-              Log Out
-            </button>
+            </div>
+            <div className="col">
+              <button
+                className="btn btn-danger"
+                type="button"
+                onClick={() => this.endParty(user.id)}
+              >
+                End Party
+              </button>
+            </div>
+          </div>
+          {/* <br/> */}
+          <div className="row text-center">
+            <div className="col">
+              <button
+                className="btn aqua-btn"
+                type="button"
+                onClick={handleClick}
+              >
+                Log Out
+              </button>
+            </div>
           </div>
         </div>
       )

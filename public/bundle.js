@@ -425,7 +425,7 @@ function (_React$Component) {
           type: "text",
           onChange: this.handleChange
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
-          className: "form-control text-center",
+          className: "form-control select-width",
           name: "guestPicture",
           id: "guestPicture",
           value: this.state.guestPicture,
@@ -592,32 +592,44 @@ function (_React$Component) {
 
       if (!user.userParty) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "host_dashboard"
+          className: "host_dashboard joinOuterContainer"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: ""
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
           className: "text-center"
-        }, "Welcome ", user.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        }, "Welcome ", user.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "row text-center margin-space"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "col"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "btn aqua-btn",
           type: "button",
           onClick: function onClick() {
             return _this2.createParty();
           }
-        }, "New Party")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        }, "New Party")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "col"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "btn aqua-btn",
           type: "button",
           onClick: handleClick
-        }, "Log Out")));
+        }, "Log Out"))));
       } else {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "host_dashboard"
+          className: "host_dashboard joinOuterContainer"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
           className: "text-center"
-        }, "Welcome ", user.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        }, "Welcome ", user.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "row margintop"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "col-sm-5 text-center"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           src: user.profilePicture,
           width: "100",
           height: "100"
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "col-sm-7"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
           className: "form-control",
           name: "hostPicture",
           id: "hostPicture",
@@ -636,15 +648,21 @@ function (_React$Component) {
           value: "/images/pig.png"
         }, "Pig"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
           value: "/images/whale.png"
-        }, "Whale")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          className: "btn aqua-btn",
+        }, "Whale"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "btn aqua-btn margintop",
           type: "button",
           onClick: function onClick() {
             _this2.props.updateUserPic(user.id, {
               profilePicture: _this2.state.selectedPicture
             });
           }
-        }, "save changes")), this.state.showAccess ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, user.userParty.accessCode, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        }, "Save Changes")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: ""
+        }, this.state.showAccess ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "text-center margin-space"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "code-box"
+        }, user.userParty.accessCode), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "btn aqua-btn",
           type: "button",
           onClick: function onClick() {
@@ -652,7 +670,9 @@ function (_React$Component) {
               showAccess: false
             });
           }
-        }, "hide"))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        }, "Hide"))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "text-center margin-space"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "btn aqua-btn",
           type: "button",
           onClick: function onClick() {
@@ -660,22 +680,33 @@ function (_React$Component) {
               showAccess: true
             });
           }
-        }, "Show Access Code")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        }, "Show Access Code"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "row text-center margin-space2"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "col"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "btn aqua-btn",
           type: "button",
           onClick: function onClick() {
             return _this2.joinParty();
           }
-        }, "Join Party"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          className: "btn aqua-btn",
+        }, "Join Party")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "col"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "btn btn-danger",
           type: "button",
           onClick: function onClick() {
             return _this2.endParty(user.id);
           }
-        }, "End Party")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        }, "End Party"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "row text-center"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "col"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "btn aqua-btn",
           type: "button",
           onClick: handleClick
-        }, "Log Out")));
+        }, "Log Out"))));
       }
     }
   }]);

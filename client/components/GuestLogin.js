@@ -124,7 +124,7 @@ export class GuestLogin extends React.Component {
               </div>
               <br />
               <select
-                className="form-control text-center"
+                className="form-control select-width"
                 name="guestPicture"
                 id="guestPicture"
                 value={this.state.guestPicture}

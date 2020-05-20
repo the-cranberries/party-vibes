@@ -64,6 +64,7 @@ body {
   font-size: 2.5em;
   padding-bottom: 10px;
   border-bottom: 2px solid white;
+  margin-bottom: 18px;
   /* text-shadow: 2px 2px white; */
 }
 
@@ -82,10 +83,16 @@ body {
 .linkBtn {
   padding: 1em;
   margin: 3em;
-  background-color: #09fbd3;
-  color: darkslategray;
+  background-color: #38fbdb;
+  color: #1c1c1c;
   font-size: 1.5em;
   border-radius: 3px;
+}
+
+.linkBtn:hover {
+  text-decoration: none;
+  background-color: #2cd1b5;
+  color: #1c1c1c;
 }
 
 #errorMessage {
@@ -198,6 +205,10 @@ select:focus {
   background-color: #38fbdb;
 }
 
+.aqua-btn:hover {
+  background-color: #2cd1b5;
+}
+
 .guestVibe > .aqua-btn:hover {
   background: linear-gradient(
     124deg,
@@ -280,4 +291,28 @@ body {
 
 .aqua {
   color: #09fbd3;
+}
+
+.code-box {
+  background-color: white;
+  color: darkslategray;
+  padding: 8px 3em;
+  border-radius: 3px;
+}
+
+.select-width {
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.margintop {
+  margin-top: 16px;
+}
+
+.margin-space {
+  margin: 2em 0;
+}
+
+.margin-space2 {
+  margin: 2em 0 1.8em 0;
 }
