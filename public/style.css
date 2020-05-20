@@ -82,9 +82,9 @@ body {
 .linkBtn {
   padding: 1em;
   margin: 3em;
-  background-color: hotpink;
-  color: #09fbd3;
-  border: 2px solid;
+  background-color: #09fbd3;
+  color: darkslategray;
+  font-size: 1.5em;
   border-radius: 3px;
 }
 
