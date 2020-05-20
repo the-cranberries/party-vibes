@@ -1077,17 +1077,6 @@ var SignupForm = function SignupForm(props) {
     className: "row form-width mx-auto"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     className: "col-sm-3",
-    htmlFor: "profilePicture"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Choose a Profile Picture")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    className: "form-control col-sm-9",
-    name: "profilePicture",
-    type: "file",
-    accept: "image/*",
-    multiple: "false"
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "row form-width mx-auto"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-    className: "col-sm-3",
     htmlFor: "email"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Email")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     className: "form-control col-sm-9",

@@ -26,19 +26,6 @@ const SignupForm = props => {
           </div>
           <br />
           <div className="row form-width mx-auto">
-            <label className="col-sm-3" htmlFor="profilePicture">
-              <span>Choose a Profile Picture</span>
-            </label>
-            <input
-              className="form-control col-sm-9"
-              name="profilePicture"
-              type="file"
-              accept="image/*"
-              multiple="false"
-            />
-          </div>
-          <br />
-          <div className="row form-width mx-auto">
             <label className="col-sm-3" htmlFor="email">
               <span>Email</span>
             </label>
