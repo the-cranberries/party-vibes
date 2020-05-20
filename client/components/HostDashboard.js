@@ -82,10 +82,8 @@ class HostDashboard extends React.Component {
                   name="hostPicture"
                   id="hostPicture"
                   onChange={this.handleSelect}
+                  value={this.state.selectedPicture}
                 >
-                  <option value={user.profilePicture}>
-                    --Change Profile Icon--
-                  </option>
                   <option value="/images/pug.png">Pug</option>
                   <option value="/images/bear.png">Bear</option>
                   <option value="/images/beaver.png">Beaver</option>
@@ -99,7 +97,9 @@ class HostDashboard extends React.Component {
                     this.props.updateUserPic(user.id, {
                       profilePicture: this.state.selectedPicture
                     })
-                    this.setState({picturePreview: false})
+                    this.setState({
+                      picturePreview: false
+                    })
                   }}
                 >
                   save changes
@@ -109,15 +109,19 @@ class HostDashboard extends React.Component {
           ) : (
             <div>
               <img src={user.profilePicture} width="100" height="100" />
-
-              <button
-                type="button"
-                onClick={() => {
-                  this.setState({picturePreview: true})
-                }}
-              >
-                change picture
-              </button>
+              <p>
+                <button
+                  type="button"
+                  onClick={() => {
+                    this.setState({
+                      picturePreview: true,
+                      selectedPicture: user.profilePicture
+                    })
+                  }}
+                >
+                  change picture
+                </button>
+              </p>
             </div>
           )}
 
