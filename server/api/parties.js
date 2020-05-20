@@ -27,7 +27,7 @@ router.get('/:accessCode', async (req, res, next) => {
         accessCode: req.params.accessCode
       }
     })
-    console.log('party: ', party)
+    // console.log('party: ', party)
 
     if (!party) {
       console.log('No such code found:')
