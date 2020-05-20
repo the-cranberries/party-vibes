@@ -118,12 +118,14 @@ export class GuestLogin extends React.Component {
                 value={this.state.guestPicture}
                 onChange={this.handleSelect}
               >
-                <option value="pug">--Please Choose A Profile Icon--</option>
-                <option value="bear">Bear</option>
-                <option value="beaver">Beaver</option>
-                <option value="fox">Fox</option>
-                <option value="pig">Pig</option>
-                <option value="whale">Whale</option>
+                <option value="/images/pug.png">
+                  --Please Choose A Profile Icon--
+                </option>
+                <option value="/images/bear.png">Bear</option>
+                <option value="/images/beaver.png">Beaver</option>
+                <option value="/images/fox.png">Fox</option>
+                <option value="/images/pig.png">Pig</option>
+                <option value="/images/whale.png">Whale</option>
               </select>
               <div>
                 <button

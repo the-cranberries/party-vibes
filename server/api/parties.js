@@ -27,14 +27,16 @@ router.get('/:accessCode', async (req, res, next) => {
         accessCode: req.params.accessCode
       }
     })
+    console.log('party: ', party)
+
     if (!party) {
       console.log('No such code found:')
       res.status(401).send('Access code invalid')
     } else {
-      req.session.userName = req.body.name
-      req.session.party = req.body.accessCode
-      req.session.isGuestLogged = true
-      console.log(req.session)
+      // req.session.userName = req.body.name
+      // req.session.party = req.body.accessCode
+      // req.session.isGuestLogged = true
+      // console.log(req.session)
 
       res.json(party)
     }

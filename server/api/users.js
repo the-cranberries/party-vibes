@@ -2,7 +2,7 @@ const router = require('express').Router()
 const {User, Party, PartyUser} = require('../db/models')
 module.exports = router
 
-// GET /api/users/:userId
+// path: /api/users/:userId
 router.get('/:userId', async (req, res, next) => {
   try {
     const user = await User.findByPk(req.params.userId)
@@ -12,7 +12,21 @@ router.get('/:userId', async (req, res, next) => {
   }
 })
 
-// GET /api/users/:userId/parties
+router.put('/:userId', async (req, res, next) => {
+  const {profilePicture} = req.body
+  const {userId} = req.params
+
+  try {
+    const user = await User.findByPk(userId)
+    const updatedUser = await user.update({profilePicture})
+
+    res.status(200).send(updatedUser)
+  } catch (err) {
+    next(err)
+  }
+})
+
+// path: /api/users/:userId/parties
 router.get('/:userId/parties', async (req, res, next) => {
   try {
     const parties = await Party.findAll({
