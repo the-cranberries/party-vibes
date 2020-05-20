@@ -15,6 +15,7 @@ class HostDashboard extends React.Component {
     super(props)
     this.state = {
       selectedPicture: '',
+      picturePreview: false,
       showAccess: false
     }
   }
@@ -31,7 +32,7 @@ class HostDashboard extends React.Component {
     this.setState({selectedPicture: event.target.value})
   }
 
-  joinParty() {
+  joinParty = () => {
     const {user} = this.props
     const party = user.userParty
 
@@ -44,23 +45,18 @@ class HostDashboard extends React.Component {
     this.props.history.push(`/parties/${party.accessCode}`)
   }
 
-  endParty(userId) {
+  endParty = userId => {
     this.props.clearPartyFromStore(userId)
   }
 
   render() {
-    const {party, user, handleClick} = this.props
-
-    console.log('party: ', party)
-    console.log('user', user)
+    const {user, handleClick} = this.props
 
     if (!user.userParty) {
       return (
         <div className="vertical-center justify-content-center">
           <div className="host_dashboard joinOuterContainer">
-            <div className="">
-              <h1 className="text-center">Welcome {user.name}</h1>
-            </div>
+            <h1 className="text-center">Welcome {user.name}</h1>
             <div className="row text-center margin-space">
               <div className="col">
                 <button
@@ -89,21 +85,24 @@ class HostDashboard extends React.Component {
         <div className="vertical-center justify-content-center">
           <div className="host_dashboard joinOuterContainer">
             <h1 className="text-center">Welcome {user.name}</h1>
-            <div className="row margintop">
-              <div className="col-sm-5 text-center">
-                <img src={user.profilePicture} width="100" height="100" />
-              </div>
-              <div className="col-sm-7">
-                <div>
+
+            {this.state.picturePreview ? (
+              <div className="row margintop">
+                <div className="col-sm-5 text-center">
+                  <img
+                    src={this.state.selectedPicture}
+                    width="100"
+                    height="100"
+                  />
+                </div>
+                <div className="col-sm-7">
                   <select
                     className="form-control"
                     name="hostPicture"
                     id="hostPicture"
                     onChange={this.handleSelect}
+                    value={this.state.selectedPicture}
                   >
-                    <option value={user.profilePicture}>
-                      --Change Profile Icon--
-                    </option>
                     <option value="/images/pug.png">Pug</option>
                     <option value="/images/bear.png">Bear</option>
                     <option value="/images/beaver.png">Beaver</option>
@@ -111,14 +110,15 @@ class HostDashboard extends React.Component {
                     <option value="/images/pig.png">Pig</option>
                     <option value="/images/whale.png">Whale</option>
                   </select>
-                </div>
-                <div>
                   <button
-                    className="btn aqua-btn margintop"
+                    className="btn aqua-btn"
                     type="button"
                     onClick={() => {
                       this.props.updateUserPic(user.id, {
                         profilePicture: this.state.selectedPicture
+                      })
+                      this.setState({
+                        picturePreview: false
                       })
                     }}
                   >
@@ -126,41 +126,57 @@ class HostDashboard extends React.Component {
                   </button>
                 </div>
               </div>
-            </div>
-            {/* <br/> */}
-            <div className="">
-              {this.state.showAccess ? (
-                <div>
-                  <div className="text-center margin-space">
-                    <span className="code-box">
-                      {user.userParty.accessCode}
-                    </span>
-                    <button
-                      className="btn aqua-btn"
-                      type="button"
-                      onClick={() => {
-                        this.setState({showAccess: false})
-                      }}
-                    >
-                      Hide
-                    </button>
-                  </div>
+            ) : (
+              <div className="row margintop">
+                <div className="col-sm-5 text-center">
+                  <img src={user.profilePicture} width="100" height="100" />
                 </div>
-              ) : (
-                <div className="text-center margin-space">
+                <div className="col-sm-7">
                   <button
                     className="btn aqua-btn"
                     type="button"
                     onClick={() => {
-                      this.setState({showAccess: true})
+                      this.setState({
+                        picturePreview: true,
+                        selectedPicture: user.profilePicture
+                      })
                     }}
                   >
-                    Show Access Code
+                    Change Picture
                   </button>
                 </div>
-              )}
-            </div>
-            {/* <br/> */}
+              </div>
+              // </div>
+            )}
+
+            {this.state.showAccess ? (
+              <div>
+                <div className="text-center margin-space">
+                  <span className="code-box">{user.userParty.accessCode}</span>
+                  <button
+                    className="btn aqua-btn"
+                    type="button"
+                    onClick={() => {
+                      this.setState({showAccess: false})
+                    }}
+                  >
+                    Hide
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <div className="text-center margin-space">
+                <button
+                  className="btn aqua-btn"
+                  type="button"
+                  onClick={() => {
+                    this.setState({showAccess: true})
+                  }}
+                >
+                  Show Access Code
+                </button>
+              </div>
+            )}
             <div className="row text-center margin-space2">
               <div className="col">
                 <button
@@ -181,7 +197,6 @@ class HostDashboard extends React.Component {
                 </button>
               </div>
             </div>
-            {/* <br/> */}
             <div className="row text-center">
               <div className="col">
                 <button

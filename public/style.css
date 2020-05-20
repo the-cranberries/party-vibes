@@ -297,8 +297,9 @@ body {
 .code-box {
   background-color: white;
   color: darkslategray;
-  padding: 8px 3em;
+  padding: 7px 3em 10px;
   border-radius: 3px;
+  line-height: 0;
 }
 
 .select-width {
@@ -307,7 +308,7 @@ body {
 }
 
 .margintop {
-  margin-top: 16px;
+  margin-top: 20px;
 }
 
 .margin-space {

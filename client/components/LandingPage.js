@@ -1,9 +1,14 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
+import {connect} from 'react-redux'
 // import {Login} from './HostLogin'
 // import {Signup} from './Signup'
 
-const Home = () => {
+const Home = props => {
+  if (props.user && props.user.id) {
+    return <Redirect to="/dashboard" />
+  }
+
   return (
     <div className="vertical-center justify-content-center">
       <main className="container text-center">
@@ -29,4 +34,8 @@ const Home = () => {
   )
 }
 
-export default Home
+const mapStateToProps = state => ({
+  user: state.user
+})
+
+export default connect(mapStateToProps)(Home)

@@ -553,8 +553,24 @@ function (_React$Component) {
       });
     });
 
+    _defineProperty(_assertThisInitialized(_this), "joinParty", function () {
+      var user = _this.props.user;
+      var party = user.userParty; //store user name, img, and accessCode into session storage
+
+      sessionStorage.setItem('name', user.name);
+      sessionStorage.setItem('picture', user.profilePicture);
+      sessionStorage.setItem('accessCode', party.accessCode); //go to party room
+
+      _this.props.history.push("/parties/".concat(party.accessCode));
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "endParty", function (userId) {
+      _this.props.clearPartyFromStore(userId);
+    });
+
     _this.state = {
       selectedPicture: '',
+      picturePreview: false,
       showAccess: false
     };
     return _this;
@@ -566,44 +582,22 @@ function (_React$Component) {
       this.props.getUserPartyFromStore(this.props.user.id);
     }
   }, {
-    key: "joinParty",
-    value: function joinParty() {
-      var user = this.props.user;
-      var party = user.userParty; //store user name, img, and accessCode into session storage
-
-      sessionStorage.setItem('name', user.name);
-      sessionStorage.setItem('picture', user.profilePicture);
-      sessionStorage.setItem('accessCode', party.accessCode); //go to party room
-
-      this.props.history.push("/parties/".concat(party.accessCode));
-    }
-  }, {
-    key: "endParty",
-    value: function endParty(userId) {
-      this.props.clearPartyFromStore(userId);
-    }
-  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
 
       var _this$props = this.props,
-          party = _this$props.party,
           user = _this$props.user,
           handleClick = _this$props.handleClick;
-      console.log('party: ', party);
-      console.log('user', user);
 
       if (!user.userParty) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "vertical-center justify-content-center"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "host_dashboard joinOuterContainer"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: ""
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
           className: "text-center"
-        }, "Welcome ", user.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, "Welcome ", user.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "row text-center margin-space"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "col"
@@ -627,24 +621,23 @@ function (_React$Component) {
           className: "host_dashboard joinOuterContainer"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
           className: "text-center"
-        }, "Welcome ", user.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, "Welcome ", user.name), this.state.picturePreview ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "row margintop"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "col-sm-5 text-center"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          src: user.profilePicture,
+          src: this.state.selectedPicture,
           width: "100",
           height: "100"
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "col-sm-7"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
           className: "form-control",
           name: "hostPicture",
           id: "hostPicture",
-          onChange: this.handleSelect
+          onChange: this.handleSelect,
+          value: this.state.selectedPicture
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-          value: user.profilePicture
-        }, "--Change Profile Icon--"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
           value: "/images/pug.png"
         }, "Pug"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
           value: "/images/bear.png"
@@ -656,17 +649,39 @@ function (_React$Component) {
           value: "/images/pig.png"
         }, "Pig"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
           value: "/images/whale.png"
-        }, "Whale"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          className: "btn aqua-btn margintop",
+        }, "Whale")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "btn aqua-btn",
           type: "button",
           onClick: function onClick() {
             _this2.props.updateUserPic(user.id, {
               profilePicture: _this2.state.selectedPicture
             });
+
+            _this2.setState({
+              picturePreview: false
+            });
           }
-        }, "Save Changes")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: ""
-        }, this.state.showAccess ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, "Save Changes"))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "row margintop"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "col-sm-5 text-center"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: user.profilePicture,
+          width: "100",
+          height: "100"
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "col-sm-7"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "btn aqua-btn",
+          type: "button",
+          onClick: function onClick() {
+            _this2.setState({
+              picturePreview: true,
+              selectedPicture: user.profilePicture
+            });
+          }
+        }, "Change Picture"))) // </div>
+        , this.state.showAccess ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "text-center margin-space"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           className: "code-box"
@@ -688,7 +703,7 @@ function (_React$Component) {
               showAccess: true
             });
           }
-        }, "Show Access Code"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, "Show Access Code")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "row text-center margin-space2"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "col"
@@ -797,7 +812,7 @@ var Login = function Login(props) {
     className: "joinOuterContainer"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
     className: "heading"
-  }, "Join as Host"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "Host Login"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row form-width mx-auto"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     className: "col-sm-3",
@@ -878,11 +893,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
 
  // import {Login} from './HostLogin'
 // import {Signup} from './Signup'
 
-var Home = function Home() {
+var Home = function Home(props) {
+  if (props.user && props.user.id) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Redirect"], {
+      to: "/dashboard"
+    });
+  }
+
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "vertical-center justify-content-center"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", {
@@ -907,7 +930,13 @@ var Home = function Home() {
   }, "Join Party"))));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Home);
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    user: state.user
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProps)(Home));
 
 /***/ }),
 
