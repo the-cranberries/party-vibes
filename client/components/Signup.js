@@ -20,12 +20,6 @@ const SignupForm = props => {
             </label>
             <input name="hostName" type="text" />
           </div>
-          <div>
-            <label htmlFor="profilePicture">
-              <h4>Choose a Profile Picture</h4>
-            </label>
-            <input name="profilePicture" type="file" accept="image/*" />
-          </div>
         </div>
         <div>
           <label htmlFor="email">
@@ -67,8 +61,7 @@ const mapDispatchSignup = dispatch => {
       const email = evt.target.email.value
       const password = evt.target.password.value
       const hostName = evt.target.hostName.value
-      const profilePicture = evt.target.profilePicture.value
-      dispatch(auth(email, password, formName, hostName, profilePicture))
+      dispatch(auth(email, password, formName, hostName))
     }
   }
 }

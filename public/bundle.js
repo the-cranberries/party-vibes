@@ -576,10 +576,10 @@ function (_React$Component) {
           onClick: function onClick() {
             return _this2.createParty();
           }
-        }, "New Party")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-          href: "#",
+        }, "New Party")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          type: "button",
           onClick: handleClick
-        }, "Logout")));
+        }, "Log Out")));
       } else {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "host_dashboard"
@@ -606,10 +606,10 @@ function (_React$Component) {
           onClick: function onClick() {
             return _this2.endParty(user.id);
           }
-        }, "End Party"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-          href: "#",
+        }, "End Party"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          type: "button",
           onClick: handleClick
-        }, "Logout"));
+        }, "Log Out"));
       }
     }
   }]);
@@ -1015,12 +1015,6 @@ var SignupForm = function SignupForm(props) {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Name")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     name: "hostName",
     type: "text"
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-    htmlFor: "profilePicture"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Choose a Profile Picture")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    name: "profilePicture",
-    type: "file",
-    accept: "image/*"
   }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: "email"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Email")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -1054,8 +1048,7 @@ var mapDispatchSignup = function mapDispatchSignup(dispatch) {
       var email = evt.target.email.value;
       var password = evt.target.password.value;
       var hostName = evt.target.hostName.value;
-      var profilePicture = evt.target.profilePicture.value;
-      dispatch(Object(_store__WEBPACK_IMPORTED_MODULE_3__["auth"])(email, password, formName, hostName, profilePicture));
+      dispatch(Object(_store__WEBPACK_IMPORTED_MODULE_3__["auth"])(email, password, formName, hostName));
     }
   };
 };
@@ -1770,7 +1763,7 @@ var me = function me() {
     }()
   );
 };
-var auth = function auth(email, password, method, name, profilePicture) {
+var auth = function auth(email, password, method, name) {
   return (
     /*#__PURE__*/
     function () {
@@ -1787,8 +1780,7 @@ var auth = function auth(email, password, method, name, profilePicture) {
                 return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/auth/".concat(method), {
                   email: email,
                   password: password,
-                  name: name,
-                  profilePicture: profilePicture
+                  name: name
                 });
 
               case 3:

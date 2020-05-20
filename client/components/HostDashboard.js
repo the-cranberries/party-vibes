@@ -48,9 +48,9 @@ class HostDashboard extends React.Component {
             </button>
           </div>
           <div>
-            <a href="#" onClick={handleClick}>
-              Logout
-            </a>
+            <button type="button" onClick={handleClick}>
+              Log Out
+            </button>
           </div>
         </div>
       )
@@ -93,9 +93,9 @@ class HostDashboard extends React.Component {
           <button type="button" onClick={() => this.endParty(user.id)}>
             End Party
           </button>
-          <a href="#" onClick={handleClick}>
-            Logout
-          </a>
+          <button type="button" onClick={handleClick}>
+            Log Out
+          </button>
         </div>
       )
     }
