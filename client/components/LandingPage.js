@@ -1,19 +1,20 @@
 import React from 'react'
-import {Route, Switch, Link} from 'react-router-dom'
-import {Login, Signup} from './auth-form'
+import {Link} from 'react-router-dom'
+// import {Login} from './HostLogin'
+// import {Signup} from './Signup'
 
 const Home = () => {
   return (
     <div>
       <main>
         <Link className="linkBtn" to="/signup">
-          Become a Host
+          Sign Up
         </Link>
         <Link className="linkBtn" to="/login">
-          Login as a Host
+          Login
         </Link>
         <Link className="linkBtn" to="/guestlogin">
-          Join as a Guest
+          Join Party
         </Link>
       </main>
     </div>
