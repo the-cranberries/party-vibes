@@ -62,7 +62,7 @@ const Room = props => {
             <div>
               <h1 className="heading">Welcome to {props.user.name}'s Party!</h1>
             </div>
-            {socket.id === props.user.id ? (
+            {props.user ? (
               <button
                 type="button"
                 onClick={() => this.endParty(props.user.id)}
