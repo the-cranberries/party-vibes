@@ -1119,8 +1119,7 @@ var mapDispatchSignup = function mapDispatchSignup(dispatch) {
       var email = evt.target.email.value;
       var password = evt.target.password.value;
       var hostName = evt.target.hostName.value;
-      var profilePicture = evt.target.profilePicture.value;
-      dispatch(Object(_store__WEBPACK_IMPORTED_MODULE_3__["auth"])(email, password, formName, hostName, profilePicture));
+      dispatch(Object(_store__WEBPACK_IMPORTED_MODULE_3__["auth"])(email, password, formName, hostName));
     }
   };
 };
@@ -1835,7 +1834,7 @@ var me = function me() {
     }()
   );
 };
-var auth = function auth(email, password, method, name, profilePicture) {
+var auth = function auth(email, password, method, name) {
   return (
     /*#__PURE__*/
     function () {
@@ -1852,8 +1851,7 @@ var auth = function auth(email, password, method, name, profilePicture) {
                 return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/auth/".concat(method), {
                   email: email,
                   password: password,
-                  name: name,
-                  profilePicture: profilePicture
+                  name: name
                 });
 
               case 3:

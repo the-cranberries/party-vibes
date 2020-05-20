@@ -78,8 +78,7 @@ const mapDispatchSignup = dispatch => {
       const email = evt.target.email.value
       const password = evt.target.password.value
       const hostName = evt.target.hostName.value
-      const profilePicture = evt.target.profilePicture.value
-      dispatch(auth(email, password, formName, hostName, profilePicture))
+      dispatch(auth(email, password, formName, hostName))
     }
   }
 }
