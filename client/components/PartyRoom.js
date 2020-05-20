@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 
 const Room = props => {
-  console.log('Room PROPS', props)
+  console.log('Room PROPS', props.user)
 
   const [users, setUsers] = useState('')
 
@@ -60,11 +60,24 @@ const Room = props => {
         <div>
           <main>
             <h1 className="heading">Welcome to {props.user.name}'s Party!</h1>
-            <Link to="/">
-              <button type="submit" onClick={handleSubmit}>
-                Sign Out
+            <div />
+            if(props.user.status === host){' '}
+            {
+              <button
+                type="button"
+                onClick={() => this.endParty(props.user.id)}
+              >
+                End Party
               </button>
-            </Link>
+            }{' '}
+            else{' '}
+            {
+              <Link to="/">
+                <button type="submit" onClick={handleSubmit}>
+                  Sign Out
+                </button>
+              </Link>
+            }
           </main>
         </div>
         <div>

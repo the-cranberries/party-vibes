@@ -127,9 +127,6 @@ class HostDashboard extends React.Component {
             <button type="button" onClick={() => this.joinParty()}>
               Join Party
             </button>
-            <button type="button" onClick={() => this.endParty(user.id)}>
-              End Party
-            </button>
           </p>
         </div>
       )
