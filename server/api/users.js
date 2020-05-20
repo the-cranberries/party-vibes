@@ -2,8 +2,17 @@ const router = require('express').Router()
 const {User, Party, PartyUser} = require('../db/models')
 module.exports = router
 
+const authUser = (req, res, next) => {
+  if (req.user) {
+    if (req.user.dataValues.id === parseInt(req.params.userId, 10))
+      return next()
+  }
+
+  res.status(403).send('access denied')
+}
+
 // path: /api/users/:userId
-router.get('/:userId', async (req, res, next) => {
+router.get('/:userId', authUser, async (req, res, next) => {
   try {
     const user = await User.findByPk(req.params.userId)
     res.json(user)
@@ -12,7 +21,7 @@ router.get('/:userId', async (req, res, next) => {
   }
 })
 
-router.put('/:userId', async (req, res, next) => {
+router.put('/:userId', authUser, async (req, res, next) => {
   const {profilePicture} = req.body
   const {userId} = req.params
 
@@ -27,7 +36,7 @@ router.put('/:userId', async (req, res, next) => {
 })
 
 // path: /api/users/:userId/parties
-router.get('/:userId/parties', async (req, res, next) => {
+router.get('/:userId/parties', authUser, async (req, res, next) => {
   try {
     const parties = await Party.findAll({
       include: [
@@ -48,7 +57,7 @@ router.get('/:userId/parties', async (req, res, next) => {
   }
 })
 
-router.post('/:userId/parties', async (req, res, next) => {
+router.post('/:userId/parties', authUser, async (req, res, next) => {
   const userId = req.params.userId
 
   try {
@@ -70,7 +79,7 @@ router.post('/:userId/parties', async (req, res, next) => {
   }
 })
 
-router.delete('/:userId/parties', async (req, res, next) => {
+router.delete('/:userId/parties', authUser, async (req, res, next) => {
   try {
     const userParty = await PartyUser.findOne({
       where: {userId: req.params.userId}
