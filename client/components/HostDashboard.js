@@ -158,6 +158,11 @@ class HostDashboard extends React.Component {
               End Party
             </button>
           </p>
+          <div>
+            <button type="button" onClick={handleClick}>
+              Log Out
+            </button>
+          </div>
         </div>
       )
     }
