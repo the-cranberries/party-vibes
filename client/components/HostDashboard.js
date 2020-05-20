@@ -49,10 +49,7 @@ class HostDashboard extends React.Component {
   }
 
   render() {
-    const {party, user, handleClick} = this.props
-
-    console.log('party: ', party)
-    console.log('user', user)
+    const {user, handleClick} = this.props
 
     if (!user.userParty) {
       return (
