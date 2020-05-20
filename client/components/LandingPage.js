@@ -10,18 +10,18 @@ const Home = () => {
         <div className="row">
           <div className="col">
             <Link className="linkBtn" to="/signup">
-              Become a Host
+              Sign Up
             </Link>
           </div>
           <div className="col">
             <Link className="linkBtn" to="/login">
-              Login as a Host
+              Login
             </Link>
           </div>
         </div>
         <div className="row justify-content-center">
           <Link className="linkBtn" to="/guestlogin">
-            Join as a Guest
+            Join Party
           </Link>
         </div>
       </main>
