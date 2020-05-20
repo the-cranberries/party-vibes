@@ -41,6 +41,10 @@ const Room = props => {
     sessionStorage.clear()
   }
 
+  const handleReload = () => {
+    window.location.reload()
+  }
+
   if (sessionStorage.length <= 1) {
     return (
       <div>
@@ -62,6 +66,10 @@ const Room = props => {
         {props.user.userParty === null ? (
           <div>
             <h1 className="heading">Party has not started yet!</h1>
+            <button type="button" onClick={handleReload}>
+              {' '}
+              Retry
+            </button>
           </div>
         ) : (
           <div>
