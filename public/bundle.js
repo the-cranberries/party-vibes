@@ -672,7 +672,10 @@ function (_React$Component) {
           onClick: function onClick() {
             return _this2.endParty(user.id);
           }
-        }, "End Party")));
+        }, "End Party")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          type: "button",
+          onClick: handleClick
+        }, "Log Out")));
       }
     }
   }]);
