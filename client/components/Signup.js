@@ -18,20 +18,20 @@ const SignupForm = props => {
             <label htmlFor="hostName">
               <h4>Name</h4>
             </label>
-            <input name="hostName" type="text" />
+            <input name="hostName" type="text" required />
           </div>
         </div>
         <div>
           <label htmlFor="email">
             <h4>Email</h4>
           </label>
-          <input name="email" type="text" />
+          <input name="email" type="text" required />
         </div>
         <div>
           <label htmlFor="password">
             <h4>Password</h4>
           </label>
-          <input name="password" type="password" />
+          <input name="password" type="password" required />
         </div>
         <div>
           <button type="submit">{displayName}</button>
