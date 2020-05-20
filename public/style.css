@@ -33,8 +33,7 @@ body {
   text-align: center;
   height: 60%;
   align-items: center; */
-  max-width: 600px;
-  width: 60%;
+  /* max-width: 600px; */
   background-color: rgba(197, 189, 189, 0.4);
   margin: 0 auto;
   padding: 1em;
@@ -315,4 +314,11 @@ body {
 
 .margin-space2 {
   margin: 2em 0 1.8em 0;
+}
+
+.vertical-center {
+  min-height: 70%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
 }

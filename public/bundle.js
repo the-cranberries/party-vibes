@@ -382,6 +382,8 @@ function (_React$Component) {
 
       if (isGuestLoggedIn && currentParty) {
         guestLogin = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "vertical-center justify-content-center"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "joinOuterContainer"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
           className: "heading text-center"
@@ -392,9 +394,11 @@ function (_React$Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "btn aqua-btn",
           type: "button"
-        }, ' ', "Return To Party", ' '))));
+        }, ' ', "Return To Party", ' ')))));
       } else {
         guestLogin = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "vertical-center justify-content-center"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "joinOuterContainer"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "text-center"
@@ -451,7 +455,7 @@ function (_React$Component) {
           onClick: this.handleSubmit
         }, "Let's Vibe")), error && error.response && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           id: "errorMessage"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " ", error.response.data, ' '))));
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " ", error.response.data, ' ')))));
       }
 
       return guestLogin;
@@ -592,6 +596,8 @@ function (_React$Component) {
 
       if (!user.userParty) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "vertical-center justify-content-center"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "host_dashboard joinOuterContainer"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: ""
@@ -613,9 +619,11 @@ function (_React$Component) {
           className: "btn aqua-btn",
           type: "button",
           onClick: handleClick
-        }, "Log Out"))));
+        }, "Log Out")))));
       } else {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "vertical-center justify-content-center"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "host_dashboard joinOuterContainer"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
           className: "text-center"
@@ -706,7 +714,7 @@ function (_React$Component) {
           className: "btn aqua-btn",
           type: "button",
           onClick: handleClick
-        }, "Log Out"))));
+        }, "Log Out")))));
       }
     }
   }]);
@@ -781,7 +789,7 @@ var Login = function Login(props) {
       handleSubmit = props.handleSubmit,
       error = props.error;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "text-center"
+    className: "text-center vertical-center justify-content-center"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
     onSubmit: handleSubmit,
     name: name
@@ -876,7 +884,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var Home = function Home() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: ""
+    className: "vertical-center justify-content-center"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", {
     className: "container text-center"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1137,7 +1145,7 @@ var SignupForm = function SignupForm(props) {
       handleSubmit = props.handleSubmit,
       error = props.error;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "text-center"
+    className: "text-center vertical-center justify-content-center"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
     onSubmit: handleSubmit,
     name: name

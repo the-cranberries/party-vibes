@@ -10,7 +10,7 @@ export const Login = props => {
   const {name, displayName, handleSubmit, error} = props
 
   return (
-    <div className="text-center">
+    <div className="text-center vertical-center justify-content-center">
       <form onSubmit={handleSubmit} name={name}>
         {/* LOGIN FORM */}
         <div className="joinOuterContainer">

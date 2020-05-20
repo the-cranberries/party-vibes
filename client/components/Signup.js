@@ -10,7 +10,7 @@ const SignupForm = props => {
   const {name, displayName, handleSubmit, error} = props
 
   return (
-    <div className="text-center">
+    <div className="text-center vertical-center justify-content-center">
       <form onSubmit={handleSubmit} name={name}>
         <div className="joinOuterContainer">
           <h1 className="heading">Become a Host</h1>
