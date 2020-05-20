@@ -59,32 +59,30 @@ const Room = props => {
       <div>
         <div>
           <main>
-            <h1 className="heading">Welcome to {props.user.name}'s Party!</h1>
-            <div />
-            if(props.user.status === host){' '}
-            {
+            <div>
+              <h1 className="heading">Welcome to {props.user.name}'s Party!</h1>
+            </div>
+            {socket.id === props.user.id ? (
               <button
                 type="button"
                 onClick={() => this.endParty(props.user.id)}
               >
                 End Party
               </button>
-            }{' '}
-            else{' '}
-            {
+            ) : (
               <Link to="/">
                 <button type="submit" onClick={handleSubmit}>
                   Sign Out
                 </button>
               </Link>
-            }
+            )}
           </main>
-        </div>
-        <div>
-          <Chat />
-        </div>
-        <div className="guests">
-          <UserList users={users} />
+          <div>
+            <Chat />
+          </div>
+          <div className="guests">
+            <UserList users={users} />
+          </div>
         </div>
       </div>
     )
