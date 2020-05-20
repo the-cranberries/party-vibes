@@ -2,6 +2,8 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {fetchUserParty, postUserParty, endUserParty} from '../store/user'
 import {fetchParty} from '../store/party'
+import {logout} from '../store'
+import PropTypes from 'prop-types'
 
 class HostDashboard extends React.Component {
   constructor(props) {
@@ -15,7 +17,7 @@ class HostDashboard extends React.Component {
     this.props.getUserPartyFromStore(this.props.user.id)
   }
 
-  handleClick = () => {
+  createParty = () => {
     this.props.createNewParty(this.props.user.id)
   }
 
@@ -29,7 +31,7 @@ class HostDashboard extends React.Component {
   }
 
   render() {
-    const {party, user} = this.props
+    const {party, user, handleClick} = this.props
 
     console.log('party: ', party)
     console.log('user', user)
@@ -44,9 +46,18 @@ class HostDashboard extends React.Component {
             <button
               className="btn aqua-btn"
               type="button"
-              onClick={() => this.handleClick()}
+              onClick={() => this.createParty()}
             >
               New Party
+            </button>
+          </div>
+          <div>
+            <button
+              className="btn aqua-btn"
+              type="button"
+              onClick={handleClick}
+            >
+              Log Out
             </button>
           </div>
         </div>
@@ -97,6 +108,9 @@ class HostDashboard extends React.Component {
           >
             End Party
           </button>
+          <button className="btn aqua-btn" type="button" onClick={handleClick}>
+            Log Out
+          </button>
         </div>
       )
     }
@@ -120,7 +134,14 @@ const mapDispatchToProps = dispatch => ({
   },
   fetchParty: accessCode => {
     dispatch(fetchParty(accessCode))
+  },
+  handleClick() {
+    dispatch(logout())
   }
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(HostDashboard)
+
+HostDashboard.propTypes = {
+  handleClick: PropTypes.func.isRequired
+}

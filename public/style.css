@@ -140,7 +140,7 @@ body {
   margin-bottom: 10px;
   width: 400px;
   height: 70vh;
-  background-color: #dcdcdc;
+  background-color: #303030;
   padding: 1em;
   border-radius: 5px;
 }
@@ -152,8 +152,9 @@ body {
   padding-left: 0.5em;
   /* flex: auto; */
   height: 335px;
-  background-color: white;
+  background-color: #424242;
   border-radius: 2px;
+  color: white;
 }
 
 .chat-input {
@@ -169,7 +170,7 @@ body {
   color: #fff !important;
   text-transform: uppercase;
   text-decoration: none;
-  background: #2979ff;
+  background: #09fbd3;
   padding: 0.8em 3em;
   /* display: inline-block; */
   border: none;
@@ -275,4 +276,8 @@ body {
 .activeContainer img {
   height: 50px;
   width: 50px;
+}
+
+.aqua {
+  color: #09fbd3;
 }

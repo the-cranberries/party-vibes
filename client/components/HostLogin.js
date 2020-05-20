@@ -6,42 +6,13 @@ import {auth} from '../store'
 /**
  * COMPONENT
  */
-const AuthForm = props => {
+export const Login = props => {
   const {name, displayName, handleSubmit, error} = props
 
   return (
     <div className="text-center">
       <form onSubmit={handleSubmit} name={name}>
-        {/* SIGN UP FORM */}
-        {name === 'signup' && (
-          <div className="joinOuterContainer">
-            <h1 className="heading">Become a Host</h1>
-            <div className="row form-width mx-auto">
-              <label className="col-sm-3" htmlFor="hostName">
-                <span>Name</span>
-              </label>
-              <input
-                className="form-control col-sm-9"
-                name="hostName"
-                type="text"
-              />
-            </div>
-            <br />
-            <div className="row form-width mx-auto">
-              <label className="col-sm-3" htmlFor="profilePicture">
-                <span>Choose a Profile Picture</span>
-              </label>
-              <input
-                className="form-control col-sm-9"
-                name="profilePicture"
-                type="file"
-                accept="image/*"
-                multiple="false"
-              />
-            </div>
-          </div>
-        )}
-        {/* SIGN UP & LOGIN FORM */}
+        {/* LOGIN FORM */}
         <div className="joinOuterContainer">
           <h1 className="heading">Join as Host</h1>
           <div className="row form-width mx-auto">
@@ -69,12 +40,6 @@ const AuthForm = props => {
               </button>
             </div>
           </div>
-          {error &&
-            error.response && (
-              <div id="errorMessage">
-                <br /> {error.response.data}{' '}
-              </div>
-            )}
         </div>
       </form>
     </div>
@@ -96,14 +61,6 @@ const mapLogin = state => {
   }
 }
 
-const mapSignup = state => {
-  return {
-    name: 'signup',
-    displayName: 'Sign Up',
-    error: state.user.error
-  }
-}
-
 const mapDispatchLogin = dispatch => {
   return {
     handleSubmit(evt) {
@@ -116,27 +73,12 @@ const mapDispatchLogin = dispatch => {
   }
 }
 
-const mapDispatchSignup = dispatch => {
-  return {
-    handleSubmit(evt) {
-      evt.preventDefault()
-      const formName = evt.target.name
-      const email = evt.target.email.value
-      const password = evt.target.password.value
-      const hostName = evt.target.hostName.value
-      const profilePicture = evt.target.profilePicture.value
-      dispatch(auth(email, password, formName, hostName, profilePicture))
-    }
-  }
-}
-
-export const Login = connect(mapLogin, mapDispatchLogin)(AuthForm)
-export const Signup = connect(mapSignup, mapDispatchSignup)(AuthForm)
+export default connect(mapLogin, mapDispatchLogin)(Login)
 
 /**
  * PROP TYPES
  */
-AuthForm.propTypes = {
+Login.propTypes = {
   name: PropTypes.string.isRequired,
   displayName: PropTypes.string.isRequired,
   handleSubmit: PropTypes.func.isRequired,

@@ -97,7 +97,7 @@ const mapDispatchSignup = dispatch => {
   }
 }
 
-export const Signup = connect(mapSignup, mapDispatchSignup)(SignupForm)
+export default connect(mapSignup, mapDispatchSignup)(SignupForm)
 
 /**
  * PROP TYPES
