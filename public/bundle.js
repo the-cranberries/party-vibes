@@ -725,6 +725,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Chat__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Chat */ "./client/components/Chat.js");
 /* harmony import */ var _UserList__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./UserList */ "./client/components/UserList.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
@@ -737,6 +738,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
  // import session from 'express-session'
+
 
 
 
@@ -796,7 +798,7 @@ var Room = function Room(props) {
   } else {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
       className: "heading"
-    }, "Welcome to Cody's Party!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Link"], {
+    }, "Welcome to ", props.user.name, "'s Party!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Link"], {
       to: "/"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       type: "submit",
@@ -809,7 +811,13 @@ var Room = function Room(props) {
   }
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Room); // const Room = props => {
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    user: state.user
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_5__["connect"])(mapStateToProps)(Room)); // const Room = props => {
 //   const [users, setUsers] = useState('')
 //   console.log('PROPS', props)
 //   window.addEventListener('beforeunload', function(e) {
