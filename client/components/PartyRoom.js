@@ -62,7 +62,7 @@ const Room = props => {
             <div>
               <h1 className="heading">Welcome to {props.user.name}'s Party!</h1>
             </div>
-            {props.user ? (
+            {props.user.id ? (
               <button
                 type="button"
                 onClick={() => this.endParty(props.user.id)}
