@@ -18,7 +18,7 @@ const AuthForm = props => {
             <h1 className="heading">Become a Host</h1>
             <div className="row form-width mx-auto">
               <label className="col-sm-3" htmlFor="hostName">
-                <medium>Name</medium>
+                <span>Name</span>
               </label>
               <input
                 className="form-control col-sm-9"
@@ -29,7 +29,7 @@ const AuthForm = props => {
             <br />
             <div className="row form-width mx-auto">
               <label className="col-sm-3" htmlFor="profilePicture">
-                <medium>Choose a Profile Picture</medium>
+                <span>Choose a Profile Picture</span>
               </label>
               <input
                 className="form-control col-sm-9"
@@ -46,14 +46,14 @@ const AuthForm = props => {
           <h1 className="heading">Join as Host</h1>
           <div className="row form-width mx-auto">
             <label className="col-sm-3" htmlFor="email">
-              <medium>Email</medium>
+              <span>Email</span>
             </label>
             <input className="form-control col-sm-9" name="email" type="text" />
           </div>
           <br />
           <div className="row form-width mx-auto">
             <label className="col-sm-3" htmlFor="password">
-              <medium>Password</medium>
+              <span>Password</span>
             </label>
             <input
               className="form-control col-sm-9"

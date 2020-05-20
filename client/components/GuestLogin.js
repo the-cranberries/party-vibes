@@ -11,7 +11,8 @@ import PropTypes from 'prop-types'
 
 const initialState = {
   name: '',
-  accessCode: ''
+  accessCode: '',
+  guestPicture: ''
   // error: ''
 }
 
@@ -21,6 +22,8 @@ export class GuestLogin extends React.Component {
     this.state = initialState
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleSelect = this.handleSelect.bind(this)
+    this.handleReturnParty = this.handleReturnParty.bind(this)
   }
   // componentDidMount() {
   //   this.props.fetchParty()
@@ -32,6 +35,12 @@ export class GuestLogin extends React.Component {
     })
   }
 
+  handleSelect(event) {
+    this.setState({
+      guestPicture: event.target.value
+    })
+  }
+
   handleSubmit(event) {
     event.preventDefault()
     this.props.fetchParty({
@@ -39,61 +48,118 @@ export class GuestLogin extends React.Component {
       name: this.state.name
     })
     sessionStorage.setItem('name', this.state.name)
+    sessionStorage.setItem('isGuestLoggedIn', true)
+    sessionStorage.setItem('picture', this.state.guestPicture)
+  }
+
+  handleReturnParty() {
+    let party = this.props.fetchParty({
+      accessCode: sessionStorage.getItem('party'),
+      name: sessionStorage.getItem('name')
+    })
+
+    window.location.reload()
+    // console.log('PARTY', party)
+    // history.push(`/parties/${accessCode}`)
   }
 
   render() {
+    console.log('STATE', this.state)
+    console.log('PROPS', this.props)
     const {error} = this.props
-    return (
-      <div className="joinOuterContainer ">
-        <div className="text-center">
-          <form>
-            <h1 className="heading">Join a Party</h1>
-            <div className="row form-width mx-auto">
-              <label className="col-sm-4" htmlFor="name">
-                <medium>Name</medium>
-              </label>
-              <input
-                // placeholder="Name"
-                // className="joinInput"
-                className="form-control col-sm-8"
-                type="text"
-                name="name"
-                onChange={this.handleChange}
-              />
-            </div>
-            <br />
-            <div className="row form-width mx-auto">
-              <label className="col-sm-4" htmlFor="access code">
-                <medium>Access Code</medium>
-              </label>
-              <input
-                className="form-control col-sm-8"
-                name="accessCode"
-                // placeholder="Access Code"
-                type="text"
-                onChange={this.handleChange}
-              />
-            </div>
-            <br />
-            <div className="guestVibe">
-              <button
-                className="btn aqua-btn"
-                type="submit"
-                onClick={this.handleSubmit}
-              >
-                Let's Vibe
-              </button>
-            </div>
-            {error &&
-              error.response && (
-                <div id="errorMessage">
-                  <br /> {error.response.data}{' '}
-                </div>
-              )}
-          </form>
-        </div>
-      </div>
+    const isGuestLoggedIn = JSON.parse(
+      sessionStorage.getItem('isGuestLoggedIn')
     )
+    const currentParty = sessionStorage.getItem('party')
+    let guestLogin
+
+    if (isGuestLoggedIn && currentParty) {
+      guestLogin = (
+        <div className="joinOuterContainer">
+          <h1 className="heading text-center">
+            You are currently logged in a party
+          </h1>
+          <div className="text-center">
+            <Link to={`/parties/${currentParty}`}>
+              <button className="btn aqua-btn" type="button">
+                {' '}
+                Return To Party{' '}
+              </button>
+            </Link>
+          </div>
+        </div>
+      )
+    } else {
+      guestLogin = (
+        <div className="joinOuterContainer">
+          <div className="text-center">
+            <form>
+              <h1 className="heading">Join a Party</h1>
+              <div className="row form-width mx-auto">
+                <label className="col-sm-4" htmlFor="name">
+                  <span>Name</span>
+                </label>
+                <input
+                  // placeholder="Name"
+                  // className="joinInput"
+                  className="form-control col-sm-8"
+                  type="text"
+                  name="name"
+                  required={true}
+                  onChange={this.handleChange}
+                />
+              </div>
+              <br />
+              <div className="row form-width mx-auto">
+                <label className="col-sm-4" htmlFor="access code">
+                  <span>Access Code</span>
+                </label>
+                <input
+                  className="form-control col-sm-8"
+                  name="accessCode"
+                  // placeholder="Access Code"
+                  type="text"
+                  onChange={this.handleChange}
+                />
+              </div>
+              <br />
+              <select
+                className="form-control text-center"
+                name="guestPicture"
+                id="guestPicture"
+                value={this.state.guestPicture}
+                onChange={this.handleSelect}
+              >
+                <option value="pug">--Please Choose A Profile Icon--</option>
+                <option value="bear">Bear</option>
+                <option value="beaver">Beaver</option>
+                <option value="fox">Fox</option>
+                <option value="pig">Pig</option>
+                <option value="whale">Whale</option>
+              </select>
+              <br />
+              <div className="guestVibe">
+                <button
+                  className="btn aqua-btn"
+                  type="submit"
+                  disabled={!this.state.name || !this.state.accessCode}
+                  onClick={this.handleSubmit}
+                >
+                  Let's Vibe
+                </button>
+              </div>
+              {error &&
+                error.response && (
+                  <div id="errorMessage">
+                    <br /> {error.response.data}{' '}
+                  </div>
+                )}
+            </form>
+          </div>
+        </div>
+      )
+    }
+    return guestLogin
   }
 }
 

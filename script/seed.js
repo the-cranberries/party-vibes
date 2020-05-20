@@ -23,12 +23,12 @@ async function seed() {
       status: 'host',
       userId: 1,
       partyId: 1
-    }),
-    PartyUser.create({
-      status: 'guest',
-      userId: 2,
-      partyId: 1
     })
+    // PartyUser.create({
+    //   status: 'guest',
+    //   userId: 2,
+    //   partyId: 1
+    // })
   ])
 
   console.log(`seeded successfully`)

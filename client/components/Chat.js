@@ -11,6 +11,8 @@ class Chat extends React.Component {
       messages: []
     }
 
+    this.state.messages = JSON.parse(sessionStorage.getItem('chat') || '[]')
+
     // socket = io('localhost:8080')
 
     socket.on('RECEIVE_MESSAGE', function(data) {
@@ -18,7 +20,15 @@ class Chat extends React.Component {
     })
 
     const addMessage = data => {
-      this.setState({messages: [...this.state.messages, data]})
+      let messages = [...this.state.messages, data]
+      if (messages.length > 100) {
+        messages = messages.slice(50)
+        sessionStorage.setItem('chat', JSON.stringify(messages))
+        this.setState({messages})
+      } else {
+        sessionStorage.setItem('chat', JSON.stringify(messages))
+        this.setState({messages})
+      }
     }
 
     this.sendMessage = ev => {
@@ -33,12 +43,9 @@ class Chat extends React.Component {
 
   render() {
     return (
-      // <div className="">
-      //   <div className="">
-      //     <div className="">
       <div className="chat-box">
         <div className="">
-          <div className="">Chat Room</div>
+          <div className="">Chat</div>
           <hr />
           <ScrollToBottom className="messages">
             {this.state.messages.map((message, index) => {
@@ -76,9 +83,6 @@ class Chat extends React.Component {
           </button>
         </div>
       </div>
-      //     </div>
-      //   </div>
-      // </div>
     )
   }
 }
