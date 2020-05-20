@@ -18,6 +18,8 @@ const Room = props => {
   const picture = `${pic}`
   sessionStorage.setItem('party', room)
 
+  let isHost = JSON.parse(sessionStorage.getItem('isHost'))
+
   socket.emit('join', {name, room, picture}, error => {
     if (error) {
       console.log(error)
@@ -62,7 +64,7 @@ const Room = props => {
             <div>
               <h1 className="heading">Welcome to {props.user.name}'s Party!</h1>
             </div>
-            {props.user.id ? (
+            {isHost ? (
               <button
                 type="button"
                 onClick={() => this.endParty(props.user.id)}
