@@ -1,5 +1,5 @@
 const users = []
-
+// {socketid, name, room, picture}
 const addUser = ({id, name, room, picture}) => {
   const existingUser = users.find(
     user => user.room === room && user.name === name && user.picture === picture

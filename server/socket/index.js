@@ -4,8 +4,14 @@ module.exports = io => {
   io.on('connection', socket => {
     console.log('user has connected', socket.id)
 
-    socket.on('SEND_MESSAGE', function(data) {
-      io.emit('RECEIVE_MESSAGE', data)
+    socket.on('SEND_MESSAGE', ({author, message, room}) => {
+      // console.log('DATAAAAAAAAAA', data)
+      // io.emit('RECEIVE_MESSAGE', data)
+      io.to(room).emit('RECEIVE_MESSAGE', {author, message})
+    })
+
+    socket.on('END_PARTY', function(data) {
+      io.emit('END_THIS_PARTY', data)
     })
 
     socket.on('join', ({name, room, picture}, callback) => {
@@ -14,6 +20,7 @@ module.exports = io => {
       if (error) return callback(error)
 
       socket.join(user.room)
+      console.log('ROOOMMMMM', user.room)
 
       // socket.emit('message', { user: 'admin', text: `${user.name}, welcome to room ${user.room}.`});
       socket.broadcast

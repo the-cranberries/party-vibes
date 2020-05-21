@@ -143,7 +143,7 @@ export class GuestLogin extends React.Component {
                   <option value="/images/whale.png">Whale</option>
                 </select>
                 <br />
-                <div className="guestVibe">
+                <div className="vibe">
                   <button
                     className="btn yellow-orange-btn"
                     type="submit"

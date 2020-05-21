@@ -40,6 +40,9 @@ class HostDashboard extends React.Component {
     sessionStorage.setItem('name', user.name)
     sessionStorage.setItem('picture', user.profilePicture)
     sessionStorage.setItem('accessCode', party.accessCode)
+    sessionStorage.setItem('isHost', true)
+
+    let isHost = JSON.parse(sessionStorage.getItem('isHost'))
 
     //go to party room
     this.props.history.push(`/parties/${party.accessCode}`)
@@ -85,7 +88,6 @@ class HostDashboard extends React.Component {
         <div className="vertical-center justify-content-center">
           <div className="host_dashboard joinOuterContainer">
             <h1 className="text-center">Welcome {user.name}</h1>
-
             {this.state.picturePreview ? (
               <div className="row margintop">
                 <div className="col-sm-6 text-center">
@@ -146,9 +148,7 @@ class HostDashboard extends React.Component {
                   </button>
                 </div>
               </div>
-              // </div>
             )}
-
             {this.state.showAccess ? (
               <div>
                 <div className="margin-space text-center">
@@ -179,13 +179,15 @@ class HostDashboard extends React.Component {
             )}
             <div className="row text-center">
               <div className="col">
-                <button
-                  className="btn yellow-orange-btn"
-                  type="button"
-                  onClick={() => this.joinParty()}
-                >
-                  Join Party
-                </button>
+                <div className="vibe">
+                  <button
+                    className="btn yellow-orange-btn"
+                    type="button"
+                    onClick={() => this.joinParty()}
+                  >
+                    Join Party
+                  </button>
+                </div>
               </div>
             </div>
             <div className="row text-center margintop">
@@ -199,7 +201,6 @@ class HostDashboard extends React.Component {
                 </button>
               </div>
             </div>
-            {/* </div> */}
             <div className="row text-center margintop">
               <div className="col">
                 <button

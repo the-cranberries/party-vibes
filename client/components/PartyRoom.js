@@ -7,9 +7,10 @@ import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 
 const Room = props => {
-  console.log('Room PROPS', props)
+  console.log('Room PROPS', props.user)
 
   const [users, setUsers] = useState('')
+  const [isPartyGoing, setParty] = useState('')
 
   const pic = sessionStorage.getItem('picture')
   const name = sessionStorage.name
@@ -17,6 +18,8 @@ const Room = props => {
   const room = Object.values(key)[0]
   const picture = `${pic}`
   sessionStorage.setItem('party', room)
+
+  let isHost = JSON.parse(sessionStorage.getItem('isHost'))
 
   socket.emit('join', {name, room, picture}, error => {
     if (error) {
@@ -37,6 +40,25 @@ const Room = props => {
       }
     })
     sessionStorage.clear()
+  }
+
+  const handleReload = () => {
+    window.location.reload()
+  }
+
+  const endParty = () => {
+    // eslint-disable-next-line no-alert
+    if (confirm('Are you sure you want to end party for all?')) {
+      console.log('hi')
+
+      socket.emit('END_THIS_PARTY', {room})
+      //Guest Exp
+      //broadcast to everyone "host has ended the party button: return to home or sign out"
+
+      //Host Exp
+      //Delete and clean party from database
+      //The host back to dashboard
+    }
   }
 
   if (sessionStorage.length <= 1) {
@@ -61,28 +83,53 @@ const Room = props => {
   } else {
     return (
       <div>
-        <div>
-          <main>
-            <h1 className="heading text-center">
-              Welcome to {props.user.name}'s Party!
-            </h1>
-            <Link to="/">
-              <button
-                className="btn yellow-orange-btn"
-                type="submit"
-                onClick={handleSubmit}
-              >
-                Sign Out
-              </button>
-            </Link>
-          </main>
-        </div>
-        <div>
-          <Chat />
-        </div>
-        <div className="guests">
-          <UserList users={users} />
-        </div>
+        {props.user.userParty === null ? (
+          <div>
+            <h1 className="heading text-center">Party has not started yet!</h1>
+            <button
+              className="btn yellow-orange-btn"
+              type="button"
+              onClick={handleReload}
+            >
+              Retry
+            </button>
+          </div>
+        ) : (
+          <div>
+            <main>
+              <div>
+                <h1 className="heading text-center">
+                  Welcome to {props.user.name}'s Party!
+                </h1>
+              </div>
+              {isHost ? (
+                <button
+                  className="btn yellow-orange-btn"
+                  type="button"
+                  onClick={endParty}
+                >
+                  End Party
+                </button>
+              ) : (
+                <Link to="/">
+                  <button
+                    className="btn yellow-orange-btn"
+                    type="submit"
+                    onClick={handleSubmit}
+                  >
+                    Sign Out
+                  </button>
+                </Link>
+              )}
+            </main>
+            <div>
+              <Chat />
+            </div>
+            <div className="guests">
+              <UserList users={users} />
+            </div>
+          </div>
+        )}
       </div>
     )
   }
