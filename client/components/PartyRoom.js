@@ -22,6 +22,9 @@ const Room = props => {
   // const room = Object.values(key)[0]
   const picture = `${pic}`
   sessionStorage.setItem('party', room)
+  if (props.party.user) {
+    sessionStorage.setItem('host', props.party.user.name)
+  }
 
   let isHost = JSON.parse(sessionStorage.getItem('isHost'))
 
@@ -87,7 +90,9 @@ const Room = props => {
           <main>
             <div>
               <h1 className="heading">
-                Welcome to {props.party.user.name}'s Party!
+                Welcome to{' '}
+                {sessionStorage.getItem('host') || props.party.user.name}'s
+                Party!
               </h1>
             </div>
             {isHost ? (
