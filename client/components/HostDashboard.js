@@ -88,14 +88,14 @@ class HostDashboard extends React.Component {
 
             {this.state.picturePreview ? (
               <div className="row margintop">
-                <div className="col-sm-5 text-center">
+                <div className="col-sm-6 text-center">
                   <img
                     src={this.state.selectedPicture}
                     width="100"
                     height="100"
                   />
                 </div>
-                <div className="col-sm-7">
+                <div className="col-sm-6">
                   <select
                     className="form-control"
                     name="hostPicture"
@@ -128,10 +128,10 @@ class HostDashboard extends React.Component {
               </div>
             ) : (
               <div className="row margintop">
-                <div className="col-sm-5 text-center">
+                <div className="col-sm-6 text-center">
                   <img src={user.profilePicture} width="100" height="100" />
                 </div>
-                <div className="col-sm-7">
+                <div className="col-sm-6">
                   <button
                     className="btn aqua-btn"
                     type="button"
@@ -151,7 +151,7 @@ class HostDashboard extends React.Component {
 
             {this.state.showAccess ? (
               <div>
-                <div className="text-center margin-space">
+                <div className="margin-space text-center">
                   <span className="code-box">{user.userParty.accessCode}</span>
                   <button
                     className="btn aqua-btn"
@@ -165,7 +165,7 @@ class HostDashboard extends React.Component {
                 </div>
               </div>
             ) : (
-              <div className="text-center margin-space">
+              <div className="margin-space text-center">
                 <button
                   className="btn aqua-btn"
                   type="button"
@@ -177,7 +177,7 @@ class HostDashboard extends React.Component {
                 </button>
               </div>
             )}
-            <div className="row text-center margin-space2">
+            <div className="row text-center">
               <div className="col">
                 <button
                   className="btn aqua-btn"
@@ -187,6 +187,8 @@ class HostDashboard extends React.Component {
                   Join Party
                 </button>
               </div>
+            </div>
+            <div className="row text-center margintop">
               <div className="col">
                 <button
                   className="btn btn-danger"
@@ -197,7 +199,8 @@ class HostDashboard extends React.Component {
                 </button>
               </div>
             </div>
-            <div className="row text-center">
+            {/* </div> */}
+            <div className="row text-center margintop">
               <div className="col">
                 <button
                   className="btn aqua-btn"

@@ -219,7 +219,7 @@ function (_React$Component) {
         className: ""
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
         className: "aqua font-weight-bold"
-      }, "Chat"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_scroll_to_bottom__WEBPACK_IMPORTED_MODULE_2___default.a, {
+      }, "Chat"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_scroll_to_bottom__WEBPACK_IMPORTED_MODULE_2___default.a, {
         className: "messages"
       }, this.state.messages.map(function (message, index) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -624,13 +624,13 @@ function (_React$Component) {
         }, "Welcome ", user.name), this.state.picturePreview ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "row margintop"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "col-sm-5 text-center"
+          className: "col-sm-6 text-center"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           src: this.state.selectedPicture,
           width: "100",
           height: "100"
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "col-sm-7"
+          className: "col-sm-6"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
           className: "form-control",
           name: "hostPicture",
@@ -664,13 +664,13 @@ function (_React$Component) {
         }, "Save Changes"))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "row margintop"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "col-sm-5 text-center"
+          className: "col-sm-6 text-center"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           src: user.profilePicture,
           width: "100",
           height: "100"
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "col-sm-7"
+          className: "col-sm-6"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "btn aqua-btn",
           type: "button",
@@ -682,7 +682,7 @@ function (_React$Component) {
           }
         }, "Change Picture"))) // </div>
         , this.state.showAccess ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "text-center margin-space"
+          className: "margin-space text-center"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           className: "code-box"
         }, user.userParty.accessCode), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -694,7 +694,7 @@ function (_React$Component) {
             });
           }
         }, "Hide"))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "text-center margin-space"
+          className: "margin-space text-center"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "btn aqua-btn",
           type: "button",
@@ -704,7 +704,7 @@ function (_React$Component) {
             });
           }
         }, "Show Access Code")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "row text-center margin-space2"
+          className: "row text-center"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "col"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -713,7 +713,9 @@ function (_React$Component) {
           onClick: function onClick() {
             return _this2.joinParty();
           }
-        }, "Join Party")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, "Join Party"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "row text-center margintop"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "col"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "btn btn-danger",
@@ -722,7 +724,7 @@ function (_React$Component) {
             return _this2.endParty(user.id);
           }
         }, "End Party"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "row text-center"
+          className: "row text-center margintop"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "col"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -1016,16 +1018,20 @@ var Room = function Room(props) {
   };
 
   if (sessionStorage.length <= 1) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "justify-content-center vertical-center"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "joinOuterContainer"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
       className: "heading text-center"
-    }, "Need to login before entering party"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Link"], {
+    }, "Need to login before entering party")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "text-center"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Link"], {
       to: "/guestLogin"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       className: "btn aqua-btn",
       type: "button"
-    }, "Guest Login"))));
+    }, "Guest Login")))));
   } else {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
       className: "heading text-center"
