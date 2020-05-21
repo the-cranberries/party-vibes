@@ -9,7 +9,9 @@ module.exports = io => {
     })
 
     socket.on('END_PARTY', function(data) {
-      io.emit('END_THIS_PARTY', data)
+      let roomUsers = getUsersInParty(data.room)
+      roomUsers.forEach(user => removeUser(user.id))
+      io.to(data.room).emit('LEAVE_PARTY', {})
     })
 
     socket.on('join', ({name, room, picture}, callback) => {

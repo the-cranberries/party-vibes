@@ -5,6 +5,12 @@ import UserList from './UserList'
 // import session from 'express-session'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
+import {
+  putUser,
+  fetchUserParty,
+  postUserParty,
+  endUserParty
+} from '../store/user'
 
 const Room = props => {
   console.log('Room PROPS', props.user)
@@ -25,6 +31,12 @@ const Room = props => {
     if (error) {
       console.log(error)
     }
+  })
+
+  socket.on('LEAVE_PARTY', () => {
+    sessionStorage.clear()
+    props.deleteParty(props.user.id)
+    props.history.push('/')
   })
 
   useEffect(() => {
@@ -49,15 +61,7 @@ const Room = props => {
   const endParty = () => {
     // eslint-disable-next-line no-alert
     if (confirm('Are you sure you want to end party for all?')) {
-      console.log('hi')
-
-      socket.emit('END_THIS_PARTY', {room})
-      //Guest Exp
-      //broadcast to everyone "host has ended the party button: return to home or sign out"
-
-      //Host Exp
-      //Delete and clean party from database
-      //The host back to dashboard
+      socket.emit('END_PARTY', {room})
     }
   }
 
@@ -124,7 +128,11 @@ const mapStateToProps = state => ({
   user: state.user
 })
 
-export default connect(mapStateToProps)(Room)
+const mapDispatchToProps = dispatch => ({
+  deleteParty: userId => dispatch(endUserParty(userId))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Room)
 
 // const Room = props => {
 //   const [users, setUsers] = useState('')
