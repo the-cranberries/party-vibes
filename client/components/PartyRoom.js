@@ -135,6 +135,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
+  getParty: accessCode => dispatch(fetchParty(accessCode)),
   deleteParty: userId => dispatch(endUserParty(userId))
 })
 

@@ -42,8 +42,6 @@ class HostDashboard extends React.Component {
     sessionStorage.setItem('accessCode', party.accessCode)
     sessionStorage.setItem('isHost', true)
 
-    let isHost = JSON.parse(sessionStorage.getItem('isHost'))
-
     //go to party room
     this.props.history.push(`/parties/${party.accessCode}`)
   }
