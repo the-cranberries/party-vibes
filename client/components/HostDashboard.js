@@ -179,13 +179,15 @@ class HostDashboard extends React.Component {
             )}
             <div className="row text-center">
               <div className="col">
-                <button
-                  className="btn yellow-orange-btn"
-                  type="button"
-                  onClick={() => this.joinParty()}
-                >
-                  Join Party
-                </button>
+                <div className="vibe">
+                  <button
+                    className="btn yellow-orange-btn"
+                    type="button"
+                    onClick={() => this.joinParty()}
+                  >
+                    Join Party
+                  </button>
+                </div>
               </div>
             </div>
             <div className="row text-center margintop">

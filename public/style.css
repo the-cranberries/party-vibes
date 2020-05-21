@@ -219,7 +219,7 @@ select:focus {
   background-color: #daac31;
 }
 
-.guestVibe > .yellow-orange-btn:hover {
+.vibe > .yellow-orange-btn:hover {
   background: linear-gradient(
     124deg,
     #ff2400,
