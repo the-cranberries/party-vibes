@@ -10,8 +10,8 @@ const Home = props => {
   }
 
   return (
-    <div>
-      <main>
+    <div className="">
+      <main className="bottom text-center">
         <Link className="linkBtn" to="/signup">
           Sign Up
         </Link>

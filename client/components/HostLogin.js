@@ -10,29 +10,37 @@ export const Login = props => {
   const {name, displayName, handleSubmit, error} = props
 
   return (
-    <div className="joinOuterContainer">
+    <div className="text-center vertical-center justify-content-center">
       <form onSubmit={handleSubmit} name={name}>
         {/* LOGIN FORM */}
-        <div>
+        <div className="joinOuterContainer">
           <h1 className="heading">Host Login</h1>
-          <label htmlFor="email">
-            <h4>Email</h4>
-          </label>
-          <input name="email" type="text" />
+          <div className="row form-width mx-auto">
+            <label className="col-sm-3" htmlFor="email">
+              <span>Email</span>
+            </label>
+            <input className="form-control col-sm-9" name="email" type="text" />
+          </div>
+          <br />
+          <div className="row form-width mx-auto">
+            <label className="col-sm-3" htmlFor="password">
+              <span>Password</span>
+            </label>
+            <input
+              className="form-control col-sm-9"
+              name="password"
+              type="password"
+            />
+          </div>
+          <br />
+          <div className="row">
+            <div className="col">
+              <button className="btn yellow-orange-btn" type="submit">
+                {displayName}
+              </button>
+            </div>
+          </div>
         </div>
-        <div>
-          <label htmlFor="password">
-            <h4>Password</h4>
-          </label>
-          <input name="password" type="password" />
-        </div>
-        <div>
-          <button type="submit">{displayName}</button>
-        </div>
-        {error &&
-          error.response && (
-            <div id="errorMessage"> {error.response.data} </div>
-          )}
       </form>
     </div>
   )

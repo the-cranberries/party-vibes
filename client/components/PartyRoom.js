@@ -41,16 +41,20 @@ const Room = props => {
 
   if (sessionStorage.length <= 1) {
     return (
-      <div>
+      <div className="justify-content-center vertical-center">
         <div className="joinOuterContainer">
           <main>
-            <h1 className="heading">Need to login before entering party</h1>
+            <h1 className="heading text-center">
+              Need to login before entering party
+            </h1>
           </main>
-        </div>
-        <div>
-          <Link to="/guestLogin">
-            <button type="button">Guest Login</button>
-          </Link>
+          <div className="text-center">
+            <Link to="/guestLogin">
+              <button className="btn yellow-orange-btn" type="button">
+                Guest Login
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
     )
@@ -59,9 +63,15 @@ const Room = props => {
       <div>
         <div>
           <main>
-            <h1 className="heading">Welcome to {props.user.name}'s Party!</h1>
+            <h1 className="heading text-center">
+              Welcome to {props.user.name}'s Party!
+            </h1>
             <Link to="/">
-              <button type="submit" onClick={handleSubmit}>
+              <button
+                className="btn yellow-orange-btn"
+                type="submit"
+                onClick={handleSubmit}
+              >
                 Sign Out
               </button>
             </Link>
