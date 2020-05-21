@@ -52,7 +52,7 @@ const SignupForm = props => {
           <br />
           <div className="row">
             <div className="col">
-              <button className="btn aqua-btn" type="submit">
+              <button className="btn yellow-orange-btn" type="submit">
                 {displayName}
               </button>
             </div>

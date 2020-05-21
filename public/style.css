@@ -92,16 +92,16 @@ body {
 .linkBtn {
   padding: 0.5em 1em;
   margin: 0 2em;
-  background-color: #38fbdb;
-  color: #1c1c1c;
+  background-color: #ffc936;
+  color: #242424;
   font-size: 1.5em;
   border-radius: 3px;
 }
 
 .linkBtn:hover {
   text-decoration: none;
-  background-color: #2cd1b5;
-  color: #1c1c1c;
+  background-color: #daac31;
+  color: #242424;
 }
 
 #errorMessage {
@@ -186,7 +186,7 @@ body {
   color: #303030 !important;
   text-transform: uppercase;
   text-decoration: none;
-  background: #09fbd3;
+  background: #ffc936;
   padding: 0.8em 3em;
   /* display: inline-block; */
   border: none;
@@ -211,15 +211,15 @@ select:focus {
   max-width: 80%;
 } */
 
-.aqua-btn {
-  background-color: #38fbdb;
+.yellow-orange-btn {
+  background-color: #ffc936;
 }
 
-.aqua-btn:hover {
-  background-color: #2cd1b5;
+.yellow-orange-btn:hover {
+  background-color: #daac31;
 }
 
-.guestVibe > .aqua-btn:hover {
+.guestVibe > .yellow-orange-btn:hover {
   background: linear-gradient(
     124deg,
     #ff2400,
@@ -299,8 +299,8 @@ body {
   width: 50px;
 }
 
-.aqua {
-  color: #09fbd3;
+.yellow-orange {
+  color: #ffc936;
 }
 
 .code-box {

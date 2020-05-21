@@ -82,7 +82,7 @@ export class GuestLogin extends React.Component {
             </h1>
             <div className="text-center">
               <Link to={`/parties/${currentParty}`}>
-                <button className="btn aqua-btn" type="button">
+                <button className="btn yellow-orange-btn" type="button">
                   {' '}
                   Return To Party{' '}
                 </button>
@@ -145,7 +145,7 @@ export class GuestLogin extends React.Component {
                 <br />
                 <div className="guestVibe">
                   <button
-                    className="btn aqua-btn"
+                    className="btn yellow-orange-btn"
                     type="submit"
                     disabled={!this.state.name || !this.state.accessCode}
                     onClick={this.handleSubmit}

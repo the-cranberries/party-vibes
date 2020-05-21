@@ -50,7 +50,7 @@ const Room = props => {
           </main>
           <div className="text-center">
             <Link to="/guestLogin">
-              <button className="btn aqua-btn" type="button">
+              <button className="btn yellow-orange-btn" type="button">
                 Guest Login
               </button>
             </Link>
@@ -68,7 +68,7 @@ const Room = props => {
             </h1>
             <Link to="/">
               <button
-                className="btn aqua-btn"
+                className="btn yellow-orange-btn"
                 type="submit"
                 onClick={handleSubmit}
               >

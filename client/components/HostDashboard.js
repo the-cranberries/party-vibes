@@ -60,7 +60,7 @@ class HostDashboard extends React.Component {
             <div className="row text-center margin-space">
               <div className="col">
                 <button
-                  className="btn aqua-btn"
+                  className="btn yellow-orange-btn"
                   type="button"
                   onClick={() => this.createParty()}
                 >
@@ -69,7 +69,7 @@ class HostDashboard extends React.Component {
               </div>
               <div className="col">
                 <button
-                  className="btn aqua-btn"
+                  className="btn yellow-orange-btn"
                   type="button"
                   onClick={handleClick}
                 >
@@ -111,7 +111,7 @@ class HostDashboard extends React.Component {
                     <option value="/images/whale.png">Whale</option>
                   </select>
                   <button
-                    className="btn aqua-btn"
+                    className="btn yellow-orange-btn"
                     type="button"
                     onClick={() => {
                       this.props.updateUserPic(user.id, {
@@ -133,7 +133,7 @@ class HostDashboard extends React.Component {
                 </div>
                 <div className="col-sm-6">
                   <button
-                    className="btn aqua-btn"
+                    className="btn yellow-orange-btn"
                     type="button"
                     onClick={() => {
                       this.setState({
@@ -154,7 +154,7 @@ class HostDashboard extends React.Component {
                 <div className="margin-space text-center">
                   <span className="code-box">{user.userParty.accessCode}</span>
                   <button
-                    className="btn aqua-btn"
+                    className="btn yellow-orange-btn"
                     type="button"
                     onClick={() => {
                       this.setState({showAccess: false})
@@ -167,7 +167,7 @@ class HostDashboard extends React.Component {
             ) : (
               <div className="margin-space text-center">
                 <button
-                  className="btn aqua-btn"
+                  className="btn yellow-orange-btn"
                   type="button"
                   onClick={() => {
                     this.setState({showAccess: true})
@@ -180,7 +180,7 @@ class HostDashboard extends React.Component {
             <div className="row text-center">
               <div className="col">
                 <button
-                  className="btn aqua-btn"
+                  className="btn yellow-orange-btn"
                   type="button"
                   onClick={() => this.joinParty()}
                 >
@@ -203,7 +203,7 @@ class HostDashboard extends React.Component {
             <div className="row text-center margintop">
               <div className="col">
                 <button
-                  className="btn aqua-btn"
+                  className="btn yellow-orange-btn"
                   type="button"
                   onClick={handleClick}
                 >

@@ -218,15 +218,15 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: ""
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
-        className: "aqua font-weight-bold"
+        className: "yellow-orange font-weight-bold"
       }, "Chat"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_scroll_to_bottom__WEBPACK_IMPORTED_MODULE_2___default.a, {
         className: "messages"
       }, this.state.messages.map(function (message, index) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           key: index
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", {
-          className: "aqua"
-        }, message.author), ": ", message.message);
+          className: "yellow-orange"
+        }, message.author), ":", ' ', message.message);
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "chat-input"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -392,7 +392,7 @@ function (_React$Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
           to: "/parties/".concat(currentParty)
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          className: "btn aqua-btn",
+          className: "btn yellow-orange-btn",
           type: "button"
         }, ' ', "Return To Party", ' ')))));
       } else {
@@ -449,7 +449,7 @@ function (_React$Component) {
         }, "Whale")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "guestVibe"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          className: "btn aqua-btn",
+          className: "btn yellow-orange-btn",
           type: "submit",
           disabled: !this.state.name || !this.state.accessCode,
           onClick: this.handleSubmit
@@ -602,7 +602,7 @@ function (_React$Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "col"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          className: "btn aqua-btn",
+          className: "btn yellow-orange-btn",
           type: "button",
           onClick: function onClick() {
             return _this2.createParty();
@@ -610,7 +610,7 @@ function (_React$Component) {
         }, "New Party")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "col"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          className: "btn aqua-btn",
+          className: "btn yellow-orange-btn",
           type: "button",
           onClick: handleClick
         }, "Log Out")))));
@@ -650,7 +650,7 @@ function (_React$Component) {
         }, "Pig"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
           value: "/images/whale.png"
         }, "Whale")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          className: "btn aqua-btn",
+          className: "btn yellow-orange-btn",
           type: "button",
           onClick: function onClick() {
             _this2.props.updateUserPic(user.id, {
@@ -672,7 +672,7 @@ function (_React$Component) {
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "col-sm-6"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          className: "btn aqua-btn",
+          className: "btn yellow-orange-btn",
           type: "button",
           onClick: function onClick() {
             _this2.setState({
@@ -686,7 +686,7 @@ function (_React$Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           className: "code-box"
         }, user.userParty.accessCode), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          className: "btn aqua-btn",
+          className: "btn yellow-orange-btn",
           type: "button",
           onClick: function onClick() {
             _this2.setState({
@@ -696,7 +696,7 @@ function (_React$Component) {
         }, "Hide"))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "margin-space text-center"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          className: "btn aqua-btn",
+          className: "btn yellow-orange-btn",
           type: "button",
           onClick: function onClick() {
             _this2.setState({
@@ -708,7 +708,7 @@ function (_React$Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "col"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          className: "btn aqua-btn",
+          className: "btn yellow-orange-btn",
           type: "button",
           onClick: function onClick() {
             return _this2.joinParty();
@@ -728,7 +728,7 @@ function (_React$Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "col"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          className: "btn aqua-btn",
+          className: "btn yellow-orange-btn",
           type: "button",
           onClick: handleClick
         }, "Log Out")))));
@@ -837,7 +837,7 @@ var Login = function Login(props) {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "btn aqua-btn",
+    className: "btn yellow-orange-btn",
     type: "submit"
   }, displayName))))));
 };
@@ -1021,7 +1021,7 @@ var Room = function Room(props) {
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Link"], {
       to: "/guestLogin"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-      className: "btn aqua-btn",
+      className: "btn yellow-orange-btn",
       type: "button"
     }, "Guest Login")))));
   } else {
@@ -1030,7 +1030,7 @@ var Room = function Room(props) {
     }, "Welcome to ", props.user.name, "'s Party!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Link"], {
       to: "/"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-      className: "btn aqua-btn",
+      className: "btn yellow-orange-btn",
       type: "submit",
       onClick: handleSubmit
     }, "Sign Out")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Chat__WEBPACK_IMPORTED_MODULE_2__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1215,7 +1215,7 @@ var SignupForm = function SignupForm(props) {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "btn aqua-btn",
+    className: "btn yellow-orange-btn",
     type: "submit"
   }, displayName))), error && error.response && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     id: "errorMessage"

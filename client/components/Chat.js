@@ -45,12 +45,13 @@ class Chat extends React.Component {
     return (
       <div className="chat-box">
         <div className="">
-          <h4 className="aqua font-weight-bold">Chat</h4>
+          <h4 className="yellow-orange font-weight-bold">Chat</h4>
           <ScrollToBottom className="messages">
             {this.state.messages.map((message, index) => {
               return (
                 <div key={index}>
-                  <b className="aqua">{message.author}</b>: {message.message}
+                  <b className="yellow-orange">{message.author}</b>:{' '}
+                  {message.message}
                 </div>
               )
             })}
