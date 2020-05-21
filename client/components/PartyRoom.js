@@ -83,42 +83,30 @@ const Room = props => {
   } else {
     return (
       <div>
-        {props.user.userParty === null ? (
-          <div>
-            <h1 className="heading">Party has not started yet!</h1>
-            <button type="button" onClick={handleReload}>
-              {' '}
-              Retry
-            </button>
-          </div>
-        ) : (
-          <div>
-            <main>
-              <div>
-                <h1 className="heading">
-                  Welcome to {props.user.name}'s Party!
-                </h1>
-              </div>
-              {isHost ? (
-                <button type="button" onClick={endParty}>
-                  End Party
-                </button>
-              ) : (
-                <Link to="/">
-                  <button type="submit" onClick={handleSubmit}>
-                    Sign Out
-                  </button>
-                </Link>
-              )}
-            </main>
+        <div>
+          <main>
             <div>
-              <Chat />
+              <h1 className="heading">Welcome to {props.user.name}'s Party!</h1>
             </div>
-            <div className="guests">
-              <UserList users={users} />
-            </div>
+            {isHost ? (
+              <button type="button" onClick={endParty}>
+                End Party
+              </button>
+            ) : (
+              <Link to="/">
+                <button type="submit" onClick={handleSubmit}>
+                  Sign Out
+                </button>
+              </Link>
+            )}
+          </main>
+          <div>
+            <Chat />
           </div>
-        )}
+          <div className="guests">
+            <UserList users={users} />
+          </div>
+        </div>
       </div>
     )
   }
