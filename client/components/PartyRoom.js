@@ -5,23 +5,21 @@ import UserList from './UserList'
 // import session from 'express-session'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {
-  putUser,
-  fetchUserParty,
-  postUserParty,
-  endUserParty
-} from '../store/user'
+import {endUserParty} from '../store/user'
+import {fetchParty} from '../store/party'
 
 const Room = props => {
   // console.log('Room PROPS', props.user)
 
+  const accessCode = props.match.params.accessCode
+
   const [users, setUsers] = useState('')
-  const [isPartyGoing, setParty] = useState('')
+  // const [isPartyGoing, setParty] = useState('')
 
   const pic = sessionStorage.getItem('picture')
-  const name = sessionStorage.name
-  const key = props.match.params
-  const room = Object.values(key)[0]
+  const name = sessionStorage.getItem('name')
+  const room = accessCode
+  // const room = Object.values(key)[0]
   const picture = `${pic}`
   sessionStorage.setItem('party', room)
 
@@ -54,9 +52,9 @@ const Room = props => {
     sessionStorage.clear()
   }
 
-  const handleReload = () => {
-    window.location.reload()
-  }
+  // const handleReload = () => {
+  //   window.location.reload()
+  // }
 
   const endParty = () => {
     // eslint-disable-next-line no-alert
@@ -82,6 +80,7 @@ const Room = props => {
     )
   } else {
     console.log('props', props)
+
     return (
       <div>
         <div>
@@ -121,6 +120,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
+  getParty: accessCode => dispatch(fetchParty(accessCode)),
   deleteParty: userId => dispatch(endUserParty(userId))
 })
 
