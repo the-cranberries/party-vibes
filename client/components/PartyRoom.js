@@ -36,7 +36,11 @@ const Room = props => {
 
   socket.on('LEAVE_PARTY', () => {
     sessionStorage.clear()
-    props.deleteParty(props.user.id)
+
+    if (props.user.id) {
+      props.deleteParty(props.user.id)
+    }
+
     props.history.push('/')
   })
 
