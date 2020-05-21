@@ -15,6 +15,7 @@ class HostDashboard extends React.Component {
     super(props)
     this.state = {
       selectedPicture: '',
+      picturePreview: false,
       showAccess: false
     }
   }
@@ -31,7 +32,7 @@ class HostDashboard extends React.Component {
     this.setState({selectedPicture: event.target.value})
   }
 
-  joinParty() {
+  joinParty = () => {
     const {user} = this.props
     const party = user.userParty
 
@@ -47,15 +48,12 @@ class HostDashboard extends React.Component {
     this.props.history.push(`/parties/${party.accessCode}`)
   }
 
-  endParty(userId) {
+  endParty = userId => {
     this.props.clearPartyFromStore(userId)
   }
 
   render() {
-    const {party, user, handleClick} = this.props
-
-    console.log('party: ', party)
-    console.log('user', user)
+    const {user, handleClick} = this.props
 
     if (!user.userParty) {
       return (
@@ -79,34 +77,57 @@ class HostDashboard extends React.Component {
       return (
         <div className="host_dashboard">
           <h1>Welcome {user.name}</h1>
-          <img src={user.profilePicture} width="100" height="100" />
-          <p>
-            <select
-              name="hostPicture"
-              id="hostPicture"
-              onChange={this.handleSelect}
-            >
-              <option value={user.profilePicture}>
-                --Change Profile Icon--
-              </option>
-              <option value="/images/pug.png">Pug</option>
-              <option value="/images/bear.png">Bear</option>
-              <option value="/images/beaver.png">Beaver</option>
-              <option value="/images/fox.png">Fox</option>
-              <option value="/images/pig.png">Pig</option>
-              <option value="/images/whale.png">Whale</option>
-            </select>
-            <button
-              type="button"
-              onClick={() => {
-                this.props.updateUserPic(user.id, {
-                  profilePicture: this.state.selectedPicture
-                })
-              }}
-            >
-              save changes
-            </button>
-          </p>
+          {this.state.picturePreview ? (
+            <div>
+              <img src={this.state.selectedPicture} width="100" height="100" />
+              <p>
+                <select
+                  name="hostPicture"
+                  id="hostPicture"
+                  onChange={this.handleSelect}
+                  value={this.state.selectedPicture}
+                >
+                  <option value="/images/pug.png">Pug</option>
+                  <option value="/images/bear.png">Bear</option>
+                  <option value="/images/beaver.png">Beaver</option>
+                  <option value="/images/fox.png">Fox</option>
+                  <option value="/images/pig.png">Pig</option>
+                  <option value="/images/whale.png">Whale</option>
+                </select>
+                <button
+                  type="button"
+                  onClick={() => {
+                    this.props.updateUserPic(user.id, {
+                      profilePicture: this.state.selectedPicture
+                    })
+                    this.setState({
+                      picturePreview: false
+                    })
+                  }}
+                >
+                  save changes
+                </button>
+              </p>
+            </div>
+          ) : (
+            <div>
+              <img src={user.profilePicture} width="100" height="100" />
+              <p>
+                <button
+                  type="button"
+                  onClick={() => {
+                    this.setState({
+                      picturePreview: true,
+                      selectedPicture: user.profilePicture
+                    })
+                  }}
+                >
+                  change picture
+                </button>
+              </p>
+            </div>
+          )}
+
           {this.state.showAccess ? (
             <div>
               <p>
