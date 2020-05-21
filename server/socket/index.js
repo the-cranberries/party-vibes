@@ -4,9 +4,10 @@ module.exports = io => {
   io.on('connection', socket => {
     console.log('user has connected', socket.id)
 
-    socket.on('SEND_MESSAGE', function(data) {
-      console.log('DATAAAAAAAAAA', data)
-      io.emit('RECEIVE_MESSAGE', data)
+    socket.on('SEND_MESSAGE', ({author, message, room}) => {
+      // console.log('DATAAAAAAAAAA', data)
+      // io.emit('RECEIVE_MESSAGE', data)
+      io.to(room).emit('RECEIVE_MESSAGE', {author, message})
     })
 
     socket.on('END_PARTY', function(data) {

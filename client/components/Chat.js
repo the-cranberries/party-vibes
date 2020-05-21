@@ -15,10 +15,6 @@ class Chat extends React.Component {
 
     // socket = io('localhost:8080')
 
-    socket.on('RECEIVE_MESSAGE', function(data) {
-      addMessage(data)
-    })
-
     const addMessage = data => {
       let messages = [...this.state.messages, data]
       if (messages.length > 100) {
@@ -30,6 +26,11 @@ class Chat extends React.Component {
         this.setState({messages})
       }
     }
+
+    socket.on('RECEIVE_MESSAGE', ({author, message}) => {
+      let data = {author, message}
+      addMessage(data)
+    })
 
     this.sendMessage = ev => {
       // ev.preventDefault()
