@@ -83,7 +83,6 @@ const Room = props => {
           <div>
             <h1 className="heading">Party has not started yet!</h1>
             <button type="button" onClick={handleReload}>
-              {' '}
               Retry
             </button>
           </div>

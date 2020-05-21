@@ -14,7 +14,7 @@ export const Login = props => {
       <form onSubmit={handleSubmit} name={name}>
         {/* LOGIN FORM */}
         <div>
-          <h1 className="heading">Join as Host</h1>
+          <h1 className="heading">Host Login</h1>
           <label htmlFor="email">
             <h4>Email</h4>
           </label>
