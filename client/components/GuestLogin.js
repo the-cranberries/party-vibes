@@ -53,19 +53,25 @@ export class GuestLogin extends React.Component {
   }
 
   handleReturnParty() {
-    let party = this.props.fetchParty({
-      accessCode: sessionStorage.getItem('party'),
-      name: sessionStorage.getItem('name')
+    console.log(this.props)
+
+    const accessCode = sessionStorage.getItem('party')
+    const name = sessionStorage.getItem('name')
+
+    this.props.fetchParty({
+      accessCode,
+      name
     })
 
-    window.location.reload()
+    this.props.history.push(`/parties/${accessCode}`)
+
+    // window.location.reload()
     // console.log('PARTY', party)
-    // history.push(`/parties/${accessCode}`)
   }
 
   render() {
-    console.log('STATE', this.state)
-    console.log('PROPS', this.props)
+    // console.log('STATE', this.state)
+    // console.log('PROPS', this.props)
     const {error} = this.props
     const isGuestLoggedIn = JSON.parse(
       sessionStorage.getItem('isGuestLoggedIn')
@@ -81,12 +87,14 @@ export class GuestLogin extends React.Component {
               You are currently logged in a party
             </h1>
             <div className="text-center">
-              <Link to={`/parties/${currentParty}`}>
-                <button className="btn yellow-orange-btn" type="button">
-                  {' '}
-                  Return To Party{' '}
-                </button>
-              </Link>
+              <button
+                className="btn yellow-orange-btn"
+                type="button"
+                onClick={this.handleReturnParty}
+              >
+                {' '}
+                Return To Party{' '}
+              </button>
             </div>
           </div>
         </div>

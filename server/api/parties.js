@@ -1,24 +1,8 @@
 const router = require('express').Router()
-const {User, Party} = require('../db/models')
+const {User, Party, PartyUser} = require('../db/models')
 module.exports = router
 
 //GET / api / parties /: accessCode
-// router.get('/:accessCode', async (req, res, next) => {
-//   try {
-//     const party = await Party.findOne({
-//       where: {
-//         accessCode: req.params.accessCode
-//       }
-//     })
-//     if (party) {
-//       res.json(party)
-//     } else {
-//       res.json('INVALID')
-//     }
-//   } catch (err) {
-//     next(err)
-//   }
-// })
 
 router.get('/:accessCode', async (req, res, next) => {
   try {
@@ -27,7 +11,18 @@ router.get('/:accessCode', async (req, res, next) => {
         accessCode: req.params.accessCode
       }
     })
-    // console.log('party: ', party)
+
+    const partyUser = await PartyUser.findOne({
+      where: {
+        partyId: party.id
+      }
+    })
+
+    const user = await User.findByPk(partyUser.userId)
+
+    party.dataValues.user = user
+
+    console.log('party: ', party)
 
     if (!party) {
       console.log('No such code found:')

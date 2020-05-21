@@ -36,16 +36,16 @@ class HostDashboard extends React.Component {
     const {user} = this.props
     const party = user.userParty
 
+    console.log('party: ', party)
+
     //store user name, img, and accessCode into session storage
     sessionStorage.setItem('name', user.name)
     sessionStorage.setItem('picture', user.profilePicture)
     sessionStorage.setItem('accessCode', party.accessCode)
     sessionStorage.setItem('isHost', true)
 
-    let isHost = JSON.parse(sessionStorage.getItem('isHost'))
-
     //go to party room
-    this.props.history.push(`/parties/${party.accessCode}`)
+    this.props.fetchParty({accessCode: party.accessCode, name: user.name})
   }
 
   endParty = userId => {
