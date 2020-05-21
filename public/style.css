@@ -27,6 +27,14 @@ body {
   background-size: 100%;
 }
 
+/* #bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+} */
+
 .joinOuterContainer {
   /* display: flex;
   justify-content: center;
@@ -82,8 +90,8 @@ body {
 }
 
 .linkBtn {
-  padding: 1em;
-  margin: 3em;
+  padding: 0.5em 1em;
+  margin: 0 2em;
   background-color: #38fbdb;
   color: #1c1c1c;
   font-size: 1.5em;
@@ -329,4 +337,11 @@ body {
 
 .move-right {
   margin-left: 1.5em;
+}
+
+.bottom {
+  position: fixed;
+  bottom: 15%;
+  right: 0;
+  left: 0;
 }
