@@ -45,50 +45,44 @@ class Chat extends React.Component {
 
   render() {
     return (
-      <div className="container">
-        <div className="row">
-          <div className="col-4">
-            <div className="card">
-              <div className="card-body">
-                <div className="card-title">Chat</div>
-                <hr />
-                <ScrollToBottom className="messages">
-                  {this.state.messages.map((message, index) => {
-                    return (
-                      <div key={index}>
-                        {message.author}: {message.message}
-                      </div>
-                    )
-                  })}
-                </ScrollToBottom>
-              </div>
-              <div className="input">
-                <input
-                  type="text"
-                  placeholder="Message"
-                  className="form-control"
-                  required="required"
-                  value={this.state.message}
-                  onChange={ev => this.setState({message: ev.target.value})}
-                  onKeyPress={evt => {
-                    if (this.state.message) {
-                      if (evt.key === 'Enter') {
-                        this.sendMessage()
-                      }
-                    }
-                  }}
-                />
-                <br />
-                <button
-                  onClick={this.sendMessage}
-                  className="sendButton"
-                  disabled={!this.state.message}
-                >
-                  Send
-                </button>
-              </div>
-            </div>
-          </div>
+      <div className="chat-box">
+        <div className="">
+          <h4 className="yellow-orange font-weight-bold">Chat</h4>
+          <ScrollToBottom className="messages">
+            {this.state.messages.map((message, index) => {
+              return (
+                <div key={index}>
+                  <b className="yellow-orange">{message.author}</b>:{' '}
+                  {message.message}
+                </div>
+              )
+            })}
+          </ScrollToBottom>
+        </div>
+        <div className="chat-input">
+          <input
+            type="text"
+            placeholder="Type a message..."
+            className="form-control"
+            required="required"
+            value={this.state.message}
+            onChange={ev => this.setState({message: ev.target.value})}
+            onKeyPress={evt => {
+              if (this.state.message) {
+                if (evt.key === 'Enter') {
+                  this.sendMessage()
+                }
+              }
+            }}
+          />
+          <button
+            type="submit"
+            onClick={this.sendMessage}
+            className="sendButton"
+            disabled={!this.state.message}
+          >
+            Send
+          </button>
         </div>
       </div>
     )

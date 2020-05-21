@@ -75,71 +75,91 @@ export class GuestLogin extends React.Component {
 
     if (isGuestLoggedIn && currentParty) {
       guestLogin = (
-        <div className="joinOuterContainer">
-          <h1 className="heading">You are currently logged in a party</h1>
-          <Link to={`/parties/${currentParty}`}>
-            <button type="button"> Return To Party </button>
-          </Link>
+        <div className="vertical-center justify-content-center">
+          <div className="joinOuterContainer">
+            <h1 className="heading text-center">
+              You are currently logged in a party
+            </h1>
+            <div className="text-center">
+              <Link to={`/parties/${currentParty}`}>
+                <button className="btn yellow-orange-btn" type="button">
+                  {' '}
+                  Return To Party{' '}
+                </button>
+              </Link>
+            </div>
+          </div>
         </div>
       )
     } else {
       guestLogin = (
-        <div className="joinOuterContainer">
-          <div className="form">
-            <div>
-              <div>
+        <div className="vertical-center justify-content-center">
+          <div className="joinOuterContainer">
+            <div className="text-center">
+              <form>
                 <h1 className="heading">Join a Party</h1>
-                <label htmlFor="name">
-                  <h4>Name</h4>
-                </label>
-                <input
-                  // placeholder="Name"
-                  // className="joinInput"
-                  type="text"
-                  name="name"
-                  required={true}
-                  onChange={this.handleChange}
-                />
-              </div>
-              <div>
-                <label htmlFor="access code">
-                  <h4>Access Code</h4>
-                </label>
-                <input
-                  name="accessCode"
-                  // placeholder="Access Code"
-                  type="text"
-                  onChange={this.handleChange}
-                />
-              </div>
-              <select
-                name="guestPicture"
-                id="guestPicture"
-                value={this.state.guestPicture}
-                onChange={this.handleSelect}
-              >
-                <option value="/images/pug.png">
-                  --Please Choose A Profile Icon--
-                </option>
-                <option value="/images/bear.png">Bear</option>
-                <option value="/images/beaver.png">Beaver</option>
-                <option value="/images/fox.png">Fox</option>
-                <option value="/images/pig.png">Pig</option>
-                <option value="/images/whale.png">Whale</option>
-              </select>
-              <div>
-                <button
-                  type="submit"
-                  disabled={!this.state.name || !this.state.accessCode}
-                  onClick={this.handleSubmit}
+                <div className="row form-width mx-auto">
+                  <label className="col-sm-4" htmlFor="name">
+                    <span>Name</span>
+                  </label>
+                  <input
+                    // placeholder="Name"
+                    // className="joinInput"
+                    className="form-control col-sm-8"
+                    type="text"
+                    name="name"
+                    required={true}
+                    onChange={this.handleChange}
+                  />
+                </div>
+                <br />
+                <div className="row form-width mx-auto">
+                  <label className="col-sm-4" htmlFor="access code">
+                    <span>Access Code</span>
+                  </label>
+                  <input
+                    className="form-control col-sm-8"
+                    name="accessCode"
+                    // placeholder="Access Code"
+                    type="text"
+                    onChange={this.handleChange}
+                  />
+                </div>
+                <br />
+                <select
+                  className="form-control select-width"
+                  name="guestPicture"
+                  id="guestPicture"
+                  value={this.state.guestPicture}
+                  onChange={this.handleSelect}
                 >
-                  Let's Vibe
-                </button>
-              </div>
-              {error &&
-                error.response && (
-                  <div id="errorMessage"> {error.response.data} </div>
-                )}
+                  <option value="/images/pug.png">
+                    --Please Choose A Profile Icon--
+                  </option>
+                  <option value="/images/bear.png">Bear</option>
+                  <option value="/images/beaver.png">Beaver</option>
+                  <option value="/images/fox.png">Fox</option>
+                  <option value="/images/pig.png">Pig</option>
+                  <option value="/images/whale.png">Whale</option>
+                </select>
+                <br />
+                <div className="guestVibe">
+                  <button
+                    className="btn yellow-orange-btn"
+                    type="submit"
+                    disabled={!this.state.name || !this.state.accessCode}
+                    onClick={this.handleSubmit}
+                  >
+                    Let's Vibe
+                  </button>
+                </div>
+                {error &&
+                  error.response && (
+                    <div id="errorMessage">
+                      <br /> {error.response.data}{' '}
+                    </div>
+                  )}
+              </form>
             </div>
           </div>
         </div>
