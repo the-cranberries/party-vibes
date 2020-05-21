@@ -35,7 +35,8 @@ class Chat extends React.Component {
       // ev.preventDefault()
       socket.emit('SEND_MESSAGE', {
         author: sessionStorage.name,
-        message: this.state.message
+        message: this.state.message,
+        room: sessionStorage.party
       })
       this.setState({message: ''})
     }
