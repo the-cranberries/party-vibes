@@ -64,8 +64,8 @@ export class GuestLogin extends React.Component {
   }
 
   render() {
-    console.log('STATE', this.state)
-    console.log('PROPS', this.props)
+    // console.log('STATE', this.state)
+    // console.log('PROPS', this.props)
     const {error} = this.props
     const isGuestLoggedIn = JSON.parse(
       sessionStorage.getItem('isGuestLoggedIn')
