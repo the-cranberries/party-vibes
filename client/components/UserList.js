@@ -4,7 +4,7 @@ const UserList = ({users}) => (
   <div className="textContainer">
     {users ? (
       <div>
-        <h1>People currently in room</h1>
+        {/* <h1>People currently in room</h1> */}
         <div className="activeContainer">
           <h2>
             {users.map(user => (
