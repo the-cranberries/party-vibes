@@ -199,7 +199,6 @@ class HostDashboard extends React.Component {
                 </button>
               </div>
             </div>
-            {/* </div> */}
             <div className="row text-center margintop">
               <div className="col">
                 <button
@@ -210,37 +209,6 @@ class HostDashboard extends React.Component {
                   Log Out
                 </button>
               </div>
-            </div>
-            ) : (
-            <p>
-              <button
-                className="btn yellow-orange-btn"
-                type="button"
-                onClick={() => {
-                  this.setState({showAccess: true})
-                }}
-              >
-                Show Access Code
-              </button>
-            </p>
-            )}
-            <p>
-              <button
-                className="btn yellow-orange-btn"
-                type="button"
-                onClick={() => this.joinParty()}
-              >
-                Join Party
-              </button>
-            </p>
-            <div>
-              <button
-                className="btn yellow-orange-btn"
-                type="button"
-                onClick={handleClick}
-              >
-                Log Out
-              </button>
             </div>
           </div>
         </div>

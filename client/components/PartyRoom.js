@@ -85,8 +85,12 @@ const Room = props => {
       <div>
         {props.user.userParty === null ? (
           <div>
-            <h1 className="heading">Party has not started yet!</h1>
-            <button type="button" onClick={handleReload}>
+            <h1 className="heading text-center">Party has not started yet!</h1>
+            <button
+              className="btn yellow-orange-btn"
+              type="button"
+              onClick={handleReload}
+            >
               Retry
             </button>
           </div>
