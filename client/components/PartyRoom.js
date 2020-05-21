@@ -68,40 +68,50 @@ const Room = props => {
 
   if (sessionStorage.length <= 1) {
     return (
-      <div>
+      <div className="justify-content-center vertical-center">
         <div className="joinOuterContainer">
           <main>
-            <h1 className="heading">Need to login before entering party</h1>
+            <h1 className="heading text-center">
+              Need to login before entering party
+            </h1>
           </main>
-        </div>
-        <div>
-          <Link to="/guestLogin">
-            <button type="button">Guest Login</button>
-          </Link>
+          <div className="text-center">
+            <Link to="/guestLogin">
+              <button className="btn yellow-orange-btn" type="button">
+                Guest Login
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
     )
   } else {
-    console.log('props', props)
-
     return (
       <div>
         <div>
           <main>
             <div>
-              <h1 className="heading">
+              <h1 className="heading text-center">
                 Welcome to{' '}
                 {sessionStorage.getItem('host') || props.party.user.name}'s
                 Party!
               </h1>
             </div>
             {isHost ? (
-              <button type="button" onClick={endParty}>
+              <button
+                type="button"
+                className="btn yellow-orange-btn"
+                onClick={endParty}
+              >
                 End Party
               </button>
             ) : (
               <Link to="/">
-                <button type="submit" onClick={handleSubmit}>
+                <button
+                  type="submit"
+                  className="btn yellow-orange-btn"
+                  onClick={handleSubmit}
+                >
                   Sign Out
                 </button>
               </Link>
@@ -125,7 +135,6 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  getParty: accessCode => dispatch(fetchParty(accessCode)),
   deleteParty: userId => dispatch(endUserParty(userId))
 })
 
