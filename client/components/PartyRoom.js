@@ -81,12 +81,15 @@ const Room = props => {
       </div>
     )
   } else {
+    console.log('props', props)
     return (
       <div>
         <div>
           <main>
             <div>
-              <h1 className="heading">Welcome to {props.user.name}'s Party!</h1>
+              <h1 className="heading">
+                Welcome to {props.party.user.name}'s Party!
+              </h1>
             </div>
             {isHost ? (
               <button type="button" onClick={endParty}>
@@ -113,6 +116,7 @@ const Room = props => {
 }
 
 const mapStateToProps = state => ({
+  party: state.party,
   user: state.user
 })
 
