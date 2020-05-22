@@ -8,6 +8,7 @@ import {
 } from '../store/user'
 import {fetchParty} from '../store/party'
 import {logout} from '../store'
+import socket from '../socket'
 import PropTypes from 'prop-types'
 
 class HostDashboard extends React.Component {
@@ -49,7 +50,11 @@ class HostDashboard extends React.Component {
   }
 
   endParty = userId => {
-    this.props.clearPartyFromStore(userId)
+    const room = this.props.user.userParty.accessCode
+    if (confirm('Are you sure you want to end party for all?')) {
+      socket.emit('END_PARTY', {room})
+      this.props.clearPartyFromStore(userId)
+    }
   }
 
   render() {
