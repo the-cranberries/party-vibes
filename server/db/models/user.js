@@ -39,7 +39,7 @@ const User = db.define('user', {
   },
   profilePicture: {
     type: Sequelize.TEXT,
-    defaultValue: '/images/icon7.png'
+    defaultValue: '/images/person1.png'
   },
   spotifyId: {
     type: Sequelize.STRING
