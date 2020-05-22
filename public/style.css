@@ -21,7 +21,6 @@ nav a {
 } */
 
 body {
-  font-family: sans-serif;
   background-image: url('landing_page.jpg');
   background-repeat: no-repeat;
   background-size: 100%;
@@ -70,6 +69,8 @@ body {
 
 .heading {
   color: white;
+  text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black,
+    1px 1px 0 black;
   font-size: 2.5em;
   padding-bottom: 10px;
   border-bottom: 2px solid white;
@@ -290,9 +291,9 @@ body {
   height: 100%;
 }
 
-.host_dashboard {
+/* .host_dashboard {
   color: white;
-}
+} */
 
 .activeContainer img {
   height: 50px;
@@ -330,7 +331,7 @@ body {
 
 .vertical-center {
   min-height: 100%;
-  min-height: 100vh;
+  min-height: 75vh;
   display: flex;
   align-items: center;
 }
