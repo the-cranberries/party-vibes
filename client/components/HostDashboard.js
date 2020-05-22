@@ -64,7 +64,7 @@ class HostDashboard extends React.Component {
       return (
         <div className="vertical-center justify-content-center">
           <div className="host_dashboard joinOuterContainer">
-            <h1 className="text-center">Welcome {user.name}</h1>
+            <h1 className="text-center heading">Welcome {user.name}</h1>
             <div className="row text-center margin-space">
               <div className="col">
                 <button
@@ -92,7 +92,7 @@ class HostDashboard extends React.Component {
       return (
         <div className="vertical-center justify-content-center">
           <div className="host_dashboard joinOuterContainer">
-            <h1 className="text-center">Welcome {user.name}</h1>
+            <h1 className="text-center heading">Welcome {user.name}</h1>
             {this.state.picturePreview ? (
               <div className="row margintop">
                 <div className="col-sm-6 text-center">

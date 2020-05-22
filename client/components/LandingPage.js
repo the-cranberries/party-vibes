@@ -3,6 +3,7 @@ import {Link, Redirect} from 'react-router-dom'
 import {connect} from 'react-redux'
 // import {Login} from './HostLogin'
 // import {Signup} from './Signup'
+// import LandingImg from './../landing_page.jpg'
 
 const Home = props => {
   if (props.user && props.user.id) {
@@ -11,6 +12,7 @@ const Home = props => {
 
   return (
     <div className="">
+      <img className="landingImg" src="/landing_page.jpg" />
       <main className="bottom text-center">
         <Link className="linkBtn" to="/signup">
           Sign Up
