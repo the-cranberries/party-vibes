@@ -25,9 +25,6 @@ router.get('/:accessCode', async (req, res, next) => {
       res.json(party)
     }
 
-    // if(party === null){
-    //   res.status(401).send('Access code invalid')
-    // }else {
     //   const partyUser = await PartyUser.findOne({
     //     where: {
     //       partyId: party.id
