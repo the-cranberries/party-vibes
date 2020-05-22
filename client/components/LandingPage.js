@@ -13,7 +13,6 @@ const Home = props => {
   return (
     <div className="">
       <img className="landingImg" src="/landing_page.jpg" />
-      {/* <div className="landingImg"></div> */}
       <main className="bottom text-center">
         <Link className="linkBtn" to="/signup">
           Sign Up
