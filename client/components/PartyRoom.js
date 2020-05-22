@@ -41,7 +41,11 @@ const Room = props => {
       props.deleteParty(props.user.id)
     }
 
-    props.history.push('/')
+    if (props.user.id) {
+      props.history.push('/')
+    } else {
+      props.history.push('/guestSignOut')
+    }
   })
 
   useEffect(() => {
