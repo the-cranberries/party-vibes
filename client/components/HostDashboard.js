@@ -110,12 +110,23 @@ class HostDashboard extends React.Component {
                     onChange={this.handleSelect}
                     value={this.state.selectedPicture}
                   >
-                    <option value="/images/pug.png">Pug</option>
-                    <option value="/images/bear.png">Bear</option>
-                    <option value="/images/beaver.png">Beaver</option>
-                    <option value="/images/fox.png">Fox</option>
-                    <option value="/images/pig.png">Pig</option>
-                    <option value="/images/whale.png">Whale</option>
+                    <option value="/images/person1.png">Person 1</option>
+                    <option value="/images/person2.png">Person 2</option>
+                    <option value="/images/person3.png">Person 3</option>
+
+                    <option value="/images/girl1.png">Girl 1</option>
+                    <option value="/images/girl2.png">Girl 2</option>
+
+                    <option value="/images/boy1.png">Boy 1</option>
+                    <option value="/images/boy2.png">Boy 2</option>
+
+                    <option value="/images/woman1.png">Woman 1</option>
+                    <option value="/images/woman2.png">Woman 2</option>
+                    <option value="/images/woman3.png">Woman 3</option>
+
+                    <option value="/images/man1.png">Man 1</option>
+                    <option value="/images/man2.png">Man 2</option>
+                    <option value="/images/man3.png">Man 3</option>
                   </select>
                   <button
                     className="btn yellow-orange-btn"
