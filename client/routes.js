@@ -8,7 +8,8 @@ import {
   Home,
   GuestLogin,
   PartyRoom,
-  HostDashboard
+  HostDashboard,
+  GuestSignOut
 } from './components'
 import {me} from './store'
 
@@ -31,6 +32,7 @@ class Routes extends Component {
         <Route path="/guestlogin" component={GuestLogin} />
         <Route exact path="/parties/:accessCode" component={PartyRoom} />
         <Route exact path="/" component={Home} />
+        <Route path="/guestSignOut" component={GuestSignOut} />
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
