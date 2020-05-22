@@ -135,7 +135,12 @@ export class GuestLogin extends React.Component {
                 </div>
                 <br />
                 <div>
-                  <img src={this.state.guestPicture} width="100" height="100" />
+                  <img
+                    className="icon"
+                    src={this.state.guestPicture}
+                    width="100"
+                    height="100"
+                  />
                   <select
                     className="form-control select-width"
                     name="guestPicture"
