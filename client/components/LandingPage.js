@@ -10,16 +10,27 @@ const Home = props => {
   return (
     <div className="">
       <img className="landingImg" src="/landing_page.jpg" />
+
       <main className="bottom text-center">
-        <Link className="linkBtn" to="/signup">
-          Sign Up
-        </Link>
-        <Link className="linkBtn" to="/login">
-          Login
-        </Link>
-        <Link className="linkBtn" to="/guestlogin">
-          Join Party
-        </Link>
+        <div className="activeContainer">
+          <div className="row">
+            <div className="activeItem text-center col">
+              <Link className="linkBtn" to="/signup">
+                Sign Up
+              </Link>
+            </div>
+            <div className="activeItem text-center col">
+              <Link className="linkBtn" to="/login">
+                Login
+              </Link>
+            </div>
+            <div className="activeItem text-center col">
+              <Link className="linkBtn" to="/guestlogin">
+                Join Party
+              </Link>
+            </div>
+          </div>
+        </div>
       </main>
     </div>
   )

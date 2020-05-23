@@ -96,11 +96,11 @@ body {
 
 .linkBtn {
   padding: 0.5em 1em;
-  margin: 0 2em;
+  /* margin: 0 2em; */
   background-color: #ffc936;
   color: #242424;
   font-size: 1.5em;
-  border-radius: 3px;
+  /* border-radius: 3px; */
 }
 
 .linkBtn:hover {
