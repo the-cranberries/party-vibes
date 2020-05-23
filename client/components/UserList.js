@@ -6,11 +6,11 @@ const UserList = ({users}) => (
       <div>
         {/* <h1>People currently in room</h1> */}
         <div className="activeContainer">
-          <h2>
+          <h2 className="row">
             {users.map(user => (
-              <div key={user.name} className="activeItem">
-                {user.name}
+              <div key={user.name} className="activeItem text-center col">
                 <img src={user.picture} />
+                <div className="username">{user.name}</div>
               </div>
             ))}
           </h2>
