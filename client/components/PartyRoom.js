@@ -98,8 +98,8 @@ const Room = props => {
       <div>
         <div>
           <main>
-            <div>
-              <h1 className="heading text-center">
+            <div className="">
+              <h1 className="party-title text-center">
                 Welcome to{' '}
                 {sessionStorage.getItem('host') || props.party.user.name}'s
                 Party!
@@ -117,7 +117,7 @@ const Room = props => {
               <Link to="/">
                 <button
                   type="submit"
-                  className="btn yellow-orange-btn"
+                  className="btn yellow-orange-btn endBtn"
                   onClick={handleSubmit}
                 >
                   Sign Out

@@ -391,3 +391,10 @@ body {
 .icon {
   margin-bottom: 1.5em;
 }
+
+.party-title {
+  margin: 0.5em;
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+}
