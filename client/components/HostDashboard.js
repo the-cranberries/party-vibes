@@ -94,7 +94,7 @@ class HostDashboard extends React.Component {
           <div className="host_dashboard joinOuterContainer">
             <h1 className="text-center heading">Welcome {user.name}</h1>
             {this.state.picturePreview ? (
-              <div className="row margintop">
+              <div className="row margin-pic">
                 <div className="col-sm-6 text-center">
                   <img
                     src={this.state.selectedPicture}
@@ -129,7 +129,7 @@ class HostDashboard extends React.Component {
                     <option value="/images/man3.png">Man 3</option>
                   </select>
                   <button
-                    className="btn yellow-orange-btn"
+                    className="btn yellow-orange-btn margintop"
                     type="button"
                     onClick={() => {
                       this.props.updateUserPic(user.id, {
@@ -145,7 +145,7 @@ class HostDashboard extends React.Component {
                 </div>
               </div>
             ) : (
-              <div className="row margintop">
+              <div className="row margin-pic">
                 <div className="col-sm-6 text-center">
                   <img src={user.profilePicture} width="100" height="100" />
                 </div>

@@ -24,7 +24,7 @@ export default class GuestSignOut extends React.Component {
     return (
       <div className="vertical-center justify-content-center">
         <div className="host_dashboard joinOuterContainer">
-          <h1 className="text-center">Host has ended party</h1>
+          <h1 className="text-center heading">Host has ended party</h1>
           <div className="row text-center margin-space">
             <div className="col">
               <Link to="/">

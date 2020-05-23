@@ -46,8 +46,8 @@ class Chat extends React.Component {
   render() {
     return (
       <div className="chat-box">
-        <div className="">
-          <h4 className="yellow-orange font-weight-bold">Chat</h4>
+        <h4 className="yellow-orange font-weight-bold">Chat</h4>
+        <div className="chat-container">
           <ScrollToBottom className="messages">
             {this.state.messages.map((message, index) => {
               return (
@@ -58,31 +58,32 @@ class Chat extends React.Component {
               )
             })}
           </ScrollToBottom>
-        </div>
-        <div className="chat-input">
-          <input
-            type="text"
-            placeholder="Type a message..."
-            className="form-control"
-            required="required"
-            value={this.state.message}
-            onChange={ev => this.setState({message: ev.target.value})}
-            onKeyPress={evt => {
-              if (this.state.message) {
-                if (evt.key === 'Enter') {
-                  this.sendMessage()
+
+          <div className="chat-input">
+            <input
+              type="text"
+              placeholder="Type a message..."
+              className="form-control"
+              required="required"
+              value={this.state.message}
+              onChange={ev => this.setState({message: ev.target.value})}
+              onKeyPress={evt => {
+                if (this.state.message) {
+                  if (evt.key === 'Enter') {
+                    this.sendMessage()
+                  }
                 }
-              }
-            }}
-          />
-          <button
-            type="submit"
-            onClick={this.sendMessage}
-            className="sendButton"
-            disabled={!this.state.message}
-          >
-            Send
-          </button>
+              }}
+            />
+            <button
+              type="submit"
+              onClick={this.sendMessage}
+              className="sendButton"
+              disabled={!this.state.message}
+            >
+              Send
+            </button>
+          </div>
         </div>
       </div>
     )

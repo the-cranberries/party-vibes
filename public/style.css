@@ -28,26 +28,13 @@ body {
 }
 
 .landingImg {
-  min-height: 100%;
-  min-width: 1024px;
-
-  /* Set up proportionate scaling */
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: auto;
-
-  /* Set up positioning */
-  position: fixed;
-  top: 0;
-  left: 0;
+  /* min-height: 100%; */
+  height: 100%;
 }
-
-/* #bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  min-width: 100%;
-  min-height: 100%;
-} */
 
 .joinOuterContainer {
   /* display: flex;
@@ -84,13 +71,15 @@ body {
 
 .heading {
   color: white;
-  text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black,
-    1px 1px 0 black;
+  /* text-shadow:
+    -1px -1px 0 black,
+    1px -1px 0 black,
+    -1px 1px 0 black,
+    1px 1px 0 black; */
   font-size: 2.5em;
   padding-bottom: 10px;
   border-bottom: 2px solid white;
   margin-bottom: 18px;
-  /* text-shadow: 2px 2px white; */
 }
 
 .button {
@@ -107,11 +96,13 @@ body {
 
 .linkBtn {
   padding: 0.5em 1em;
-  margin: 0 2em;
+  /* margin: 0.5em; */
   background-color: #ffc936;
   color: #242424;
   font-size: 1.5em;
   border-radius: 3px;
+  width: 100px;
+  white-space: nowrap;
 }
 
 .linkBtn:hover {
@@ -120,19 +111,13 @@ body {
   color: #242424;
 }
 
+.margin-link {
+  margin: 1em 0;
+}
+
 #errorMessage {
   font-family: sans-serif;
   color: black;
-}
-
-.guests {
-  background-color: rgba(197, 189, 189, 0.4);
-  align-items: center;
-  color: white;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 1rem;
-  padding: 1rem;
 }
 
 /* .container {
@@ -164,17 +149,45 @@ body {
   }
 }
 
+.row2 {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.guests {
+  background-color: rgba(197, 189, 189, 0.4);
+  border-radius: 5px;
+  margin-left: 15px;
+  /* align-items: center; */
+  color: white;
+  height: 75vh;
+  /* display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem; */
+  padding: 1em;
+}
+
 .chat-box {
-  position: absolute;
+  /* position: absolute;
   bottom: 0;
-  right: 0;
-  margin-right: 10px;
-  margin-bottom: 10px;
-  width: 400px;
-  height: 70vh;
+  right: 0; */
+  margin-right: 15px;
+  /* margin-bottom: 10px; */
+  /* width: 400px; */
+  /* height: 70vh; */
   background-color: #303030;
   padding: 1em;
   border-radius: 5px;
+  height: 75vh;
+}
+
+.endBtn {
+  margin: 0 0 20px 30px;
+}
+
+.chat-container {
+  width: 100%;
+  height: 100%;
 }
 
 .messages {
@@ -183,10 +196,11 @@ body {
   overflow: scroll; */
   padding-left: 0.5em;
   /* flex: auto; */
-  height: 350px;
+  /* height: 350px; */
   background-color: #424242;
   border-radius: 2px;
   color: white;
+  height: calc(100% - 120px);
 }
 
 .chat-input {
@@ -196,6 +210,8 @@ body {
   width: 100%;
   font-size: 1.2em; */
   margin-top: 10px;
+  /* position: absolute;
+  bottom: 15px; */
 }
 
 .sendButton {
@@ -311,8 +327,20 @@ body {
 } */
 
 .activeContainer img {
-  height: 50px;
-  width: 50px;
+  height: 100px;
+  width: 100px;
+}
+
+.activeItem {
+  margin: 10px;
+  padding: 0.5em;
+}
+.icon-size {
+  width: 100px;
+}
+
+.username {
+  font-size: 26px;
 }
 
 .yellow-orange {
@@ -330,6 +358,10 @@ body {
 .select-width {
   max-width: 300px;
   margin: 0 auto;
+}
+
+.margin-pic {
+  margin: 2em 0 2em 0;
 }
 
 .margintop {
@@ -364,4 +396,34 @@ body {
 
 .icon {
   margin-bottom: 1.5em;
+}
+
+.party-title {
+  padding: 20px;
+  color: white;
+}
+
+@media (max-width: 800px) {
+  .activeContainer img {
+    height: 75px;
+    width: 75px;
+  }
+}
+
+@media (max-width: 575px) {
+  .chat-box {
+    margin: 10px;
+    height: 50vh;
+  }
+  .guests {
+    margin: 10px;
+    height: auto;
+  }
+  .endBtn {
+    margin: 0 0 10px 25px;
+  }
+  .activeContainer img {
+    height: 50px;
+    width: 50px;
+  }
 }
