@@ -108,7 +108,7 @@ const Room = props => {
             {isHost ? (
               <button
                 type="button"
-                className="btn yellow-orange-btn"
+                className="btn yellow-orange-btn endBtn"
                 onClick={endParty}
               >
                 End Party

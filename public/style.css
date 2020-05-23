@@ -173,6 +173,10 @@ body {
   height: 80vh;
 }
 
+.endBtn {
+  margin: 0 0 20px 30px;
+}
+
 @media (max-width: 575px) {
   .chat-box {
     margin: 10px;
@@ -181,6 +185,9 @@ body {
   .guests {
     margin: 10px;
     height: auto;
+  }
+  .endBtn {
+    margin: 0 0 10px 25px;
   }
 }
 
