@@ -71,13 +71,15 @@ body {
 
 .heading {
   color: white;
-  text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black,
-    1px 1px 0 black;
+  /* text-shadow:
+    -1px -1px 0 black,
+    1px -1px 0 black,
+    -1px 1px 0 black,
+    1px 1px 0 black; */
   font-size: 2.5em;
   padding-bottom: 10px;
   border-bottom: 2px solid white;
   margin-bottom: 18px;
-  /* text-shadow: 2px 2px white; */
 }
 
 .button {
