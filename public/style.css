@@ -96,17 +96,23 @@ body {
 
 .linkBtn {
   padding: 0.5em 1em;
-  margin: 0 2em;
+  /* margin: 0.5em; */
   background-color: #ffc936;
   color: #242424;
   font-size: 1.5em;
   border-radius: 3px;
+  width: 100px;
+  white-space: nowrap;
 }
 
 .linkBtn:hover {
   text-decoration: none;
   background-color: #daac31;
   color: #242424;
+}
+
+.margin-link {
+  margin: 1em 0;
 }
 
 #errorMessage {
