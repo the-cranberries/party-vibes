@@ -1,9 +1,6 @@
 import React from 'react'
 import {Link, Redirect} from 'react-router-dom'
 import {connect} from 'react-redux'
-// import {Login} from './HostLogin'
-// import {Signup} from './Signup'
-// import LandingImg from './../landing_page.jpg'
 
 const Home = props => {
   if (props.user && props.user.id) {

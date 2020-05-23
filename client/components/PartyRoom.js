@@ -125,11 +125,16 @@ const Room = props => {
               </Link>
             )}
           </main>
-          <div>
+          {/* <div>
             <Chat />
-          </div>
-          <div className="guests">
-            <UserList users={users} />
+          </div> */}
+          <div className="row2">
+            <div className="col-sm-6">
+              <UserList users={users} />
+            </div>
+            <div className="col-sm-6">
+              <Chat />
+            </div>
           </div>
         </div>
       </div>

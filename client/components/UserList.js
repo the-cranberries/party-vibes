@@ -1,7 +1,7 @@
 import React from 'react'
 
 const UserList = ({users}) => (
-  <div className="textContainer">
+  <div className="guests">
     {users ? (
       <div>
         {/* <h1>People currently in room</h1> */}
