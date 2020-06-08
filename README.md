@@ -23,6 +23,6 @@ Future features we would like to add include:
 
 ## Technologies
 
-Party Vibes uses Express to handle server calls, and stores host and party informatioin in a PostgreSQL database accessed via Sequelize. On the front end, party and host state is handled by Redux, and the user interface is managed by React. Guest information is stored in localStorage, and all real-time interactions are managed by Socket.io.
+Party Vibes uses Express to handle server calls, and stores host and party informatioin in a PostgreSQL database accessed via Sequelize. On the front end, party and host state is handled by Redux, and the user interface is managed by React. Guest information is stored in sessionStorage, and all real-time interactions are managed by Socket.io.
 
 Party Vibes was created by [Arielle Domantay](https://github.com/ArielleDOM), [Jennifer Li](https://github.com/jli09), [Lani Tran](https://github.com/lawnee), and [Adriana Winkleman](https://github.com/Awinkelman) as the final capstone project for the Grace Hopper Program at Fullstack Academy.
